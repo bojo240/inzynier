@@ -3,7 +3,7 @@
 {% block content %}
 <h2>{{context}}</h2>
 <div id = 'updateform'>
-<form action="/update{{table_name}}" method=post>
+<form action="/update{{table_name}}" method=put>
     <table><br>
          <b>Update {{table_name}}</b>
         <tr>
@@ -31,7 +31,7 @@
      </form>
    </div>
    <br>
-    <p>
+ <!--   <p>
     {{table | safe }}
-    </p>
+    </p>-->
 {% endblock %}

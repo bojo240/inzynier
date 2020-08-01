@@ -1,7 +1,7 @@
-from flask import Flask, jsonify, render_template, request, send_from_directory, url_for
+from flask import Flask, render_template, request, url_for, Response
 import pyodbc
 import os
-
+import simplejson as json
 from werkzeug.utils import cached_property
 #set FLASK_APP=flask_sql.py
 #flask run
@@ -12,29 +12,80 @@ app = Flask(__name__)
 
 connection = None  # global variable
 
+# @app.context_processor
+# def override_url_for():
+#     return dict(url_for=dated_url_for)
+#
+#
+# def dated_url_for(endpoint, **values):
+#     if endpoint == 'static':
+#         filename = values.get('filename', None)
+#         if filename:
+#             file_path = os.path.join(app.root_path,
+#                                  endpoint, filename)
+#             values['q'] = int(os.stat(file_path).st_mtime)
+#     return url_for(endpoint, **values)
 
-@app.context_processor
-def override_url_for():
-    return dict(url_for=dated_url_for)
 
-
-def dated_url_for(endpoint, **values):
-    if endpoint == 'static':
-        filename = values.get('filename', None)
-        if filename:
-            file_path = os.path.join(app.root_path,
-                                 endpoint, filename)
-            values['q'] = int(os.stat(file_path).st_mtime)
-    return url_for(endpoint, **values)
-
-
-@app.route('/diconnect', methods=['GET', 'POST'])
+@app.route('/diconnect', methods=['GET'])
 def disconnect():
     global connection
     connection.close()
     connection = None
     return generateToIndexHTML()
 
+@app.route('/login', methods=['POST'])
+def JSONLogin():
+    data = request.get_json()
+    #login =  request.args("login")
+    #password = request.args("password")
+    login = data['login']
+    password = data['password']
+    print(login)
+    print(password)
+    try:
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+
+        cur = connection.cursor()
+        cur.execute("select * from gmina")
+        cur.close
+        return Response(status = 200)
+    except:
+        return Response(status = 401)
+
+@app.route('/api/<table_name>', methods=['GET'])
+def JSONTable(table_name):
+    connection2 = pyodbc.connect('Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;'
+                                'Trusted_Connection=yes')
+    cursor = connection2.cursor()
+    cursor.execute("SELECT * FROM "+ table_name)
+    rows = cursor.fetchall()
+    items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
+    return json.dumps(items), 201
+
+@app.route('/api/<table_name>/<id>/<start_date>', methods=['GET'])
+def JSONMainTable(table_name, id, start_date):
+    connection2 = pyodbc.connect('Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;'
+                                'Trusted_Connection=yes')
+    cursor = connection2.cursor()
+    cursor.execute("SELECT * FROM "+ table_name)
+    cursor.execute("SELECT * FROM "+ table_name + " where " + cursor.description[0][0] + " = " + id + " and " + cursor.description[3][0] + " = '" + start_date + "'")
+    rows = cursor.fetchall()
+    items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
+    return json.dumps(items), 201
+
+@app.route('/api/<table_name>/<id1>/<start_date1>/<id2>/<start_date2>/<start_date3>', methods=['GET'])
+def JSONRelationalTable(table_name, id1, start_date1, id2, start_date2, start_date3):
+    connection2 = pyodbc.connect('Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;'
+                                'Trusted_Connection=yes')
+    cursor = connection2.cursor()
+    cursor.execute("SELECT * FROM "+ table_name)
+    cursor.execute("SELECT * FROM "+ table_name + " where " + cursor.description[0][0] + " = " + id1 + " and " + cursor.description[1][0] + " = '" + start_date1 + "'" + " and " +
+                   cursor.description[2][0] + " = " + id2 + " and " + cursor.description[3][0] + " = '" + start_date2 + "'" + " and " + cursor.description[4][0] + " = '" + start_date3 + "'")
+    rows = cursor.fetchall()
+    items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
+    return json.dumps(items), 201
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -65,12 +116,12 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/app')
+@app.route('/app', methods=['GET'])
 def appl():
     return render_template('app.html', context='hello')
 
 
-@app.route('/list<table_name>')
+@app.route('/list<table_name>', methods=['GET'])
 def listTable(table_name):
     s = generateTable(table_name)
     return render_template('list.html', table=s)
@@ -133,7 +184,7 @@ def insertALL(table_name, col_names, col_vals):
     return
 
 
-@app.route('/update<table_name>', methods=['GET', 'POST'])
+@app.route('/update<table_name>', methods=['GET', 'PUT'])
 def updateTable(table_name):
     cursor = connection.cursor()
     cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
@@ -143,7 +194,7 @@ def updateTable(table_name):
     for row in cursor:
         col_names.append(row[0])
         col_types.append(row[1])
-    if request.method == 'POST':
+    if request.method == 'PUT':
         print('asd')
         set_vals = dict()
         where_vals = dict()
@@ -192,7 +243,7 @@ def updateALL(table_name, set_vals, where_vals):
     return
 
 
-@app.route('/delete<table_name>', methods=['GET', 'POST'])
+@app.route('/delete<table_name>', methods=['GET', 'DELETE'])
 def deleteTable(table_name):
     cursor = connection.cursor()  
     cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
@@ -202,7 +253,7 @@ def deleteTable(table_name):
     for row in cursor:  
         col_names.append(row[0])
         col_types.append(row[1])
-    if request.method == 'POST':	
+    if request.method == 'DELETE':
         where_vals = dict()
         for x in range(len(col_names)):
             wherevalue = request.form["where"+str(x+1)]

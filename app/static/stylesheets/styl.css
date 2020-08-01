@@ -1,0 +1,133 @@
+header	{
+	background-color: #355c7d;
+	border-radius: 10px 10px 0px 0px;
+	color: white;
+    text-shadow: 1px 1px 2px #000000; /* dodanie cienia: przesunięcie na x, przesunięcie na y, rozmycie, kolor */
+	  }
+header h1 {
+	text-align: center;
+	padding: 0.6em	
+}
+body   
+	{
+	background: #6c5b7b; /* tło */
+	background-color: #ffffff;
+	}
+
+
+/* pasek pod buttonami */
+nav{
+    background: #6c5b7b; /* tło */
+    padding: 0px 0px 0px 0px; /* odsunięcie */
+
+    text-align: center; /* wyrównanie zawartości */
+}
+
+/* style dla elementu ul znajdującego się wewnątrz nav */
+nav ul{
+    padding: 5px; /* odsunięcie na 0 */
+    margin: 0px; /* marginesy na 0 */
+}
+
+/* style dla pierwszego potomka ul będącego znacznikiem li i znajdującego się wewnątrz nav */
+nav ul > li{
+    list-style-type: none; /* wyłączenie wyświetlania znaczników */
+    display: inline-block; /* wyświetlanie jako element inline-block */
+    padding: 5px; /* odsunięcie */
+}
+
+
+/* formatowanie linków dla znacznika ul */
+nav ul > li > a{
+    border-radius: 10px; /* promień obramowania */
+    background: #c06c84; /* kolor tła */
+    width: 120px; /* szerokość */
+    height: 32px; /* wysokość */
+    text-align: center; /* wyśrodkowanie tekstu */
+    display: inline-block; /* wyświetlanie jako element inline-block */
+    padding-top: 10px; /* odsunięcie górne */
+    text-decoration: none; /* wyłączenie dekoracji */
+    font-weight: bold; /* ustawienie pogrubienia czcionki */
+    text-shadow: 1px 1px 2px #000000; /* dodanie cienia: przesunięcie na x, przesunięcie na y, rozmycie, kolor */
+    color: white; /* kolor czcionki */
+}
+/* style dla znacznika a dla zdarzenia najechania kursorem myszy */
+nav ul > li > a:hover{
+    background: #c48697; /* kolor tła */
+}
+/* formatowanie elementów ol */
+nav ul > li > ol{
+    z-index: 1000; /* położenie na osi z - wpływa na to nad jakimi elementami będzie się wyświetlać podano 1000 żeby zapewnić elementowi miejsce zawsze nad innymi elementami */
+    list-style-type: none; /* wyłączenie wyświetlania numeracji */
+	border-radius: 10px 10px 10px 10px;
+    margin: 1px 0px 0px 0px; 
+    display: none; /* domyślnie nie wyświetlaj */
+    position:absolute; /* położenie absolutne, żeby element nie wpływał na rozmieszczenie pozostałych elementów strony gdy jest wyświetlany */
+    text-align: center; /* wyrównanie tekstu do środka */
+}
+
+/* style dla ol gdy kursor myszy znajdzie się nad znacznikiem li elementu ul */
+nav ul > li:hover > ol{
+    display: block; /* włączaj wyświetlanie elementu jako blokowy */
+    background: #c06c84; /* kolor tła elementu */
+    padding: 5px; 
+    width: 112px; /* szerokość */
+}
+
+/* style dla znacznika li będącego potomkiem ol */
+nav ul > li > ol > li{
+    padding: 5px; /* odsunięcie z wszystkich stron o 5px */
+}
+/* formatowanie linków dla znacznika ol */
+nav ul > li > ol > li a{
+		
+	text-decoration: none; /* wyłączenie dekoracji */
+    font-weight: bold; /* ustawienie pogrubienia czcionki */
+    text-shadow: 1px 1px 2px #000000; /* dodanie cienia: przesunięcie na x, przesunięcie na y, rozmycie, kolor */
+    color: white; /* kolor czcionki */
+}
+
+/* formatowanie znaczników li będącego potomkiem ol gdy kursor myszy znajdzie się nad elementem    li */
+nav ul > li > ol > li:hover{
+	border-radius: 10px 10px 10px 10px;
+    background: #c48697; /* kolor tła */
+}
+
+.main{
+	background-color: #bff;
+	overflow: auto;
+	padding-bottom: 3em;
+	}
+
+main{
+	background-color: #ffffff;
+	width: 100%;
+	min-height: 80%;
+	height: auto !important; /*min-height hack*/
+	float: left;
+	text-align: center;
+	}
+
+html,body{
+	height: 100%
+	}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+table, td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    }
+tr:nth-child(odd){
+    background-color: #ffffff;
+    }
+tr:hover {
+    background-color: #ddd;
+    }
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: grey;
+    color: white}

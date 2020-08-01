@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Lista{% endblock %}
+{% block content %}
+    <h2>{{context}}</h2>
+<div id = 'insertform'>
+<form action="/insert{{table_name}}" method=post>
+    <table><br>
+         <b>Insert {{table_name}}</b>
+        <tr>
+            {% for col in col_names %}
+                <th>{{col}}</th>
+            {% endfor %}
+        </tr>
+         <tr>
+            {% for item in navigation %}
+                <td><input type=text name={{item}} required/></td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td><input type=submit value=Insert></td>
+            </tr>
+    </table>
+        <br>
+     </form>
+   </div>
+   <br>
+
+    <p>
+    {{table | safe }}
+    </p>
+{% endblock %}

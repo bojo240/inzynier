@@ -1,0 +1,125 @@
+<HTML>
+<head>
+        <meta charset="utf-8">
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styl.css') }}">
+        <title> Moja aplikacja </title>
+        </head>
+
+	<Body>
+	        <div class="header">
+        <header>
+        <h1>Welcome to my app</h1>
+        </header>
+
+        <nav>
+        <ul>
+        	<li><a href="app"> Strona główna </a></li>
+        	<li><a> Listy 
+				<ol>
+				<li>
+				   <a href="listGmina">Gminy</a>
+				</li>
+				<li>
+				  <a href="listPowiat">Powiaty</a>
+				</li>
+                <li>
+				  <a href="listWojewodztwo">Województwa</a>
+				</li>
+                <li>
+				  <a href="listGminaRelacja">Gmina Relacja</a>
+				</li>
+                <li>
+				  <a href="listGminaPowiat">Gmina Powiat</a>
+				</li>
+                <li>
+				  <a href="listGminaWojewodzwo">Gmina Województwo</a>
+				</li>
+                <li>
+				  <a href="listPowiatWojewodztwo">Powiat Województwo</a>
+				</li>
+			   </ol>
+			</a></li>
+        	<li><a> Inserty
+                <ol>
+				<li>
+				   <a href="insertGmina">Gminy</a>
+				</li>
+				<li>
+				  <a href="insertPowiat">Powiaty</a>
+				</li>
+                <li>
+				  <a href="insertWojewodztwo">Województwa</a>
+				</li>
+                <li>
+				  <a href="insertGminaRelacja">Gmina Relacja</a>
+				</li>
+                <li>
+				  <a href="insertGminaPowiat">Gmina Powiat</a>
+				</li>
+                <li>
+				  <a href="insertGminaWojewodzwo">Gmina Województwo</a>
+				</li>
+                <li>
+				  <a href="insertPowiatWojewodztwo">Powiat Województwo</a>
+				</li>
+			   </ol>
+            </a></li>
+        	<li><a> Update'y
+            <ol>
+				<li>
+				   <a href="updateGmina">Gminy</a>
+				</li>
+				<li>
+				  <a href="updatePowiat">Powiaty</a>
+				</li>
+                <li>
+				  <a href="updateWojewodztwo">Województwa</a>
+				</li>
+                <li>
+				  <a href="updateGminaRelacja">Gmina Relacja</a>
+				</li>
+                <li>
+				  <a href="updateGminaPowiat">Gmina Powiat</a>
+				</li>
+                <li>
+				  <a href="updateGminaWojewodzwo">Gmina Województwo</a>
+				</li>
+                <li>
+				  <a href="updatePowiatWojewodztwo">Powiat Województwo</a>
+				</li>
+			   </ol>
+            </a></li>
+			<li><a> Delete'y
+            <ol>
+				<li>
+				   <a href="deleteGmina">Gminy</a>
+				</li>
+				<li>
+				  <a href="deletePowiat">Powiaty</a>
+				</li>
+                <li>
+				  <a href="deleteWojewodztwo">Województwa</a>
+				</li>
+                <li>
+				  <a href="deleteGminaRelacja">Gmina Relacja</a>
+				</li>
+                <li>
+				  <a href="deleteGminaPowiat">Gmina Powiat</a>
+				</li>
+                <li>
+				  <a href="deleteGminaWojewodzwo">Gmina Województwo</a>
+				</li>
+                <li>
+				  <a href="deletePowiatWojewodztwo">Powiat Województwo</a>
+				</li>
+			   </ol>
+            </a></li>
+			<li><a href="diconnect"> Wyloguj </a></li>
+        </ul>
+        </nav>
+        </div>
+		<main>
+		<div id="content">{% block content %}{% endblock %}</div>
+		</main>
+    </BODY>
+</HTML>

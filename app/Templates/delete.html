@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Lista{% endblock %}
+{% block content %}
+    <h2>{{context}}</h2>
+<div id = 'deleteform'>
+<form action="/delete{{table_name}}" method=post>
+    <table><br>
+         <b>Update {{table_name}}</b>
+        <tr>
+            <th>Columns:</th>
+            {% for col in col_names %}
+                <th>{{col}}</th>
+            {% endfor %}
+
+        </tr><tr><th>Where:</th>
+
+            {% for item in navigation %}
+                <td><input type=text name="where{{item}}"/></td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td><input type=submit value=Delete></td>
+            </tr>
+    </table>
+            <br>
+     </form>
+   </div>
+   <br>
+    <p>
+    {{table | safe }}
+    </p>
+{% endblock %}

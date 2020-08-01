@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Lista{% endblock %}
+{% block content %}
+    <h2>{{context}}</h2>
+    <p>
+    {{table | safe }}
+    </p>
+{% endblock %}

@@ -1,18 +1,40 @@
-from flask import Flask, render_template, request, url_for, Response
+from flask import Flask, render_template, request, url_for, Response, Blueprint
+from flask_restplus import Api, Resource, fields
 import pyodbc
 import os
 import simplejson as json
-from werkzeug.utils import cached_property
-#set FLASK_APP=flask_sql.py
-#flask run
-
 from html_codes import *
 import pandas as pd
 
+#set FLASK_APP=flask_sql.py
+#flask run
 app = Flask(__name__)
+blueprint = Blueprint('api', __name__, url_prefix='/test')
+api = Api(blueprint)
+app.register_blueprint(blueprint)
+
+a_language = api.model('Language',{'language' : fields.String('The language.')})
+
+languages = []
+python = {'language':'Python', 'id': 1}
+languages.append(python)
+
+@api.route('/swagger/language')
+class Language(Resource):
+    @api.marshal_with(a_language, envelope='the_data')
+    def get(self):
+        return languages
+
+    @api.expect(a_language)
+    def post(self):
+        new_language = api.payload
+        new_language['id'] = len(languages) + 1
+        languages.append(new_language)
+        return {'result' : 'Language added'}, 201
 
 GUIconnection = None
 APIconnection = None
+
 
 @app.route('/api/login', methods=['POST'])
 def JSONLogin():
@@ -426,4 +448,4 @@ def internal_error(error):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = True)

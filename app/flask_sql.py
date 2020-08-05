@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, url_for, Response, Blueprint, redirect, session
+from flask import Flask, render_template, request, url_for, Response, Blueprint, redirect, session, make_response, \
+    jsonify
 from flask_restplus import Api, Resource, fields
 import pyodbc
 import os
 import simplejson as json
-from html_codes import *
 import pandas as pd
 
 # set FLASK_APP=flask_sql.py
@@ -21,6 +21,22 @@ python = {'language': 'Python', 'id': 1}
 languages.append(python)
 
 
+#API
+
+@app.context_processor
+def override_url_for():
+    return dict(url_for=dated_url_for)
+
+
+def dated_url_for(endpoint, **values):
+    if endpoint == 'static':
+        filename = values.get('filename', None)
+        if filename:
+            file_path = os.path.join(app.root_path, endpoint, filename)
+            values['q'] = int(os.stat(file_path).st_mtime)
+    return url_for(endpoint, **values)
+
+
 @api.route('/swagger/language')
 class Language(Resource):
     @api.marshal_with(a_language, envelope='the_data')
@@ -35,119 +51,130 @@ class Language(Resource):
         return {'result': 'Language added'}, 201
 
 
-GUIconnection = None
-APIconnection = None
-
-
-@app.route('/api/login', methods=['POST'])
-def json_login():
-    global APIconnection
-    data = request.get_json()
-    login = data['login']
-    password = data['password']
-    print(login)
-    print(password)
-    try:
-        APIconnection = pyodbc.connect(
-            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
-        cur = APIconnection.cursor()
-        cur.execute("select * from gmina")
-        session['asd'] = 'asd'
-        cur.close
-        return Response(status=200)
-    except:
-        return Response(status=401)
-
-
 @app.route('/api/<table_name>', methods=['GET'])
 def json_table(table_name):
-    global APIconnection
-    cursor = APIconnection.cursor()
-    cursor.execute("SELECT * FROM " + table_name)
-    rows = cursor.fetchall()
-    items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
-    return json.dumps(items), 201
+    login = request.headers.get('login')
+    password = request.headers.get('password')
+    try:
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM " + table_name)
+        rows = cursor.fetchall()
+        items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
+        resp_body = json.dumps(items, ensure_ascii=False)
+        resp_head=dict()
+        resp_head['Record count'] = len(items)
+        connection.close()
+        response = make_response(resp_body, 200, resp_head)
+        return response
+    except:
+        return Response(status=400)
 
 
 @app.route('/api/<table_name>/<id>/<start_date>', methods=['GET'])
 def json_main_table(table_name, id, start_date):
-    global APIconnection
-    cursor = APIconnection.cursor()
-    cursor.execute("SELECT * FROM " + table_name)
-    cursor.execute("SELECT * FROM " + table_name + " where " + cursor.description[0][0] + " = " + id + " and " +
-                   cursor.description[3][0] + " = '" + start_date + "'")
-    rows = cursor.fetchall()
-    items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
-    return json.dumps(items), 201
+    login = request.headers.get('login')
+    password = request.headers.get('password')
+    try:
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM " + table_name + " where ID = " + id + " and Start_Date = '" + start_date + "'")
+        rows = cursor.fetchall()
+        items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
+        resp_body = json.dumps(items, ensure_ascii=False)
+        resp_head=dict()
+        resp_head['Record count'] = len(items)
+        connection.close()
+        response = make_response(resp_body, 200, resp_head)
+        return response
+    except:
+        return Response(status=401)
 
 
 @app.route('/api/<table_name>/<id>/<start_date>/<id1>/<start_date1>/<start_date2>', methods=['GET'])
 def json_relational_table(table_name, id, start_date, id1, start_date1, start_date2):
-    global APIconnection
-    cursor = APIconnection.cursor()
-    cursor.execute("SELECT * FROM " + table_name)
-    cursor.execute("SELECT * FROM " + table_name + " where " + cursor.description[0][0] + " = " + id + " and " +
-                   cursor.description[1][0] + " = '" + start_date + "'" + " and " +
-                   cursor.description[2][0] + " = " + id1 + " and " + cursor.description[3][0] + " = '" + start_date1 +
-                   "'" + " and " + cursor.description[4][0] + " = '" + start_date2 + "'")
-    rows = cursor.fetchall()
-    items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
-    return json.dumps(items), 201
+    login = request.headers.get('login')
+    password = request.headers.get('password')
+    try:
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM " + table_name)
+        count = cursor.execute("SELECT * FROM " + table_name + " where " + cursor.description[0][0] + " = " + id + " and " +
+                       cursor.description[1][0] + " = '" + start_date + "'" + " and " +
+                       cursor.description[2][0] + " = " + id1 + " and " + cursor.description[3][0] + " = '" +
+                       start_date1 + "'" + " and " + cursor.description[4][0] + " = '" + start_date2 + "'")
+        rows = cursor.fetchall()
+        items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
+        resp_body = json.dumps(items, ensure_ascii=False)
+        resp_head = dict()
+        resp_head['Record count'] = len(items)
+        connection.close()
+        response = make_response(resp_body, 200, resp_head)
+        return response
+    except:
+        return Response(status=401)
 
 
 @app.route('/api/<table_name>', methods=['POST'])
 def json_insert_table(table_name):
-    global APIconnection
     data = request.get_json()
     col_names = list(data.keys())
     col_vals = list(data.values())
-    cursor = APIconnection.cursor()
-    cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
-                   + table_name + "') order by ordinal_position asc")
-    for row in cursor:
-        for x in range(len(col_names)):
-            if col_names[x] == row[0]:
-                if col_vals[x] == '':
-                    col_vals[x] = "null"
-                elif row[1] in ("date", "nvarchar"):
-                    col_vals[x] = "'" + col_vals[x] + "'"
-                break
-    print(col_names)
-    print(col_vals)
+    login = request.headers.get('login')
+    password = request.headers.get('password')
     try:
-        insert_all(table_name, col_names, col_vals, APIconnection)
-        return Response(status=200)
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
+                       + table_name + "') order by ordinal_position asc")
+        for row in cursor:
+            for x in range(len(col_names)):
+                if col_names[x] == row[0]:
+                    if col_vals[x] == '':
+                        col_vals[x] = "null"
+                    elif row[1] in ("date", "nvarchar"):
+                        col_vals[x] = "'" + col_vals[x] + "'"
+                    break
+        try:
+            insert_all(table_name, col_names, col_vals, connection)
+            return Response(status=200)
+        except:
+            return Response(status=400)
     except:
         return Response(status=400)
 
 
 @app.route('/api/<table_name>/<id>/<start_date>', methods=['PUT'])
 def json_udate_main_table(table_name, id, start_date):
-    global APIconnection
     data = request.get_json()
     col_names = list(data.keys())
     col_vals = list(data.values())
-    cursor = APIconnection.cursor()
-    cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
-                   + table_name + "') order by ordinal_position asc")
-    for row in cursor:
-        for x in range(len(col_names)):
-            if col_names[x] == row[0]:
-                if col_vals[x] == '':
-                    col_vals[x] = "null"
-                elif row[1] in ("date", "nvarchar"):
-                    col_vals[x] = "'" + col_vals[x] + "'"
-                break
-    print(col_names)
-    print(col_vals)
-    s = "update " + table_name + " set " + col_names[0] + " = " + col_vals[0]
-    for x in range(len(col_names) - 1):
-        s = s + ", " + col_names[x + 1] + " = " + col_vals[x + 1]
-    s = s + " where id = " + str(id) + " and StartDate = '" + str(start_date) + "'"
-    print(s)
+    login = request.headers.get('login')
+    password = request.headers.get('password')
     try:
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
+                       + table_name + "') order by ordinal_position asc")
+        for row in cursor:
+            for x in range(len(col_names)):
+                if col_names[x] == row[0]:
+                    if col_vals[x] == '':
+                        col_vals[x] = "null"
+                    elif row[1] in ("date", "nvarchar"):
+                        col_vals[x] = "'" + col_vals[x] + "'"
+                    break
+        s = "update " + table_name + " set " + col_names[0] + " = " + col_vals[0]
+        for x in range(len(col_names) - 1):
+            s = s + ", " + col_names[x + 1] + " = " + col_vals[x + 1]
+        s = s + " where id = " + str(id) + " and StartDate = '" + str(start_date) + "'"
         cursor.execute(s)
-        APIconnection.commit()
+        connection.commit()
         return Response(status=200)
     except:
         return Response(status=400)
@@ -155,47 +182,52 @@ def json_udate_main_table(table_name, id, start_date):
 
 @app.route('/api/<table_name>/<id>/<start_date>/<id1>/<start_date1>/<start_date2>', methods=['PUT'])
 def json_update_relational_table(table_name, id, start_date, id1, start_date1, start_date2):
-    global APIconnection
     data = request.get_json()
     col_names = list(data.keys())
     col_vals = list(data.values())
-    cursor = APIconnection.cursor()
-    cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
-                   + table_name + "') order by ordinal_position asc")
-    for row in cursor:
-        for x in range(len(col_names)):
-            if col_names[x] == row[0]:
-                if col_vals[x] == '':
-                    col_vals[x] = "null"
-                elif row[1] in ("date", "nvarchar"):
-                    col_vals[x] = "'" + col_vals[x] + "'"
-                break
-    print(col_names)
-    print(col_vals)
-    s = "update " + table_name + " set " + col_names[0] + " = " + col_vals[0]
-    for x in range(len(col_names) - 1):
-        s = s + ", " + col_names[x + 1] + " = " + col_vals[x + 1]
-    s = s + " where " + col_names[0] + " = " + str(id) + " and " + col_names[1] + " = '" + str(start_date) + "'" + \
-        " and " + col_names[2] + " = " + str(id1) + " and " + col_names[3] + " = '" + str(start_date1) + "'" \
-        + " and " + col_names[4] + " = '" + str(start_date2) + "'"
-    print(s)
+    login = request.headers.get('login')
+    password = request.headers.get('password')
     try:
-        cursor.execute(s)
-        APIconnection.commit()
-        return Response(status=200)
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
+                       + table_name + "') order by ordinal_position asc")
+        for row in cursor:
+            for x in range(len(col_names)):
+                if col_names[x] == row[0]:
+                    if col_vals[x] == '':
+                        col_vals[x] = "null"
+                    elif row[1] in ("date", "nvarchar"):
+                        col_vals[x] = "'" + col_vals[x] + "'"
+                    break
+        s = "update " + table_name + " set " + col_names[0] + " = " + col_vals[0]
+        for x in range(len(col_names) - 1):
+            s = s + ", " + col_names[x + 1] + " = " + col_vals[x + 1]
+        s = s + " where " + col_names[0] + " = " + str(id) + " and " + col_names[1] + " = '" + str(start_date) + "'" + \
+            " and " + col_names[2] + " = " + str(id1) + " and " + col_names[3] + " = '" + str(start_date1) + "'" \
+            + " and " + col_names[4] + " = '" + str(start_date2) + "'"
+        try:
+            cursor.execute(s)
+            connection.commit()
+            return Response(status=200)
+        except:
+            return Response(status=400)
     except:
         return Response(status=400)
 
 
 @app.route('/api/<table_name>/<id>/<start_date>', methods=['DELETE'])
 def json_delete_main_table(table_name, id, start_date):
-    global APIconnection
-    cursor = APIconnection.cursor()
-    s = "delete from " + table_name + " where ID = " + str(id) + " and StartDate = '" + str(start_date) + "'"
-    print(s)
+    login = request.headers.get('login')
+    password = request.headers.get('password')
     try:
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        s = "delete from " + table_name + " where ID = " + str(id) + " and StartDate = '" + str(start_date) + "'"
         cursor.execute(s)
-        APIconnection.commit()
+        connection.commit()
         return Response(status=200)
     except:
         return Response(status=400)
@@ -203,19 +235,22 @@ def json_delete_main_table(table_name, id, start_date):
 
 @app.route('/api/<table_name>/<id>/<start_date>/<id1>/<start_date1>/<start_date2>', methods=['DELETE'])
 def json_delete_relational_table(table_name, id, start_date, id1, start_date1, start_date2):
-    global APIconnection
-    data = request.get_json()
-    col_names = list(data.keys())
-    cursor = APIconnection.cursor()
-    cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
-                   + table_name + "') order by ordinal_position asc")
-    s = "delete from " + table_name + " where " + col_names[0] + " = " + str(id) + " and " + col_names[1] + " = '" + \
-        str(start_date) + "'" + " and " + col_names[2] + " = " + str(id1) + " and " + col_names[3] + " = '" + \
-        str(start_date1) + "'" + " and " + col_names[4] + " = '" + str(start_date2) + "'"
-    print(s)
+    col_names = list()
+    login = request.headers.get('login')
+    password = request.headers.get('password')
     try:
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
+                       + table_name + "') order by ordinal_position asc")
+        for row in cursor:
+            col_names.append(row[0])
+        s = "delete from " + table_name + " where " + col_names[0] + " = " + str(id) + " and " + col_names[1] + " = '" \
+            + str(start_date) + "'" + " and " + col_names[2] + " = " + str(id1) + " and " + col_names[3] + " = '" + \
+            str(start_date1) + "'" + " and " + col_names[4] + " = '" + str(start_date2) + "'"
         cursor.execute(s)
-        APIconnection.commit()
+        connection.commit()
         return Response(status=200)
     except:
         return Response(status=400)
@@ -224,54 +259,38 @@ def json_delete_relational_table(table_name, id, start_date, id1, start_date1, s
 # GUI
 
 
-@app.context_processor
-def override_url_for():
-    return dict(url_for=dated_url_for)
-
-
 @app.route('/diconnect', methods=['GET'])
 def disconnect():
-    global GUIconnection
-    GUIconnection.close()
-    GUIconnection = None
-    return generateToIndexHTML()
-
-
-def dated_url_for(endpoint, **values):
-    if endpoint == 'static':
-        filename = values.get('filename', None)
-        if filename:
-            file_path = os.path.join(app.root_path, endpoint, filename)
-            values['q'] = int(os.stat(file_path).st_mtime)
-    return url_for(endpoint, **values)
-
+    session.pop('asd', None)
+    session.pop('login', None)
+    session.pop('password', None)
+    return redirect(url_for('index'))
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     global GUIconnection
     if session.get("asd") is not None:
-        print(session.get('asd'))
-        # if GUIconnection:
-        return generateRedirectHTML()
-    print("dziala")
+        return redirect(url_for('index'))
     if request.method == "POST":
         if 'mslogin' in request.form:
             GUIconnection = pyodbc.connect("Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;"
                                            "Trusted_GUIconnection=yes")
             session['asd'] = 'asd'
-            return generateRedirectHTML()
+            return redirect(url_for('app'))
         details = request.form
         login = details['login']
-        haslo = details['haslo']
+        password = details['haslo']
 
         if not login:  # if login is None or "" or everything that means null ([], (), {}, ...)
             return render_template('index.html')
 
         try:
             GUIconnection = pyodbc.connect("Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID="
-                                           + login + ";PWD=" + haslo)
+                                           + login + ";PWD=" + password)
             session['asd'] = 'asd'
-            return generateRedirectHTML()
+            session['login'] = login
+            session['password'] = password
+            return redirect(url_for('app'))
         except:
             return render_template('index.html')
     return render_template('index.html')
@@ -286,13 +305,18 @@ def appl():
 
 @app.route('/list<table_name>', methods=['GET'])
 def list_table(table_name):
-    s = generate_table(table_name)
-    return render_template('list.html', table=s)
+    if session.get("asd") is not None:
+        s = generate_table(table_name)
+        return render_template('list.html', table=s)
+    return redirect(url_for('index'))
 
 
 def generate_table(table_name):
-    global GUIconnection
-    cursor = GUIconnection.cursor()
+    login = session.get("login")
+    password = session.get("password")
+    connection = pyodbc.connect(
+        "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+    cursor = connection.cursor()
     cursor.execute("SELECT * FROM " + table_name)
     column_names = [d[0] for d in cursor.description]
     lista = []
@@ -309,29 +333,34 @@ def generate_table(table_name):
 
 @app.route('/insert<table_name>', methods=['GET', 'POST'])
 def insert_table(table_name):
-    global GUIconnection
-    cursor = GUIconnection.cursor()
-    cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
-                   + table_name + "') order by ordinal_position asc")
-    col_names = list()
-    col_types = list()
-    for row in cursor:
-        col_names.append(row[0])
-        col_types.append(row[1])
-    col_vals = list()
-    if request.method == 'POST':
-        for x in range(len(col_names)):
-            value = request.form[str(x + 1)]
-            if value == '':
-                value = "null"
-            elif col_types[x].lower() in ("date", "nvarchar"):
-                value = "'" + value + "'"
-            col_vals.append(value)
-        insert_all(table_name, col_names, col_vals, GUIconnection)
-    return render_template("insert.html", table_name=table_name,
-                           navigation=[str(x + 1) for x in range(len(col_names))],
-                           col_names=col_names,
-                           table=generate_table(table_name))
+    if session.get("asd") is not None:
+        login = session.get("login")
+        password = session.get("password")
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
+                       + table_name + "') order by ordinal_position asc")
+        col_names = list()
+        col_types = list()
+        for row in cursor:
+            col_names.append(row[0])
+            col_types.append(row[1])
+        col_vals = list()
+        if request.method == 'POST':
+            for x in range(len(col_names)):
+                value = request.form[str(x + 1)]
+                if value == '':
+                    value = "null"
+                elif col_types[x].lower() in ("date", "nvarchar"):
+                    value = "'" + value + "'"
+                col_vals.append(value)
+            insert_all(table_name, col_names, col_vals, GUIconnection)
+        return render_template("insert.html", table_name=table_name,
+                               navigation=[str(x + 1) for x in range(len(col_names))],
+                               col_names=col_names,
+                               table=generate_table(table_name))
+    return redirect(url_for('index'))
 
 
 def insert_all(table_name, col_names, col_vals, connection):
@@ -343,7 +372,6 @@ def insert_all(table_name, col_names, col_vals, connection):
     for x in range(len(col_vals) - 1):
         s = s + ", " + col_vals[x + 1]
     s = s + ")"
-    print(s)
     cursor.execute(s)
     connection.commit()
     return
@@ -351,37 +379,36 @@ def insert_all(table_name, col_names, col_vals, connection):
 
 @app.route('/update<table_name>', methods=['GET', 'PUT'])
 def update_table(table_name):
-    global GUIconnection
-    cursor = GUIconnection.cursor()
-    cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
-                   + table_name + "') order by ordinal_position asc")
-    col_names = list()
-    col_types = list()
-    for row in cursor:
-        col_names.append(row[0])
-        col_types.append(row[1])
-    if request.method == 'PUT':
-        print('asd')
-        set_vals = dict()
-        where_vals = dict()
-        for x in range(len(col_names)):
-            print('asd' + str(x + 1))
-            setvalue = request.form['set' + str(x + 1)]
-            print('asd' + str(x))
-            if col_types[x].lower() in ("date", "nvarchar") and setvalue.lower() != "null":
-                setvalue = "'" + setvalue + "'"
-            if setvalue != '' and setvalue != "''":
-                set_vals[col_names[x]] = setvalue
-            wherevalue = request.form["where" + str(x + 1)]
-            if col_types[x].lower() in ("date", "nvarchar") and wherevalue.lower() != "null":
-                wherevalue = "'" + wherevalue + "'"
-            if wherevalue != '' and wherevalue != "''":
-                where_vals[col_names[x]] = wherevalue
-        update_all(table_name, set_vals, where_vals, GUIconnection)
-    return render_template("update.html", table_name=table_name,
-                           navigation=[str(x + 1) for x in range(len(col_names))],
-                           col_names=col_names,
-                           table=generate_table(table_name))
+    if session.get("asd") is not None:
+        global GUIconnection
+        cursor = GUIconnection.cursor()
+        cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
+                       + table_name + "') order by ordinal_position asc")
+        col_names = list()
+        col_types = list()
+        for row in cursor:
+            col_names.append(row[0])
+            col_types.append(row[1])
+        if request.method == 'PUT':
+            set_vals = dict()
+            where_vals = dict()
+            for x in range(len(col_names)):
+                setvalue = request.form['set' + str(x + 1)]
+                if col_types[x].lower() in ("date", "nvarchar") and setvalue.lower() != "null":
+                    setvalue = "'" + setvalue + "'"
+                if setvalue != '' and setvalue != "''":
+                    set_vals[col_names[x]] = setvalue
+                wherevalue = request.form["where" + str(x + 1)]
+                if col_types[x].lower() in ("date", "nvarchar") and wherevalue.lower() != "null":
+                    wherevalue = "'" + wherevalue + "'"
+                if wherevalue != '' and wherevalue != "''":
+                    where_vals[col_names[x]] = wherevalue
+            update_all(table_name, set_vals, where_vals, GUIconnection)
+        return render_template("update.html", table_name=table_name,
+                               navigation=[str(x + 1) for x in range(len(col_names))],
+                               col_names=col_names,
+                               table=generate_table(table_name))
+    return redirect(url_for('index'))
 
 
 def update_all(table_name, set_vals, where_vals, connection):
@@ -411,28 +438,33 @@ def update_all(table_name, set_vals, where_vals, connection):
 
 @app.route('/delete<table_name>', methods=['GET', 'DELETE'])
 def delete_table(table_name):
-    global GUIconnection
-    cursor = GUIconnection.cursor()
-    cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
-                   + table_name + "') order by ordinal_position asc")
-    col_names = list()
-    col_types = list()
-    for row in cursor:
-        col_names.append(row[0])
-        col_types.append(row[1])
-    if request.method == 'DELETE':
-        where_vals = dict()
-        for x in range(len(col_names)):
-            wherevalue = request.form["where" + str(x + 1)]
-            if col_types[x].lower() in ("date", "nvarchar") and wherevalue.lower() != "null":
-                wherevalue = "'" + wherevalue + "'"
-            if wherevalue != '' and wherevalue != "''":
-                where_vals[col_names[x]] = wherevalue
-        delete_all(table_name, where_vals, GUIconnection)
-    return render_template("delete.html", table_name=table_name,
-                           navigation=[str(x + 1) for x in range(len(col_names))],
-                           col_names=col_names,
-                           table=generate_table(table_name))
+    if session.get("asd") is not None:
+        login = session.get("login")
+        password = session.get("password")
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
+                       + table_name + "') order by ordinal_position asc")
+        col_names = list()
+        col_types = list()
+        for row in cursor:
+            col_names.append(row[0])
+            col_types.append(row[1])
+        if request.method == 'DELETE':
+            where_vals = dict()
+            for x in range(len(col_names)):
+                wherevalue = request.form["where" + str(x + 1)]
+                if col_types[x].lower() in ("date", "nvarchar") and wherevalue.lower() != "null":
+                    wherevalue = "'" + wherevalue + "'"
+                if wherevalue != '' and wherevalue != "''":
+                    where_vals[col_names[x]] = wherevalue
+            delete_all(table_name, where_vals, GUIconnection)
+        return render_template("delete.html", table_name=table_name,
+                               navigation=[str(x + 1) for x in range(len(col_names))],
+                               col_names=col_names,
+                               table=generate_table(table_name))
+    return redirect(url_for('index'))
 
 
 def delete_all(table_name, where_vals, connection):

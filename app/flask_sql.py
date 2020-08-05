@@ -63,13 +63,13 @@ def json_table(table_name):
         rows = cursor.fetchall()
         items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
         resp_body = json.dumps(items, ensure_ascii=False)
-        resp_head=dict()
+        resp_head = dict()
         resp_head['Record count'] = len(items)
         connection.close()
         response = make_response(resp_body, 200, resp_head)
         return response
     except:
-        return Response(status=400)
+        return Response(status=401)
 
 
 @app.route('/api/<table_name>/<id>/<start_date>', methods=['GET'])
@@ -84,7 +84,7 @@ def json_main_table(table_name, id, start_date):
         rows = cursor.fetchall()
         items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
         resp_body = json.dumps(items, ensure_ascii=False)
-        resp_head=dict()
+        resp_head = dict()
         resp_head['Record count'] = len(items)
         connection.close()
         response = make_response(resp_body, 200, resp_head)
@@ -102,7 +102,7 @@ def json_relational_table(table_name, id, start_date, id1, start_date1, start_da
             "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM " + table_name)
-        count = cursor.execute("SELECT * FROM " + table_name + " where " + cursor.description[0][0] + " = " + id + " and " +
+        cursor.execute("SELECT * FROM " + table_name + " where " + cursor.description[0][0] + " = " + id + " and " +
                        cursor.description[1][0] + " = '" + start_date + "'" + " and " +
                        cursor.description[2][0] + " = " + id1 + " and " + cursor.description[3][0] + " = '" +
                        start_date1 + "'" + " and " + cursor.description[4][0] + " = '" + start_date2 + "'")
@@ -131,21 +131,25 @@ def json_insert_table(table_name):
         cursor = connection.cursor()
         cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
                        + table_name + "') order by ordinal_position asc")
-        for row in cursor:
-            for x in range(len(col_names)):
-                if col_names[x] == row[0]:
-                    if col_vals[x] == '':
-                        col_vals[x] = "null"
-                    elif row[1] in ("date", "nvarchar"):
-                        col_vals[x] = "'" + col_vals[x] + "'"
-                    break
-        try:
-            insert_all(table_name, col_names, col_vals, connection)
-            return Response(status=200)
-        except:
-            return Response(status=400)
     except:
-        return Response(status=400)
+        return Response(status = 401)
+    for row in cursor:
+        for x in range(len(col_names)):
+            if col_names[x] == row[0]:
+                if col_vals[x] == '':
+                    col_vals[x] = "null"
+                elif row[1] in ("date", "nvarchar"):
+                    col_vals[x] = "'" + col_vals[x] + "'"
+                break
+    try:
+        count = insert_all(table_name, col_names, col_vals, connection)
+        resp = Response(status=201)
+        resp.headers['Record count'] = count
+        return resp
+    except:
+        resp = Response(status=400)
+        resp.headers['Record count'] = 0
+        return resp
 
 
 @app.route('/api/<table_name>/<id>/<start_date>', methods=['PUT'])
@@ -266,6 +270,7 @@ def disconnect():
     session.pop('password', None)
     return redirect(url_for('index'))
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     global GUIconnection
@@ -374,7 +379,9 @@ def insert_all(table_name, col_names, col_vals, connection):
     s = s + ")"
     cursor.execute(s)
     connection.commit()
-    return
+    cnt = cursor.rowcount
+    connection.close()
+    return cnt
 
 
 @app.route('/update<table_name>', methods=['GET', 'PUT'])

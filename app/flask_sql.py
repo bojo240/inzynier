@@ -69,7 +69,9 @@ def json_table(table_name):
         response = make_response(resp_body, 200, resp_head)
         return response
     except:
-        return Response(status=401)
+        resp = Response(status=400)
+        resp.headers['Record count'] = 0
+        return resp
 
 
 @app.route('/api/<table_name>/<id>/<start_date>', methods=['GET'])
@@ -90,7 +92,9 @@ def json_main_table(table_name, id, start_date):
         response = make_response(resp_body, 200, resp_head)
         return response
     except:
-        return Response(status=401)
+        resp = Response(status=400)
+        resp.headers['Record count'] = 0
+        return resp
 
 
 @app.route('/api/<table_name>/<id>/<start_date>/<id1>/<start_date1>/<start_date2>', methods=['GET'])
@@ -115,7 +119,9 @@ def json_relational_table(table_name, id, start_date, id1, start_date1, start_da
         response = make_response(resp_body, 200, resp_head)
         return response
     except:
-        return Response(status=401)
+        resp = Response(status=400)
+        resp.headers['Record count'] = 0
+        return resp
 
 
 @app.route('/api/<table_name>', methods=['POST'])
@@ -163,25 +169,29 @@ def json_udate_main_table(table_name, id, start_date):
         connection = pyodbc.connect(
             "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
-        cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
-                       + table_name + "') order by ordinal_position asc")
-        for row in cursor:
-            for x in range(len(col_names)):
-                if col_names[x] == row[0]:
-                    if col_vals[x] == '':
-                        col_vals[x] = "null"
-                    elif row[1] in ("date", "nvarchar"):
-                        col_vals[x] = "'" + col_vals[x] + "'"
-                    break
+        for x in range(len(col_names)):
+            cursor.execute("SELECT data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
+                           + table_name + "') and upper(column_name) = upper('" + col_vals[x] + "')")
+            if col_vals[x] == '' or col_vals[x].lower == 'null':
+                col_vals[x] = "null"
+            elif cursor[0][0] in ("date", "nvarchar"):
+                col_vals[x] = "'" + col_vals[x] + "'"
         s = "update " + table_name + " set " + col_names[0] + " = " + col_vals[0]
         for x in range(len(col_names) - 1):
             s = s + ", " + col_names[x + 1] + " = " + col_vals[x + 1]
-        s = s + " where id = " + str(id) + " and StartDate = '" + str(start_date) + "'"
+        where = " where id = " + str(id) + " and StartDate = '" + str(start_date) + "'"
+        s = s + where
+        cursor.execute("select count(*) from " + table_name + " " + where)
+        count = cursor[0][0]
         cursor.execute(s)
         connection.commit()
-        return Response(status=200)
+        resp = Response(status=201)
+        resp.headers['Record count'] = count
+        return resp
     except:
-        return Response(status=400)
+        resp = Response(status=400)
+        resp.headers['Record count'] = 0
+        return resp
 
 
 @app.route('/api/<table_name>/<id>/<start_date>/<id1>/<start_date1>/<start_date2>', methods=['PUT'])
@@ -195,16 +205,13 @@ def json_update_relational_table(table_name, id, start_date, id1, start_date1, s
         connection = pyodbc.connect(
             "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
-        cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
-                       + table_name + "') order by ordinal_position asc")
-        for row in cursor:
-            for x in range(len(col_names)):
-                if col_names[x] == row[0]:
-                    if col_vals[x] == '':
-                        col_vals[x] = "null"
-                    elif row[1] in ("date", "nvarchar"):
-                        col_vals[x] = "'" + col_vals[x] + "'"
-                    break
+        for x in range(len(col_names)):
+            cursor.execute("SELECT data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
+                           + table_name + "') and upper(column_name) = upper('" + col_vals[x] + "')")
+            if col_vals[x] == '' or col_vals[x].lower == 'null':
+                col_vals[x] = "null"
+            elif cursor[0][0] in ("date", "nvarchar"):
+                col_vals[x] = "'" + col_vals[x] + "'"
         s = "update " + table_name + " set " + col_names[0] + " = " + col_vals[0]
         for x in range(len(col_names) - 1):
             s = s + ", " + col_names[x + 1] + " = " + col_vals[x + 1]
@@ -218,7 +225,9 @@ def json_update_relational_table(table_name, id, start_date, id1, start_date1, s
         except:
             return Response(status=400)
     except:
-        return Response(status=400)
+        resp = Response(status=400)
+        resp.headers['Record count'] = 0
+        return resp
 
 
 @app.route('/api/<table_name>/<id>/<start_date>', methods=['DELETE'])
@@ -234,7 +243,9 @@ def json_delete_main_table(table_name, id, start_date):
         connection.commit()
         return Response(status=200)
     except:
-        return Response(status=400)
+        resp = Response(status=400)
+        resp.headers['Record count'] = 0
+        return resp
 
 
 @app.route('/api/<table_name>/<id>/<start_date>/<id1>/<start_date1>/<start_date2>', methods=['DELETE'])
@@ -257,7 +268,9 @@ def json_delete_relational_table(table_name, id, start_date, id1, start_date1, s
         connection.commit()
         return Response(status=200)
     except:
-        return Response(status=400)
+        resp = Response(status=400)
+        resp.headers['Record count'] = 0
+        return resp
 
 
 # GUI

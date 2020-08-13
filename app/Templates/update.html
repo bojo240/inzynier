@@ -11,13 +11,15 @@
             {% for col in col_names %}
                 <th>{{col}}</th>
             {% endfor %}
-        </tr><tr><th>Set:</th>
+        </tr>
+        <tr><th>Set:</th>
 
             {% for item in navigation %}
                 <td><input type=text name="set{{item}}"/></td>
             {% endfor %}
 
-        </tr><tr><th>Where:</th>
+        </tr>
+        <tr><th>Where:</th>
 
             {% for item in navigation %}
                 <td><input type=text name="where{{item}}"/></td>

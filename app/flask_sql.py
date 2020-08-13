@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, url_for, Response, Blueprint, redirect, session, make_response, \
-    jsonify
+from flask import Flask, render_template, request, url_for, Response, Blueprint, redirect, session, make_response
 from flask_restplus import Api, Resource, fields
 import pyodbc
 import os
@@ -57,7 +56,7 @@ def json_table(table_name):
     password = request.headers.get('password')
     try:
         connection = pyodbc.connect(
-            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM " + table_name)
         rows = cursor.fetchall()
@@ -73,16 +72,242 @@ def json_table(table_name):
         resp.headers['Record count'] = 0
         return resp
 
-
-@app.route('/api/<table_name>/<id>/<start_date>', methods=['GET'])
-def json_main_table(table_name, id, start_date):
+@app.route('/api/gmina/<id>', methods=['GET'])
+def json_get_gmina_id(id):
     login = request.headers.get('login')
     password = request.headers.get('password')
     try:
         connection = pyodbc.connect(
-            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM " + table_name + " where ID = " + id + " and Start_Date = '" + start_date + "'")
+        s = "select g.ID as IDGminy, g.Nazwa as NazwaGminy, g.StartDate as StartDateGminy, g.EndDate as EndDateGminy, \
+        p.Rodzaj as RodzajJednostki, p.ID as IDJednostki, p.Nazwa as NazwaJednostki, p.StartDate as \
+        StartDateJednostki, p.EndDate as EndDateJednostki, gp.StartDate as StartDateRelacji, gp.EndDate as \
+        EndDateRelacji \
+        from gmina g \
+        join gminapowiat gp on g.ID = gp.IDGmina and g.StartDate = gp.StartDateGmina \
+        join powiat p on p.id = gp.IDPowiat and p.StartDate = gp.StartDatePowiat \
+        where g.id = " + str(id) + " \
+        union\
+        select g.ID as IDGminy, g.Nazwa as NazwaGminy, g.StartDate as StartDateGminy, g.EndDate as EndDateGminy, \
+        w.Rodzaj as RodzajJednostki, w.ID as IDJednostki, w.Nazwa as NazwaJednostki, w.StartDate as \
+        StartDateJednostki, w.EndDate as EndDateJednostki, gw.StartDate as StartDateRelacji, gw.EndDate as \
+        EndDateRelacji \
+        from gmina g \
+        join gminawojewodztwo gw on g.ID = gw.IDGmina and g.StartDate = gw.StartDateGmina \
+        join Wojewodztwo w on w.id = gw.IDWojewodztwo and w.StartDate = gw.StartDateWojewodztwo \
+        where g.id = " + str(id) + " \
+        order by StartDateRelacji"
+        print(s)
+        cursor.execute(s)
+        rows = cursor.fetchall()
+        items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
+        resp_body = json.dumps(items, ensure_ascii=False)
+        resp_head = dict()
+        resp_head['Record count'] = len(items)
+        connection.close()
+        response = make_response(resp_body, 200, resp_head)
+        return response
+    except:
+        resp = Response(status=400)
+        resp.headers['Record count'] = 0
+        return resp
+
+
+@app.route('/api/gmina/<id>/<arg_date>', methods=['GET'])
+def json_get_gmina_id_with_date(table_name,id,arg_date):
+    login = request.headers.get('login')
+    password = request.headers.get('password')
+    try:
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        s = "select g.ID as IDGminy, g.Nazwa as NazwaGminy, g.StartDate as StartDateGminy, g.EndDate as EndDateGminy, \
+        p.Rodzaj as RodzajJednostki, p.ID as IDJednostki, p.Nazwa as NazwaJednostki, p.StartDate as \
+        StartDateJednostki, p.EndDate as EndDateJednostki, gp.StartDate as StartDateRelacji, gp.EndDate as \
+        EndDateRelacji\
+        from gmina g\
+        join gminapowiat gp on g.ID = gp.IDGmina and g.StartDate = gp.StartDateGmina\
+        join powiat p on p.id = gp.IDPowiat and p.StartDate = gp.StartDatePowiat\
+        where g.id = " + str(id) + " and '" + arg_date + "' between g.startdate and g.enddate\
+        union\
+        select g.ID as IDGminy, g.Nazwa as NazwaGminy, g.StartDate as StartDateGminy, g.EndDate as EndDateGminy, \
+        w.Rodzaj as RodzajJednostki, w.ID as IDJednostki, w.Nazwa as NazwaJednostki, w.StartDate as StartDateJednostki,\
+        w.EndDate as EndDateJednostki, gw.StartDate as StartDateRelacji, gw.EndDate as EndDateRelacji\
+        from gmina g\
+        join gminawojewodztwo gw on g.ID = gw.IDGmina and g.StartDate = gw.StartDateGmina\
+        join Wojewodztwo w on w.id = gw.IDWojewodztwo and w.StartDate = gw.StartDateWojewodztwo\
+        where g.id = " + str(id) + " and '" + arg_date + "' between g.startdate and g.enddate\
+        order by StartDateRelacji"
+        print(s)
+        cursor.execute(s)
+        rows = cursor.fetchall()
+        items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
+        resp_body = json.dumps(items, ensure_ascii=False)
+        resp_head = dict()
+        resp_head['Record count'] = len(items)
+        connection.close()
+        response = make_response(resp_body, 200, resp_head)
+        return response
+    except:
+        resp = Response(status=400)
+        resp.headers['Record count'] = 0
+        return resp
+
+
+@app.route('/api/powiat/<id>', methods=['GET'])
+def json_get_powiat_id(table_name,id):
+    login = request.headers.get('login')
+    password = request.headers.get('password')
+    try:
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        s = "select p.ID as IDPowiatu, p.Nazwa as NazwaPowiatu, p.StartDate as StartDatePowiatu, p.EndDate as \
+        EndDatePowiatu, g.Rodzaj as RodzajJednostki, g.ID as IDJednostki, g.Nazwa as NazwaJednostki, g.StartDate as \
+        StartDateJednostki, g.EndDate as EndDateJednostki, gp.StartDate as StartDateRelacji, gp.EndDate as \
+        EndDateRelacji\
+        from powiat p\
+        join gminapowiat gp on p.ID = gp.IDPowiat and p.StartDate = gp.StartDatePowiat\
+        join gmina g on g.id = gp.IDGmina and g.StartDate = gp.StartDateGmina\
+        where p.id = " + str(id) + " \
+        union\
+        select p.ID as IDPowiatu, p.Nazwa as NazwaPowiatu, p.StartDate as StartDatePowiatu, p.EndDate as \
+        EndDatePowiatu, w.Rodzaj as RodzajJednostki, w.ID as IDJednostki, w.Nazwa as NazwaJednostki, w.StartDate as \
+        StartDateJednostki, w.EndDate as EndDateJednostki, pw.StartDate as StartDateRelacji, pw.EndDate as \
+        EndDateRelacji\
+        from powiat p\
+        join powiatwojewodztwo pw on p.ID = pw.IDPowiat and p.StartDate = pw.StartDatePowiat\
+        join Wojewodztwo w on w.id = pw.IDWojewodztwo and w.StartDate = pw.StartDateWojewodztwo\
+        where p.id = " + str(id) + " \
+        order by StartDateRelacji"
+        print(s)
+        cursor.execute(s)
+        rows = cursor.fetchall()
+        items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
+        resp_body = json.dumps(items, ensure_ascii=False)
+        resp_head = dict()
+        resp_head['Record count'] = len(items)
+        connection.close()
+        response = make_response(resp_body, 200, resp_head)
+        return response
+    except:
+        resp = Response(status=400)
+        resp.headers['Record count'] = 0
+        return resp
+
+
+@app.route('/api/powiat/<id>/<arg_date>', methods=['GET'])
+def json_get_powiat_id_with_date(id, arg_date):
+    login = request.headers.get('login')
+    password = request.headers.get('password')
+    try:
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        s = "select p.ID as IDPowiatu, p.Nazwa as NazwaPowiatu, p.StartDate as StartDatePowiatu, p.EndDate as \
+        EndDatePowiatu, g.Rodzaj as RodzajJednostki, g.ID as IDJednostki, g.Nazwa as NazwaJednostki, g.StartDate as \
+        StartDateJednostki, g.EndDate as EndDateJednostki, gp.StartDate as StartDateRelacji, gp.EndDate as \
+        EndDateRelacji\
+        from powiat p\
+        join gminapowiat gp on p.ID = gp.IDPowiat and p.StartDate = gp.StartDatePowiat\
+        join gmina g on g.id = gp.IDGmina and g.StartDate = gp.StartDateGmina\
+        where p.id = " + str(id) + " and '" + arg_date + "' between g.startdate and g.enddate\
+        union\
+        select p.ID as IDPowiatu, p.Nazwa as NazwaPowiatu, p.StartDate as StartDatePowiatu, p.EndDate as \
+        EndDatePowiatu, w.Rodzaj as RodzajJednostki, w.ID as IDJednostki, w.Nazwa as NazwaJednostki, w.StartDate as \
+        StartDateJednostki, w.EndDate as EndDateJednostki, pw.StartDate as StartDateRelacji, pw.EndDate as \
+        EndDateRelacji\
+        from powiat p\
+        join powiatwojewodztwo pw on p.ID = pw.IDPowiat and p.StartDate = pw.StartDatePowiat\
+        join Wojewodztwo w on w.id = pw.IDWojewodztwo and w.StartDate = pw.StartDateWojewodztwo\
+        where p.id = " + str(id) + " and '" + arg_date + "' between g.startdate and g.enddate\
+        order by StartDateRelacji;\
+"
+        print(s)
+        cursor.execute(s)
+        rows = cursor.fetchall()
+        items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
+        resp_body = json.dumps(items, ensure_ascii=False)
+        resp_head = dict()
+        resp_head['Record count'] = len(items)
+        connection.close()
+        response = make_response(resp_body, 200, resp_head)
+        return response
+    except:
+        resp = Response(status=400)
+        resp.headers['Record count'] = 0
+        return resp
+
+
+@app.route('/api/wojewodztwo/<id>', methods=['GET'])
+def json_get_wojewodztwo_id(table_name,id):
+    login = request.headers.get('login')
+    password = request.headers.get('password')
+    try:
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        s = "select w.ID as IDWojewodztwa, w.Nazwa as NazwaWojewodztwa, w.StartDate as StartDateWojewodztwa, w.EndDate \
+        as EndDateWojewodztwa, g.Rodzaj as RodzajJednostki, g.ID as IDJednostki, g.Nazwa as NazwaJednostki, \
+        g.StartDate as StartDateJednostki, g.EndDate as EndDateJednostki, gw.StartDate as StartDateRelacji, gw.EndDate \
+        as EndDateRelacji\
+        from wojewodztwo w\
+        join GminaWojewodztwo gw on w.ID = gw.IDWojewodztwo and w.StartDate = gw.StartDateWojewodztwo\
+        join gmina g on g.id = gw.IDGmina and g.StartDate = gw.StartDateGmina\
+        where w.id = 1 \
+        union\
+        select w.ID as IDWojewodztwa, w.Nazwa as NazwaWojewodztwa, w.StartDate as StartDateWojewodztwa, w.EndDate as  \
+        EndDateWojewodztwa, p.Rodzaj as RodzajJednostki, p.ID as IDJednostki, p.Nazwa as NazwaJednostki, \
+        p.StartDate as StartDateJednostki, p.EndDate as EndDateJednostki, pw.StartDate as StartDateRelacji, \
+        pw.EndDate as  EndDateRelacji\
+        from wojewodztwo w\
+        join PowiatWojewodztwo pw on w.ID = pw.IDWojewodztwo and w.StartDate = pw.StartDateWojewodztwo\
+        join powiat p on p.id = pw.IDPowiat and p.StartDate = pw.StartDatePowiat\
+        where w.id = " + id
+        print(s)
+        cursor.execute(s)
+        rows = cursor.fetchall()
+        items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
+        resp_body = json.dumps(items, ensure_ascii=False)
+        resp_head = dict()
+        resp_head['Record count'] = len(items)
+        connection.close()
+        response = make_response(resp_body, 200, resp_head)
+        return response
+    except:
+        resp = Response(status=400)
+        resp.headers['Record count'] = 0
+        return resp
+
+
+@app.route('/api/wojewodztwo/<id>/<arg_date>', methods=['GET'])
+def json_get_wojewodztwo_id_with_date(id, arg_date):
+    login = request.headers.get('login')
+    password = request.headers.get('password')
+    try:
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        s = "select w.ID as IDWojewodztwa, w.Nazwa as NazwaWojewodztwa, w.StartDate as StartDateWojewodztwa, w.EndDate \
+        as EndDateWojewodztwa, g.Rodzaj as RodzajJednostki, g.ID as IDJednostki, g.Nazwa as NazwaJednostki, \
+        g.StartDate as StartDateJednostki, g.EndDate as EndDateJednostki, gw.StartDate as StartDateRelacji, gw.EndDate \
+        as EndDateRelacji\
+        from wojewodztwo w\
+        join GminaWojewodztwo gw on w.ID = gw.IDWojewodztwo and w.StartDate = gw.StartDateWojewodztwo\
+        join gmina g on g.id = gw.IDGmina and g.StartDate = gw.StartDateGmina\
+        where w.id = " + id + " and '" + arg_date + "' between w.startdate and w.enddate\
+        union\
+        select w.ID as IDWojewodztwa, w.Nazwa as NazwaWojewodztwa, w.StartDate as StartDateWojewodztwa, w.EndDate as  \
+        EndDateWojewodztwa, p.Rodzaj as RodzajJednostki, p.ID as IDJednostki, p.Nazwa as NazwaJednostki, \
+        p.StartDate as StartDateJednostki, p.EndDate as EndDateJednostki, pw.StartDate as StartDateRelacji, \
+        pw.EndDate as  EndDateRelacji\
+        from wojewodztwo w\
+        join PowiatWojewodztwo pw on w.ID = pw.IDWojewodztwo and w.StartDate = pw.StartDateWojewodztwo\
+        join powiat p on p.id = pw.IDPowiat and p.StartDate = pw.StartDatePowiat\
+        where w.id = " + id + " and '" + arg_date + "' between w.startdate and w.enddate"
+        print(s)
+        cursor.execute(s)
         rows = cursor.fetchall()
         items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
         resp_body = json.dumps(items, ensure_ascii=False)
@@ -103,7 +328,7 @@ def json_relational_table(table_name, id, start_date, id1, start_date1, start_da
     password = request.headers.get('password')
     try:
         connection = pyodbc.connect(
-            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM " + table_name)
         cursor.execute("SELECT * FROM " + table_name + " where " + cursor.description[0][0] + " = " + id + " and " +
@@ -133,7 +358,7 @@ def json_insert_table(table_name):
     password = request.headers.get('password')
     try:
         connection = pyodbc.connect(
-            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
         cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
                        + table_name + "') order by ordinal_position asc")
@@ -167,7 +392,7 @@ def json_udate_main_table(table_name, id, start_date):
     password = request.headers.get('password')
     try:
         connection = pyodbc.connect(
-            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
         for x in range(len(col_names)):
             cursor.execute("SELECT data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
@@ -203,7 +428,7 @@ def json_update_relational_table(table_name, id, start_date, id1, start_date1, s
     password = request.headers.get('password')
     try:
         connection = pyodbc.connect(
-            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
         for x in range(len(col_names)):
             cursor.execute("SELECT data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
@@ -236,7 +461,7 @@ def json_delete_main_table(table_name, id, start_date):
     password = request.headers.get('password')
     try:
         connection = pyodbc.connect(
-            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
         s = "delete from " + table_name + " where ID = " + str(id) + " and StartDate = '" + str(start_date) + "'"
         cursor.execute(s)
@@ -255,7 +480,7 @@ def json_delete_relational_table(table_name, id, start_date, id1, start_date1, s
     password = request.headers.get('password')
     try:
         connection = pyodbc.connect(
-            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
         cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
                        + table_name + "') order by ordinal_position asc")
@@ -286,15 +511,17 @@ def disconnect():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    global GUIconnection
     if session.get("asd") is not None:
-        return redirect(url_for('index'))
+        return redirect(url_for('appl'))
     if request.method == "POST":
         if 'mslogin' in request.form:
-            GUIconnection = pyodbc.connect("Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;"
-                                           "Trusted_GUIconnection=yes")
-            session['asd'] = 'asd'
-            return redirect(url_for('app'))
+            try:
+                pyodbc.connect("Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;"
+                                               "Trusted_connection=yes")
+                session['asd'] = 'asd'
+                return redirect(url_for('appl')) # app -> appl
+            except:
+                return render_template('index.html')
         details = request.form
         login = details['login']
         password = details['haslo']
@@ -303,7 +530,7 @@ def index():
             return render_template('index.html')
 
         try:
-            GUIconnection = pyodbc.connect("Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID="
+            pyodbc.connect("Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID="
                                            + login + ";PWD=" + password)
             session['asd'] = 'asd'
             session['login'] = login
@@ -329,11 +556,53 @@ def list_table(table_name):
     return redirect(url_for('index'))
 
 
+@app.route('/zawartosc_wojewodztw', methods=['GET', 'POST'])
+def zawartosc_wojewodztw():
+    login = session.get("login")
+    password = session.get("password")
+    connection = pyodbc.connect(
+        "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+    cursor = connection.cursor()
+    cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('\
+                   zawartosc_wojewodztw') order by ordinal_position asc")
+    col_names = list()
+    col_types = list()
+    for row in cursor:
+        col_names.append(row[0])
+        col_types.append(row[1])
+    col_vals = list()
+    if request.method == "POST":
+        for x in range(len(col_names)):
+            value = request.form[str(x + 1)]
+            if value == '':
+                value = "null"
+            elif col_types[x].lower() in ("date", "nvarchar"):
+                value = "'" + value + "'"
+            col_vals.append(value)
+
+    s = "select * from zawartosc_wojewodztw"
+    cursor.execute(s)
+    column_names = [d[0] for d in cursor.description]
+    lista = []
+    for row in cursor:
+        tmp = []
+        for x in row:
+            tmp.append(str(x))
+        lista.append(tmp)
+
+    df = pd.DataFrame(data=lista, columns=column_names)
+    df_html = df.to_html(index=False)  # use pandas method to auto generate html
+    return render_template("list.html", table_name="zawartosc_wojewodztw",
+                           navigation=[str(x + 1) for x in range(len(column_names))],
+                           col_names=column_names,
+                           table=df_html)
+    #return df_html
+
 def generate_table(table_name):
     login = session.get("login")
     password = session.get("password")
     connection = pyodbc.connect(
-        "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM " + table_name)
     column_names = [d[0] for d in cursor.description]
@@ -355,7 +624,7 @@ def insert_table(table_name):
         login = session.get("login")
         password = session.get("password")
         connection = pyodbc.connect(
-            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
         cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
                        + table_name + "') order by ordinal_position asc")
@@ -462,7 +731,7 @@ def delete_table(table_name):
         login = session.get("login")
         password = session.get("password")
         connection = pyodbc.connect(
-            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+            "Driver={SQL Server};Server=DESKTOP-HMMDTP9;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
         cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
                        + table_name + "') order by ordinal_position asc")

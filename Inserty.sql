@@ -257,6 +257,8 @@ where
 
 -- Relacje Gmina -> Powiat 1999
 
+insert into GminaPowiat(IDGmina, StartDateGmina, IDPowiat, StartDatePowiat, StartDate, EndDate, StartDateVerified, EndDateVerified, Opis) values (1, '1900-01-01', 1, '1999-01-01' ,'1999-01-01', '9999-12-31', 1, 0, null);
+
 merge into GminaPowiat gp
 using (	Select g.ID as IDGminy, g.StartDate, p.ID
 		from gmina g

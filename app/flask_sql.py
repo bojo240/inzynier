@@ -80,9 +80,10 @@ def json_all():
 
 @app.route('/api/all/<arg_date>', methods=['GET'])
 def json_all_date(arg_date):
-    query = "SELECT * FROM wszystko where " + arg_date + " between GminaPowiatStartDate and gminapowiatendDate and " + \
-            arg_date + " between GminaWojewodztwoStartDate and GminaWojewodztwoEndDate and " + arg_date + \
-            " between PowiatWojewodztwoStartDate and PowiatWojewodztwoEndDate"
+    query = "SELECT * FROM wszystko where ('" + arg_date + "' between GminaPowiat_StartDate and gminapowiat_endDate or '" + \
+            arg_date + "' between GminaWojewodztwo_StartDate and GminaWojewodztwo_EndDate) and '" + arg_date + \
+            "' between PowiatWojewodztwo_StartDate and PowiatWojewodztwo_EndDate"
+    print(query)
     return api_respond_handler(query)
 
 

@@ -1,4 +1,4 @@
-create view zawartosc_wojewodztw as 
+create or alter view zawartosc_wojewodztw as 
 select w.ID as IDWojewodztwa, w.Nazwa as NazwaWojewodztwa, w.StartDate as StartDateWojewodztwa, w.EndDate as 
 EndDateWojewodztwa, g.Rodzaj as RodzajJednostki, g.ID as IDJednostki, g.Nazwa as NazwaJednostki, g.StartDate as 
 StartDateJednostki, g.EndDate as EndDateJednostki, gw.StartDate as StartDateRelacji, gw.EndDate as 

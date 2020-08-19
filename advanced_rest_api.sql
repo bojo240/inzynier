@@ -8,6 +8,6 @@ select g.ID as IDGminy, g.Nazwa as NazwaGminy, g.StartDate as StartDateGminy, g.
 from gmina g
 join gminawojewodztwo gw on g.ID = gw.IDGmina and g.StartDate = gw.StartDateGmina
 join Wojewodztwo w on w.id = gw.IDWojewodztwo and w.StartDate = gw.StartDateWojewodztwo
-where p.id = 1 and '2020-01-01' between g.startdate and g.enddate
+where g.id = 1 and '2020-01-01' between g.startdate and g.enddate
 order by StartDateRelacji;
 

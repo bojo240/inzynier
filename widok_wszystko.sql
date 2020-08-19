@@ -1,5 +1,6 @@
 create or alter view WSZYSTKO AS
-select	g.id as Gmina_ID,
+select	distinct
+		g.id as Gmina_ID,
 		g.Nazwa as Gmina_Nazwa,
 		g.Rodzaj as Gmina_Rodzaj,
 		g.StartDate as Gmina_StartDate,
@@ -26,15 +27,15 @@ select	g.id as Gmina_ID,
 		gw.StartDateVerified as GminaWojewodztwo_StartDateVerified,
 		gw.EndDateVerified as GminaWojewodztwo_EndDateVerifief,
 		gw.Opis as GminaWojewodztwo_Opis,
-		w.id as Wojewodztwo_ID,
-		w.Nazwa as Wojewodztwo_Nazwa,
-		w.Rodzaj as Wojewodztwo_Rodzaj,
-		w.StartDate as Wojewodztwo_StartDate,
-		w.EndDate as Wojewodztwo_EndDate,
-		w.StartDateVerified as Wojewodztwo_StartDateVerified,
-		w.EndDateVerified as Wojewodztwo_EndDateVerified,
-		w.CzyDataPowstania as Wojewodztwo_CzyDataPowstania,
-		w.Opis as Wojewodztwo_Opis,
+		p.ID as Powiat_ID,
+		p.Nazwa as Powiat_Nazwa,
+		p.Rodzaj as Powiat_Rodzaj,
+		p.StartDate as Powiat_StartDate,
+		p.EndDate as Powiat_EndDate,
+		p.StartDateVerified as Powiat_StartDateVerified,
+		p.EndDateVerified as Powiat_EndDateVerified,
+		p.CzyDataPowstania as Powiat_CzyDataPowstania,
+		p.Opis as Powiat_Opis,
 		pw.IDPowiat as PowiatWojewodztwo_IDPowiat,
 		pw.StartDatePowiat as PowiatWojewodztwo_StartDatePowiat,
 		pw.IDWojewodztwo as PowiatWojewodztwo_IDWojewodztwo,
@@ -44,19 +45,19 @@ select	g.id as Gmina_ID,
 		pw.StartDateVerified as PowiatWojewodztwo_StartDateVerified,
 		pw.EndDateVerified as PowiatWojewodztwo_EndDateVerified,
 		pw.Opis as PowiatWojewodztwo_Opis,
-		p.ID as Powiat_ID,
-		p.Nazwa as Powiat_Nazwa,
-		p.Rodzaj as Powiat_Rodzaj,
-		p.StartDate as Powiat_StartDate,
-		p.EndDate as Powiat_EndDate,
-		p.StartDateVerified as Powiat_StartDateVerified,
-		p.EndDateVerified as Powiat_EndDateVerified,
-		p.CzyDataPowstania as Powiat_CzyDataPowstania,
-		p.Opis as Powiat_Opis
-from gmina g
-left join GminaPowiat gp on g.ID = gp.IDGmina and g.StartDate = gp.StartDateGmina 
-left join GminaWojewodztwo gw on g.ID = gw.IDGmina and g.StartDate = gw.StartDateGmina 
-left join Wojewodztwo w on w.ID = gw.IDWojewodztwo and w.StartDate = gw.StartDateWojewodztwo 
-left join PowiatWojewodztwo pw on w.ID = pw.IDWojewodztwo and w.StartDate = pw.StartDateWojewodztwo 
-left join Powiat p on p.ID = gp.IDPowiat and p.StartDate = gp.StartDatePowiat
-where gp.IDPowiat is not null or gw.IDWojewodztwo is not null or pw.IDPowiat is not null or pw.IDWojewodztwo is not null;
+		w.id as Wojewodztwo_ID,
+		w.Nazwa as Wojewodztwo_Nazwa,
+		w.Rodzaj as Wojewodztwo_Rodzaj,
+		w.StartDate as Wojewodztwo_StartDate,
+		w.EndDate as Wojewodztwo_EndDate,
+		w.StartDateVerified as Wojewodztwo_StartDateVerified,
+		w.EndDateVerified as Wojewodztwo_EndDateVerified,
+		w.CzyDataPowstania as Wojewodztwo_CzyDataPowstania,
+		w.Opis as Wojewodztwo_Opis
+
+from Wojewodztwo w
+left join PowiatWojewodztwo pw on w.ID = pw.IDWojewodztwo and w.StartDate = pw.StartDateWojewodztwo
+left join Powiat p on p.id = pw.IDPowiat and p.StartDate = pw.StartDatePowiat
+left join GminaWojewodztwo gw on w.ID = gw.IDWojewodztwo and w.StartDate = gw.StartDateWojewodztwo
+left join GminaPowiat gp on p.ID = gp.IDPowiat and p.StartDate = gp.StartDatePowiat
+join gmina g on g.ID = gw.IDGmina and g.StartDate = gw.StartDateGmina or g.ID = gp.IDGmina and g.StartDate = gp.StartDateGmina

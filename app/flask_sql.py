@@ -164,7 +164,7 @@ def json_table_date(table_name, arg_date):
 
 
 @app.route('/api/<table_name>/<id>/<start_date>/<id1>/<start_date1>/<start_date2>', methods=['GET'])
-def json_relational_table(table_name, id, start_date, id1, start_date1, start_date2):
+def json_relational_table_dates(table_name, id, start_date, id1, start_date1, start_date2):
     login = request.headers.get('login')
     password = request.headers.get('password')
     try:

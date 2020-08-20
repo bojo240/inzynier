@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf61d1e2-9a82-43f3-9681-4d0244cdd729" name="Default Changelist" comment="poprawa literówki">
-      <change beforePath="$PROJECT_DIR$/../Pytania do Promotora.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Pytania do Promotora.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_sql.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flask_sql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="288" column="43" selection-start-line="288" selection-start-column="43" selection-end-line="288" selection-end-column="43" />
+            <state relative-caret-position="191">
+              <caret line="150" column="48" lean-forward="true" selection-start-line="150" selection-start-column="48" selection-end-line="150" selection-end-column="48" />
               <folding>
                 <element signature="e#0#113#0" expanded="true" />
                 <element signature="e#757#1020#0" />
@@ -36,6 +34,8 @@
                 <element signature="e#5196#5357#0" />
                 <element signature="e#5551#6886#0" />
                 <element signature="e#6978#8266#0" />
+                <element signature="e#8395#10026#0" />
+                <element signature="e#10176#11941#0" />
               </folding>
             </state>
           </provider>
@@ -325,8 +325,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flask_sql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="288" column="43" selection-start-line="288" selection-start-column="43" selection-end-line="288" selection-end-column="43" />
+        <state relative-caret-position="191">
+          <caret line="150" column="48" lean-forward="true" selection-start-line="150" selection-start-column="48" selection-end-line="150" selection-end-column="48" />
           <folding>
             <element signature="e#0#113#0" expanded="true" />
             <element signature="e#757#1020#0" />
@@ -344,6 +344,8 @@
             <element signature="e#5196#5357#0" />
             <element signature="e#5551#6886#0" />
             <element signature="e#6978#8266#0" />
+            <element signature="e#8395#10026#0" />
+            <element signature="e#10176#11941#0" />
           </folding>
         </state>
       </provider>

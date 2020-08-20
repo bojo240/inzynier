@@ -2,7 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf61d1e2-9a82-43f3-9681-4d0244cdd729" name="Default Changelist" comment="poprawa literówki">
-      <change beforePath="$PROJECT_DIR$/flask_sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_sql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Gmina.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inserty.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Powiat.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Wojewodztwo.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../advanced_rest_api.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../advanced_rest_api_powiat.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../advanced_rest_api_wojewodztwo.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../script.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trigger_delete_gminaRelacja.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../trigger_update_gminaRelacja.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../widok_API_przynaleznoscGmin.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../widok_API_zawartosc_przynaleznosc_powiatow.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../widok_API_zawartosc_wojewodztw.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../widok_api_gminaRelacje.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../widok_wszystko.sql" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flask_sql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="150" column="48" lean-forward="true" selection-start-line="150" selection-start-column="48" selection-end-line="150" selection-end-column="48" />
+            <state relative-caret-position="246">
+              <caret line="307" column="32" selection-start-line="307" selection-start-column="32" selection-end-line="307" selection-end-column="32" />
               <folding>
                 <element signature="e#0#113#0" expanded="true" />
                 <element signature="e#757#1020#0" />
@@ -36,6 +50,8 @@
                 <element signature="e#6978#8266#0" />
                 <element signature="e#8395#10026#0" />
                 <element signature="e#10176#11941#0" />
+                <element signature="e#11999#12598#0" />
+                <element signature="e#12802#13902#0" />
               </folding>
             </state>
           </provider>
@@ -80,9 +96,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2209" />
-    <option name="y" value="-8" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="153" />
+    <option name="y" value="151" />
     <option name="width" value="976" />
     <option name="height" value="1056" />
   </component>
@@ -325,8 +341,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flask_sql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="150" column="48" lean-forward="true" selection-start-line="150" selection-start-column="48" selection-end-line="150" selection-end-column="48" />
+        <state relative-caret-position="246">
+          <caret line="307" column="32" selection-start-line="307" selection-start-column="32" selection-end-line="307" selection-end-column="32" />
           <folding>
             <element signature="e#0#113#0" expanded="true" />
             <element signature="e#757#1020#0" />
@@ -346,6 +362,8 @@
             <element signature="e#6978#8266#0" />
             <element signature="e#8395#10026#0" />
             <element signature="e#10176#11941#0" />
+            <element signature="e#11999#12598#0" />
+            <element signature="e#12802#13902#0" />
           </folding>
         </state>
       </provider>

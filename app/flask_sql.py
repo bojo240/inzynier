@@ -22,6 +22,7 @@ languages.append(python)
 
 # API
 
+
 @app.context_processor
 def override_url_for():
     return dict(url_for=dated_url_for)
@@ -74,67 +75,91 @@ def api_respond_handler(query):
 
 @app.route('/api/all', methods=['GET'])
 def json_all():
-    query = "SELECT * FROM wszystko"
+    query = "SELECT * \
+            FROM wszystko order by gmina_nazwa"
     return api_respond_handler(query)
 
 
 @app.route('/api/all/<arg_date>', methods=['GET'])
 def json_all_date(arg_date):
-    query = "SELECT * FROM wszystko where ('" + arg_date + "' between GminaPowiat_StartDate and gminapowiat_endDate or '" + \
-            arg_date + "' between GminaWojewodztwo_StartDate and GminaWojewodztwo_EndDate) and '" + arg_date + \
-            "' between PowiatWojewodztwo_StartDate and PowiatWojewodztwo_EndDate"
-    print(query)
+    query = "SELECT * \
+            FROM wszystko \
+            where ('" + arg_date + "' between GminaPowiat_StartDate and gminapowiat_endDate \
+            or '" + arg_date + "' between GminaWojewodztwo_StartDate and GminaWojewodztwo_EndDate) \
+            and '" + arg_date + "' between PowiatWojewodztwo_StartDate and PowiatWojewodztwo_EndDate \
+            order by gmina_nazwa"
+    return api_respond_handler(query)
+
+
+@app.route('/api/relacjegmin/<id>', methods=['GET'])
+def json_get_gmina_id(id):
+    query = "select * \
+            from APIprzynaleznoscGmin \
+            where IDGminy = " + str(id) + " \
+            order by StartDateRelacji"
+    return api_respond_handler(query)
+
+
+@app.route('/api/relacjegmin/<id>/<arg_date>', methods=['GET'])
+def json_get_gmina_id_with_date(id, arg_date):
+    query = "select * \
+            from APIprzynaleznoscGmin \
+            where IDGminy = " + str(id) + \
+            " and '" + arg_date + "' between " + "StartDateGminy and EndDateGminy \
+            order by StartDateRelacji"
+    return api_respond_handler(query)
+
+
+@app.route('/api/relacjepowiatow/<id>', methods=['GET'])
+def json_get_powiat_id(id):
+    query = "select * \
+            from ZawartoscPrzynaleznoscPowiatow \
+            where IDPowiatu = " + str(id) + \
+            " order by StartDateRelacji"
+    return api_respond_handler(query)
+
+
+@app.route('/api/relacjepowiatow/<id>/<arg_date>', methods=['GET'])
+def json_get_powiat_id_with_date(id, arg_date):
+    query = "select * \
+            from ZawartoscPrzynaleznoscPowiatow \
+            where IDPowiatu = " + str(id) + \
+            " and '" + arg_date + "' between " + "StartDatePowiatu and EndDatePowiatu \
+            order by StartDateRelacji"
+    return api_respond_handler(query)
+
+
+@app.route('/api/relacjewojewodztw/<id>', methods=['GET'])
+def json_get_wojewodztwo_id(id):
+    query = "select * \
+            from Zawartosc_wojewodztw \
+            where IDWojewodztwa = " + str(id) + \
+            "order by StartDateRelacji"
+    return api_respond_handler(query)
+
+
+@app.route('/api/relacjewojewodztw/<id>/<arg_date>', methods=['GET'])
+def json_get_wojewodztwo_id_with_date(id, arg_date):
+    query = "select * \
+            from Zawartosc_wojewodztw \
+            where IDWojewodztwa = " + id + " \
+            and '" + arg_date + "' between StartDateWojewodztwa and EndDateWojewodztwa\
+            order by StartDateRelacji"
     return api_respond_handler(query)
 
 
 @app.route('/api/<table_name>', methods=['GET'])
 def json_table(table_name):
-    query = "SELECT * FROM " + table_name
+    query = "SELECT * \
+            FROM " + table_name
     return api_respond_handler(query)
 
 
 @app.route('/api/<table_name>/<arg_date>', methods=['GET'])
 def json_table_date(table_name, arg_date):
-    query = "SELECT * FROM " + table_name + " where " + arg_date + " between startdate and endDate"
-    return api_respond_handler(query)
-
-
-@app.route('/api/gmina/<id>', methods=['GET'])
-def json_get_gmina_id(id):
-    query = "select * from APIprzynaleznoscGmin where IDGminy = " + str(id) + " order by StartDateRelacji"
-    return api_respond_handler(query)
-
-
-@app.route('/api/gmina/<id>/<arg_date>', methods=['GET'])
-def json_get_gmina_id_with_date(id, arg_date):
-    query = "select * from APIprzynaleznoscGmin where IDGminy = " + str(id) + " and '" + arg_date + "' between " + \
-            "StartDateGminy and EndDateGminy order by StartDateRelacji"
-    return api_respond_handler(query)
-
-
-@app.route('/api/powiat/<id>', methods=['GET'])
-def json_get_powiat_id(id):
-    query = "select * from ZawartoscPrzynaleznoscPowiatow where IDPowiatu = " + str(id) + " order by StartDateRelacji"
-    return api_respond_handler(query)
-
-
-@app.route('/api/powiat/<id>/<arg_date>', methods=['GET'])
-def json_get_powiat_id_with_date(id, arg_date):
-    query = "select * from ZawartoscPrzynaleznoscPowiatow where IDPowiatu = " + str(id) + " and '" + arg_date + \
-            "' between " + "StartDatePowiatu and EndDatePowiatu order by StartDateRelacji"
-    return api_respond_handler(query)
-
-
-@app.route('/api/wojewodztwo/<id>', methods=['GET'])
-def json_get_wojewodztwo_id(id):
-    query = "select * from Zawartosc_wojewodztw where IDWojewodztwa = " + id
-    return api_respond_handler(query)
-
-
-@app.route('/api/wojewodztwo/<id>/<arg_date>', methods=['GET'])
-def json_get_wojewodztwo_id_with_date(id, arg_date):
-    query = "select * from Zawartosc_wojewodztw where IDWojewodztwa = " + id + " and '" + arg_date + \
-            "' between StartDateWojewodztwa and EndDateWojewodztwa"
+    query = "SELECT * \
+            FROM " + table_name + \
+            " where " + arg_date + " between startdate and endDate"
     return api_respond_handler(query)
 
 
@@ -146,11 +171,15 @@ def json_relational_table(table_name, id, start_date, id1, start_date1, start_da
         connection = pyodbc.connect(
             "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM " + table_name)
-        cursor.execute("SELECT * FROM " + table_name + " where " + cursor.description[0][0] + " = " + id + " and " +
-                       cursor.description[1][0] + " = '" + start_date + "'" + " and " +
-                       cursor.description[2][0] + " = " + id1 + " and " + cursor.description[3][0] + " = '" +
-                       start_date1 + "'" + " and " + cursor.description[4][0] + " = '" + start_date2 + "'")
+        cursor.execute("SELECT * \
+                        FROM " + table_name)
+        cursor.execute("SELECT * \
+                        FROM " + table_name +
+                       " where " + cursor.description[0][0] + " = " + id +
+                       " and " + cursor.description[1][0] + " = '" + start_date + "'" +
+                       " and " + cursor.description[2][0] + " = " + id1 +
+                       " and " + cursor.description[3][0] + " = '" + start_date1 + "'" +
+                       " and " + cursor.description[4][0] + " = '" + start_date2 + "'")
         rows = cursor.fetchall()
         items = [dict(zip([key[0] for key in cursor.description], row)) for row in rows]
         resp_body = json.dumps(items, ensure_ascii=False)
@@ -176,8 +205,10 @@ def json_insert_table(table_name):
         connection = pyodbc.connect(
             "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
-        cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
-                       + table_name + "') order by ordinal_position asc")
+        cursor.execute("SELECT column_name, data_type \
+                        FROM INFORMATION_SCHEMA.COLUMNS \
+                        where upper(table_name) = upper('" + table_name + "') \
+                        order by ordinal_position asc")
     except:
         return Response(status=401)
     for row in cursor:
@@ -211,19 +242,20 @@ def json_udate_main_table(table_name, id, start_date):
             "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
         for x in range(len(col_names)):
-            cursor.execute("SELECT data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
-                           + table_name + "') and upper(column_name) = upper('" + col_vals[x] + "')")
+            s = "SELECT data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"\
+                           + table_name + "') and upper(column_name) = upper('" + col_names[x] + "')"
+            cursor.execute(s)
             if col_vals[x] == '' or col_vals[x].lower == 'null':
                 col_vals[x] = "null"
-            elif cursor[0][0] in ("date", "nvarchar"):
+            elif cursor.fetchall()[0][0] in ("date", "nvarchar"):
                 col_vals[x] = "'" + col_vals[x] + "'"
         s = "update " + table_name + " set " + col_names[0] + " = " + col_vals[0]
         for x in range(len(col_names) - 1):
             s = s + ", " + col_names[x + 1] + " = " + col_vals[x + 1]
         where = " where id = " + str(id) + " and StartDate = '" + str(start_date) + "'"
         s = s + where
-        cursor.execute("select count(*) from " + table_name + " " + where)
-        count = cursor[0][0]
+        cursor.execute("select count(*) from " + table_name + where)
+        count = cursor.fetchall()[0][0]
         cursor.execute(s)
         connection.commit()
         resp = Response(status=201)
@@ -251,20 +283,22 @@ def json_update_relational_table(table_name, id, start_date, id1, start_date1, s
                            + table_name + "') and upper(column_name) = upper('" + col_vals[x] + "')")
             if col_vals[x] == '' or col_vals[x].lower == 'null':
                 col_vals[x] = "null"
-            elif cursor[0][0] in ("date", "nvarchar"):
+            elif cursor.fetchall()[0][0] in ("date", "nvarchar"):
                 col_vals[x] = "'" + col_vals[x] + "'"
         s = "update " + table_name + " set " + col_names[0] + " = " + col_vals[0]
         for x in range(len(col_names) - 1):
             s = s + ", " + col_names[x + 1] + " = " + col_vals[x + 1]
-        s = s + " where " + col_names[0] + " = " + str(id) + " and " + col_names[1] + " = '" + str(start_date) + "'" + \
+        where = " where " + col_names[0] + " = " + str(id) + " and " + col_names[1] + " = '" + str(start_date) + "'" + \
             " and " + col_names[2] + " = " + str(id1) + " and " + col_names[3] + " = '" + str(start_date1) + "'" \
             + " and " + col_names[4] + " = '" + str(start_date2) + "'"
-        try:
-            cursor.execute(s)
-            connection.commit()
-            return Response(status=200)
-        except:
-            return Response(status=400)
+        s = s + where
+        cursor.execute("select count(*) from " + table_name + where)
+        count = cursor.fetchall()[0][0]
+        cursor.execute(s)
+        connection.commit()
+        resp = Response(status=201)
+        resp.headers['Record count'] = count
+        return resp
     except:
         resp = Response(status=400)
         resp.headers['Record count'] = 0
@@ -351,7 +385,6 @@ def index():
             session['asd'] = 'asd'
             session['login'] = login
             session['password'] = password
-            print('.')
             return redirect(url_for('appl'))
         except:
             return render_template('index.html')

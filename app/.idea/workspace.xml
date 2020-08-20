@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf61d1e2-9a82-43f3-9681-4d0244cdd729" name="Default Changelist" comment="poprawa literówki">
+      <change beforePath="$PROJECT_DIR$/../Pytania do Promotora.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Pytania do Promotora.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_sql.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,45 +17,25 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flask_sql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="83" column="90" selection-start-line="83" selection-start-column="90" selection-end-line="83" selection-end-column="90" />
+            <state relative-caret-position="234">
+              <caret line="288" column="43" selection-start-line="288" selection-start-column="43" selection-end-line="288" selection-end-column="43" />
               <folding>
-                <element signature="e#13217#13344#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html_codes/__init__.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Templates/update.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Templates/delete.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/swagger.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#68#0" expanded="true" />
+                <element signature="e#0#113#0" expanded="true" />
+                <element signature="e#757#1020#0" />
+                <element signature="e#1085#1399#0" />
+                <element signature="e#1438#2228#0" />
+                <element signature="e#2291#2382#0" />
+                <element signature="e#2469#2886#0" />
+                <element signature="e#2973#3155#0" />
+                <element signature="e#3273#3537#0" />
+                <element signature="e#3629#3823#0" />
+                <element signature="e#3946#4226#0" />
+                <element signature="e#4325#4512#0" />
+                <element signature="e#4642#4913#0" />
+                <element signature="e#4997#5086#0" />
+                <element signature="e#5196#5357#0" />
+                <element signature="e#5551#6886#0" />
+                <element signature="e#6978#8266#0" />
               </folding>
             </state>
           </provider>
@@ -66,12 +48,13 @@
       <find>GUIconnection</find>
       <find>close</find>
       <find>SELECT column_name,</find>
-      <find>print</find>
       <find>red</find>
       <find>generate</find>
       <find>index</find>
       <find>generateToIndexHTML</find>
       <find>HMMDTP9</find>
+      <find>cursor[0]</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>APIconnection</replace>
@@ -97,11 +80,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="596" />
-    <option name="y" value="-19" />
-    <option name="width" value="1296" />
-    <option name="height" value="1000" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="2209" />
+    <option name="y" value="-8" />
+    <option name="width" value="976" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -109,7 +92,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -136,6 +118,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -249,9 +232,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15884861" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16044776" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.32995737" />
@@ -312,16 +296,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/swagger.json" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa11436.46023/app.py" />
-    <entry file="file://$PROJECT_DIR$/flask_sql.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="83" column="90" selection-start-line="83" selection-start-column="90" selection-end-line="83" selection-end-column="90" />
-          <folding>
-            <element signature="e#13217#13344#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html_codes/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -345,6 +319,31 @@
           <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="14" />
           <folding>
             <element signature="e#0#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_sql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="288" column="43" selection-start-line="288" selection-start-column="43" selection-end-line="288" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#113#0" expanded="true" />
+            <element signature="e#757#1020#0" />
+            <element signature="e#1085#1399#0" />
+            <element signature="e#1438#2228#0" />
+            <element signature="e#2291#2382#0" />
+            <element signature="e#2469#2886#0" />
+            <element signature="e#2973#3155#0" />
+            <element signature="e#3273#3537#0" />
+            <element signature="e#3629#3823#0" />
+            <element signature="e#3946#4226#0" />
+            <element signature="e#4325#4512#0" />
+            <element signature="e#4642#4913#0" />
+            <element signature="e#4997#5086#0" />
+            <element signature="e#5196#5357#0" />
+            <element signature="e#5551#6886#0" />
+            <element signature="e#6978#8266#0" />
           </folding>
         </state>
       </provider>

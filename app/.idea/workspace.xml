@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf61d1e2-9a82-43f3-9681-4d0244cdd729" name="Default Changelist" comment="poprawa literówki">
-      <change beforePath="$PROJECT_DIR$/../Gmina.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inserty.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Powiat.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Wojewodztwo.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../advanced_rest_api.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../advanced_rest_api_powiat.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../advanced_rest_api_wojewodztwo.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../script.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../trigger_delete_gminaRelacja.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../trigger_update_gminaRelacja.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../widok_API_przynaleznoscGmin.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../widok_API_zawartosc_przynaleznosc_powiatow.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../widok_API_zawartosc_wojewodztw.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../widok_api_gminaRelacje.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../widok_wszystko.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flask_sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_sql.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flask_sql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="307" column="32" selection-start-line="307" selection-start-column="32" selection-end-line="307" selection-end-column="32" />
+            <state relative-caret-position="119">
+              <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
               <folding>
                 <element signature="e#0#113#0" expanded="true" />
                 <element signature="e#757#1020#0" />
@@ -44,14 +30,18 @@
                 <element signature="e#3946#4226#0" />
                 <element signature="e#4325#4512#0" />
                 <element signature="e#4642#4913#0" />
-                <element signature="e#4997#5086#0" />
-                <element signature="e#5196#5357#0" />
+                <element signature="e#5016#5105#0" />
+                <element signature="e#5210#5383#0" />
                 <element signature="e#5551#6886#0" />
                 <element signature="e#6978#8266#0" />
                 <element signature="e#8395#10026#0" />
                 <element signature="e#10176#11941#0" />
                 <element signature="e#11999#12598#0" />
                 <element signature="e#12802#13902#0" />
+                <element signature="e#13977#14104#0" />
+                <element signature="e#14165#15377#0" />
+                <element signature="e#15432#15564#0" />
+                <element signature="e#15648#15812#0" />
               </folding>
             </state>
           </provider>
@@ -71,10 +61,13 @@
       <find>HMMDTP9</find>
       <find>cursor[0]</find>
       <find>print</find>
+      <find>prin</find>
+      <find>StartDateRelacji</find>
     </findStrings>
     <replaceStrings>
       <replace>APIconnection</replace>
       <replace>connection</replace>
+      <replace>StartDate</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -96,7 +89,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="153" />
     <option name="y" value="151" />
     <option name="width" value="976" />
@@ -248,7 +241,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16044776" />
@@ -257,7 +250,7 @@
       <window_info id="DB Browser" order="3" weight="0.32995737" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -341,8 +334,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flask_sql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="307" column="32" selection-start-line="307" selection-start-column="32" selection-end-line="307" selection-end-column="32" />
+        <state relative-caret-position="119">
+          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
           <folding>
             <element signature="e#0#113#0" expanded="true" />
             <element signature="e#757#1020#0" />
@@ -356,14 +349,18 @@
             <element signature="e#3946#4226#0" />
             <element signature="e#4325#4512#0" />
             <element signature="e#4642#4913#0" />
-            <element signature="e#4997#5086#0" />
-            <element signature="e#5196#5357#0" />
+            <element signature="e#5016#5105#0" />
+            <element signature="e#5210#5383#0" />
             <element signature="e#5551#6886#0" />
             <element signature="e#6978#8266#0" />
             <element signature="e#8395#10026#0" />
             <element signature="e#10176#11941#0" />
             <element signature="e#11999#12598#0" />
             <element signature="e#12802#13902#0" />
+            <element signature="e#13977#14104#0" />
+            <element signature="e#14165#15377#0" />
+            <element signature="e#15432#15564#0" />
+            <element signature="e#15648#15812#0" />
           </folding>
         </state>
       </provider>

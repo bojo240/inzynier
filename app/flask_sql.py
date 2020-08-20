@@ -73,14 +73,15 @@ def api_respond_handler(query):
         return resp
 
 
-@app.route('/api/all', methods=['GET'])
+@app.route('/api/all', methods=['GET'])#musi zostac, jest orderby i konkretna kolumna
 def json_all():
     query = "SELECT * \
-            FROM wszystko order by gmina_nazwa"
+            FROM wszystko \
+            order by gmina_nazwa"
     return api_respond_handler(query)
 
 
-@app.route('/api/all/<arg_date>', methods=['GET'])
+@app.route('/api/all/<arg_date>', methods=['GET'])#musi zostac, jest orderby i konkretna kolumna
 def json_all_date(arg_date):
     query = "SELECT * \
             FROM wszystko \
@@ -91,60 +92,61 @@ def json_all_date(arg_date):
     return api_respond_handler(query)
 
 
-@app.route('/api/relacjegmin/<id>', methods=['GET'])
+@app.route('/api/relacjegmin/<id>', methods=['GET']) #musi zostac, jest orderby i konkretna kolumna
 def json_get_gmina_id(id):
     query = "select * \
-            from APIprzynaleznoscGmin \
+            from relacjeGmin \
             where IDGminy = " + str(id) + " \
-            order by StartDateRelacji"
+            order by StartDate"
+    print(query)
     return api_respond_handler(query)
 
 
 @app.route('/api/relacjegmin/<id>/<arg_date>', methods=['GET'])
 def json_get_gmina_id_with_date(id, arg_date):
     query = "select * \
-            from APIprzynaleznoscGmin \
+            from relacjeGmin \
             where IDGminy = " + str(id) + \
             " and '" + arg_date + "' between " + "StartDateGminy and EndDateGminy \
-            order by StartDateRelacji"
+            order by StartDate"
     return api_respond_handler(query)
 
 
 @app.route('/api/relacjepowiatow/<id>', methods=['GET'])
 def json_get_powiat_id(id):
     query = "select * \
-            from ZawartoscPrzynaleznoscPowiatow \
+            from relacjePowiatow \
             where IDPowiatu = " + str(id) + \
-            " order by StartDateRelacji"
+            " order by StartDate"
     return api_respond_handler(query)
 
 
 @app.route('/api/relacjepowiatow/<id>/<arg_date>', methods=['GET'])
 def json_get_powiat_id_with_date(id, arg_date):
     query = "select * \
-            from ZawartoscPrzynaleznoscPowiatow \
+            from relacjePowiatow \
             where IDPowiatu = " + str(id) + \
             " and '" + arg_date + "' between " + "StartDatePowiatu and EndDatePowiatu \
-            order by StartDateRelacji"
+            order by StartDate"
     return api_respond_handler(query)
 
 
 @app.route('/api/relacjewojewodztw/<id>', methods=['GET'])
 def json_get_wojewodztwo_id(id):
     query = "select * \
-            from Zawartosc_wojewodztw \
+            from relacjewojewodztw \
             where IDWojewodztwa = " + str(id) + \
-            "order by StartDateRelacji"
+            "order by StartDate"
     return api_respond_handler(query)
 
 
 @app.route('/api/relacjewojewodztw/<id>/<arg_date>', methods=['GET'])
 def json_get_wojewodztwo_id_with_date(id, arg_date):
     query = "select * \
-            from Zawartosc_wojewodztw \
+            from relacjewojewodztw \
             where IDWojewodztwa = " + id + " \
             and '" + arg_date + "' between StartDateWojewodztwa and EndDateWojewodztwa\
-            order by StartDateRelacji"
+            order by StartDate"
     return api_respond_handler(query)
 
 
@@ -159,7 +161,7 @@ def json_table(table_name):
 def json_table_date(table_name, arg_date):
     query = "SELECT * \
             FROM " + table_name + \
-            " where " + arg_date + " between startdate and endDate"
+            " where '" + arg_date + "' between startdate and endDate"
     return api_respond_handler(query)
 
 

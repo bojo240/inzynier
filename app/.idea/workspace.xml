@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf61d1e2-9a82-43f3-9681-4d0244cdd729" name="Default Changelist" comment="poprawa literówki">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_sql.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,33 +16,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flask_sql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+            <state relative-caret-position="192">
+              <caret line="118" column="47" lean-forward="true" selection-start-line="118" selection-start-column="47" selection-end-line="118" selection-end-column="47" />
               <folding>
                 <element signature="e#0#113#0" expanded="true" />
                 <element signature="e#757#1020#0" />
                 <element signature="e#1085#1399#0" />
                 <element signature="e#1438#2228#0" />
-                <element signature="e#2291#2382#0" />
-                <element signature="e#2469#2886#0" />
-                <element signature="e#2973#3155#0" />
-                <element signature="e#3273#3537#0" />
-                <element signature="e#3629#3823#0" />
-                <element signature="e#3946#4226#0" />
-                <element signature="e#4325#4512#0" />
-                <element signature="e#4642#4913#0" />
-                <element signature="e#5016#5105#0" />
-                <element signature="e#5210#5383#0" />
-                <element signature="e#5551#6886#0" />
-                <element signature="e#6978#8266#0" />
-                <element signature="e#8395#10026#0" />
-                <element signature="e#10176#11941#0" />
-                <element signature="e#11999#12598#0" />
-                <element signature="e#12802#13902#0" />
-                <element signature="e#13977#14104#0" />
-                <element signature="e#14165#15377#0" />
-                <element signature="e#15432#15564#0" />
-                <element signature="e#15648#15812#0" />
+                <element signature="e#2336#2637#0" />
+                <element signature="e#2757#2987#0" />
+                <element signature="e#3088#3421#0" />
+                <element signature="e#3549#3773#0" />
+                <element signature="e#3844#3963#0" />
+                <element signature="e#4058#4475#0" />
+                <element signature="e#3140#3323#0" />
+                <element signature="e#3441#3689#0" />
+                <element signature="e#5540#5931#0" />
+                <element signature="e#4076#4334#0" />
+                <element signature="e#6420#6815#0" />
+                <element signature="e#4740#5001#0" />
+                <element signature="e#6541#6630#0" />
+                <element signature="e#6736#7129#0" />
+                <element signature="e#7255#7451#0" />
+                <element signature="e#7651#8986#0" />
               </folding>
             </state>
           </provider>
@@ -63,6 +60,7 @@
       <find>print</find>
       <find>prin</find>
       <find>StartDateRelacji</find>
+      <find>unicode(arg).isNumeric():</find>
     </findStrings>
     <replaceStrings>
       <replace>APIconnection</replace>
@@ -244,13 +242,13 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16044776" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16204691" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.32995737" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -334,33 +332,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flask_sql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        <state relative-caret-position="192">
+          <caret line="118" column="47" lean-forward="true" selection-start-line="118" selection-start-column="47" selection-end-line="118" selection-end-column="47" />
           <folding>
             <element signature="e#0#113#0" expanded="true" />
             <element signature="e#757#1020#0" />
             <element signature="e#1085#1399#0" />
             <element signature="e#1438#2228#0" />
-            <element signature="e#2291#2382#0" />
-            <element signature="e#2469#2886#0" />
-            <element signature="e#2973#3155#0" />
-            <element signature="e#3273#3537#0" />
-            <element signature="e#3629#3823#0" />
-            <element signature="e#3946#4226#0" />
-            <element signature="e#4325#4512#0" />
-            <element signature="e#4642#4913#0" />
-            <element signature="e#5016#5105#0" />
-            <element signature="e#5210#5383#0" />
-            <element signature="e#5551#6886#0" />
-            <element signature="e#6978#8266#0" />
-            <element signature="e#8395#10026#0" />
-            <element signature="e#10176#11941#0" />
-            <element signature="e#11999#12598#0" />
-            <element signature="e#12802#13902#0" />
-            <element signature="e#13977#14104#0" />
-            <element signature="e#14165#15377#0" />
-            <element signature="e#15432#15564#0" />
-            <element signature="e#15648#15812#0" />
+            <element signature="e#2336#2637#0" />
+            <element signature="e#2757#2987#0" />
+            <element signature="e#3088#3421#0" />
+            <element signature="e#3549#3773#0" />
+            <element signature="e#3844#3963#0" />
+            <element signature="e#4058#4475#0" />
+            <element signature="e#3140#3323#0" />
+            <element signature="e#3441#3689#0" />
+            <element signature="e#5540#5931#0" />
+            <element signature="e#4076#4334#0" />
+            <element signature="e#6420#6815#0" />
+            <element signature="e#4740#5001#0" />
+            <element signature="e#6541#6630#0" />
+            <element signature="e#6736#7129#0" />
+            <element signature="e#7255#7451#0" />
+            <element signature="e#7651#8986#0" />
           </folding>
         </state>
       </provider>

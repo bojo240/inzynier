@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, url_for, Response, Blueprint, redirect, session, make_response
-from flask_restplus import Api, Resource, fields
+from flask import Flask, render_template, request, url_for, Response, redirect, session, make_response
 import pyodbc
 import os
 import simplejson as json
@@ -7,23 +6,12 @@ import pandas as pd
 
 
 #APP CONFIG
-
-
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-blueprint = Blueprint('api', __name__, url_prefix='/test')
-api = Api(blueprint)
-app.register_blueprint(blueprint)
-
-a_language = api.model('Language', {'language': fields.String('The language.')})
-languages = []
-python = {'language': 'Python', 'id': 1}
-languages.append(python)
 
 
+#APP CONFIG
 #   ERROR HANDLING
-
-
 @app.errorhandler(404)  # PAGE NOT FOUND
 def not_found():
     return render_template('404.html')
@@ -34,9 +22,8 @@ def internal_error():
     return render_template('500.html')
 
 
+#APP CONFIG
 #   FUNCTIONS TO CLEAR CACHE FOR CSS RELOAD
-
-
 @app.context_processor
 def override_url_for():
     return dict(url_for=dated_url_for)
@@ -51,9 +38,8 @@ def dated_url_for(endpoint, **values):
     return url_for(endpoint, **values)
 
 
+#API
 #   API HTTP GET FUNCTION RESPOND FUNCTION
-
-
 def api_respond_handler(query):
     login = request.headers.get('login')
     password = request.headers.get('password')
@@ -76,32 +62,9 @@ def api_respond_handler(query):
         return resp
 
 
-#SWAGGER
-
-
-@api.route('/swagger/language')
-class Language(Resource):
-    @api.marshal_with(a_language, envelope='the_data')
-    def get(self):
-        return languages
-
-    @api.expect(a_language)
-    def post(self):
-        new_language = api.payload
-        new_language['id'] = len(languages) + 1
-        languages.append(new_language)
-        return {'result': 'Language added'}, 201
-
-
 #API
-
-
 #   HTTP GET
-
-
 #       TABLES
-
-
 @app.route('/api/tabele/<table_name>', methods=['GET'])
 def json_tabele_tablename(table_name):
     query = "SELECT * \
@@ -131,9 +94,9 @@ def json_tabele_tablename_id_date(table_name, id, arg_date):
     return api_respond_handler(query)
 
 
+#API
+#   HTTP GET
 #       RELATIONAL_TABLES
-
-
 @app.route('/api/relacje/gminarelacja/<arg>', methods=['GET'])
 def json_relacje_gminarelacja_arg(arg):
     if str(arg).isnumeric():
@@ -213,9 +176,9 @@ def json_relacje_id_date_id1_date1_argdate(table_name, id1, arg_date1, id2, arg_
         return resp
 
 
+#API
+#   HTTP GET
 #       VIEWS
-
-
 @app.route('/api/widoki/wszystko', methods=['GET'])
 def json_widoki_wszystko():
     query = "SELECT * \
@@ -260,18 +223,11 @@ def json_widoki_wszystko_tablename_id_argdate(table_name, id, arg_date):
     return api_respond_handler(query)
 
 
-@app.route('/api/widoki/<table_name>', methods=['GET'])
-def json_widoki_view(table_name):
-    query = "SELECT * \
-            FROM " + table_name
-    return api_respond_handler(query)
-
-
-@app.route('/api/widoki/gminarelacje/<arg>', methods=['GET'])
-def json_widoki_gminarelacje_arg(arg):
+@app.route('/api/widoki/GminaGmina/<arg>', methods=['GET'])
+def json_widoki_gminagmina_arg(arg):
     if str(arg).isnumeric():
         query = "SELECT * \
-                FROM gminaRelacje \
+                FROM GminaGmina \
                 where IDGmina1 = " + arg + " or idGmina2 = " + arg
     else:
         query = "SELECT * \
@@ -280,94 +236,62 @@ def json_widoki_gminarelacje_arg(arg):
     return api_respond_handler(query)
 
 
-@app.route('/api/widoki/gminarelacje/<id>/<arg_date>', methods=['GET'])
-def json_widoki_gminarelacje_id_argdate(id, arg_date):
+@app.route('/api/widoki/GminaGmina/<id>/<arg_date>', methods=['GET'])
+def json_widoki_gminagmina_id_argdate(id, arg_date):
     query = "SELECT * \
-            FROM gminaRelacje \
+            FROM GminaGmina \
             where (IDGmina1 = " + id + " or IDGmina2 = " + id + ") \
             and '" + arg_date + "' between startdate and enddate"
     return api_respond_handler(query)
 
 
-@app.route('/api/widoki/gmina/<arg>', methods=['GET'])
-def json_widoki_gmina_arg(arg):
+@app.route('/api/widoki/<view>', methods=['GET'])
+def json_widoki_view(view):
+    query = "SELECT * \
+            FROM " + view
+    return api_respond_handler(query)
+
+
+@app.route('/api/widoki/<view>/<arg>', methods=['GET'])
+def json_widoki_view_arg(view, arg):
+    if view[0].lower == 'g':
+        tab = "gmina"
+    elif view[0].lower == 'p':
+        tab = "powiat"
+    elif view[0].lower == 'w':
+        tab = "wojewodztwo"
     if str(arg).isnumeric():
         query = "SELECT * \
-                FROM relacjeGmin \
-                where IDGminy = " + arg + " \
+                FROM " + view + "\
+                where " + tab + "_ID = " + arg + " \
                 order by startDate"
     else:
         query = "SELECT * \
-                FROM relacjeGmin\
+                FROM " + view + "\
                 where '" + arg + "' between startdate and enddate\
                 order by startDate"
     print(query)
     return api_respond_handler(query)
 
 
-@app.route('/api/widoki/gmina/<id>/<arg_date>', methods=['GET'])
-def json_widoki_gmina_id_argdate(id, arg_date):
-    query = "select * \
-            from relacjeGmin \
-            where IDGminy = " + str(id) + \
+@app.route('/api/widoki/<view>/<id>/<arg_date>', methods=['GET'])
+def json_widoki_view_id_argdate(view, id, arg_date):
+    if view[0].lower == 'g':
+        tab = "gmina"
+    elif view[0].lower == 'p':
+        tab = "powiat"
+    elif view[0].lower == 'w':
+        tab = "wojewodztwo"
+    query = "SELECT * \
+            FROM " + view + "\
+            where " + tab + "_ID = " + str(id) + \
             " and '" + arg_date + "' between StartDate and EndDate \
             order by StartDate"
     return api_respond_handler(query)
 
 
-@app.route('/api/widoki/powiat/<arg>', methods=['GET'])
-def json_widoki_powiat_arg(arg):
-    if str(arg).isnumeric():
-        query = "SELECT * \
-                FROM relacjePowiatow \
-                where IDPowiatu = " + arg + " \
-                order by startDate"
-    else:
-        query = "SELECT * \
-                FROM relacjePowiatow\
-                where '" + arg + "' between StartDate and EndDate \
-                order by startDate"
-    return api_respond_handler(query)
-
-
-@app.route('/api/widoki/powiat/<id>/<arg_date>', methods=['GET'])
-def json_widoki_powiat_id_argdate(id, arg_date):
-    query = "select * \
-            from relacjePowiatow \
-            where IDPowiatu = " + str(id) + \
-            " and '" + arg_date + "' between StartDate and EndDate \
-            order by StartDate"
-    return api_respond_handler(query)
-
-
-@app.route('/api/widoki/wojewodztwo/<arg>', methods=['GET'])
-def json_widoki_wojewodztwo_arg(arg):
-    if str(arg).isnumeric():
-        query = "SELECT * \
-                FROM relacjewojewodztw \
-                where IDWojewodztwa = " + arg + " \
-                order by startDate"
-    else:
-        query = "SELECT * \
-                FROM relacjewojewodztw\
-                where '" + arg + "' between startdate and enddate \
-                order by startDate"
-    return api_respond_handler(query)
-
-
-@app.route('/api/widoki/wojewodztwo/<id>/<arg_date>', methods=['GET'])
-def json_widoki_wojewodztwo_id_argdate(id, arg_date):
-    query = "select * \
-            from relacjewojewodztw \
-            where IDWojewodztwa = " + id + " \
-            and '" + arg_date + "' between StartDateWojewodztwa and EndDateWojewodztwa\
-            order by StartDate"
-    return api_respond_handler(query)
-
-
+#API
 #   HTTP POST
-
-
 @app.route('/api/<table_name>', methods=['POST'])
 def json_insert_table(table_name):
     data = request.get_json()
@@ -404,9 +328,9 @@ def json_insert_table(table_name):
         return resp
 
 
+#API
 #   HTTP PUT
-
-
+#       TABLES
 @app.route('/api/<table_name>/<id>/<start_date>', methods=['PUT'])
 def json_udate_main_table(table_name, id, start_date):
     data = request.get_json()
@@ -444,6 +368,9 @@ def json_udate_main_table(table_name, id, start_date):
         return resp
 
 
+#API
+#   HTTP PUT
+#       RELATIONAL_TABLES
 @app.route('/api/<table_name>/<id>/<start_date>/<id1>/<start_date1>/<start_date2>', methods=['PUT'])
 def json_update_relational_table(table_name, id, start_date, id1, start_date1, start_date2):
     data = request.get_json()
@@ -482,9 +409,9 @@ def json_update_relational_table(table_name, id, start_date, id1, start_date1, s
         return resp
 
 
+#API
 #   HTTP DELETE
-
-
+#       TABLES
 @app.route('/api/<table_name>/<id>/<start_date>', methods=['DELETE'])
 def json_delete_main_table(table_name, id, start_date):
     login = request.headers.get('login')
@@ -503,6 +430,9 @@ def json_delete_main_table(table_name, id, start_date):
         return resp
 
 
+#API
+#   HTTP DELETE
+#       RELATIONAL_TABLES
 @app.route('/api/<table_name>/<id>/<start_date>/<id1>/<start_date1>/<start_date2>', methods=['DELETE'])
 def json_delete_relational_table(table_name, id, start_date, id1, start_date1, start_date2):
     col_names = list()
@@ -529,8 +459,6 @@ def json_delete_relational_table(table_name, id, start_date, id1, start_date1, s
 
 
 #GUI
-
-
 @app.route('/diconnect', methods=['GET'])
 def disconnect():
     session.pop('asd', None)
@@ -808,7 +736,5 @@ def delete_all(table_name, where_vals, connection):
 
 
 #APP
-
-
 if __name__ == '__main__':
     app.run(debug=True, threaded=True)

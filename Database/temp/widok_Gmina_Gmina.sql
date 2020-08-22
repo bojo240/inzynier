@@ -1,4 +1,4 @@
-create or alter view gminaRelacje as
+create or alter view GminaGmina as
 select 
 g.id as IDGmina1, g.nazwa as Nazwa1, g.Rodzaj as Rodzaj1, g.StartDate as StartDate1, g.Opis as Opis1,
 g2.id as IDGmina2, g2.nazwa as Nazwa2, g2.Rodzaj as Rodzaj2, g2.StartDate as StartDate2, g2.Opis as Opis2,

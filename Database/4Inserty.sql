@@ -1,3 +1,10 @@
+USE [Inzynier]
+GO
+
+--SET IDENTITY_INSERT Gmina ON;
+--SET IDENTITY_INSERT Powiat ON;
+--SET IDENTITY_INSERT Wojewodztwo ON;
+
 delete from Wojewodztwo;
 delete from Gmina;
 delete from GminaWojewodztwo;
@@ -231,12 +238,12 @@ values (3,'Ma³opolskie', 'Województwo', '1999-01-01', '9999-12-31', 1, 0, 1, nul
 
 -- Powiaty 1999+
 
-insert into Powiat values (1,'Bielski', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
-insert into Powiat values (2,'Cieszyñski', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
-insert into Powiat values (3,'¯ywiecki', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
-insert into Powiat values (4,'Oœwiêcimski', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
-insert into Powiat values (5,'Suski', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
-insert into Powiat values (6,'Wadowicki', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
+insert into Powiat(ID, Nazwa, Rodzaj, StartDate, EndDate, CzyDataPowstania, StartDateVerified, EndDateVerified, Opis) values (1,'Bielski', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
+insert into Powiat(ID, Nazwa, Rodzaj, StartDate, EndDate, CzyDataPowstania, StartDateVerified, EndDateVerified, Opis) values (2,'Cieszyñski', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
+insert into Powiat(ID, Nazwa, Rodzaj, StartDate, EndDate, CzyDataPowstania, StartDateVerified, EndDateVerified, Opis) values (3,'¯ywiecki', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
+insert into Powiat(ID, Nazwa, Rodzaj, StartDate, EndDate, CzyDataPowstania, StartDateVerified, EndDateVerified, Opis) values (4,'Oœwiêcimski', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
+insert into Powiat(ID, Nazwa, Rodzaj, StartDate, EndDate, CzyDataPowstania, StartDateVerified, EndDateVerified, Opis) values (5,'Suski', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
+insert into Powiat(ID, Nazwa, Rodzaj, StartDate, EndDate, CzyDataPowstania, StartDateVerified, EndDateVerified, Opis) values (6,'Wadowicki', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
 
 -- Relacje Powiat -> Wojewodztwo 1999+
 

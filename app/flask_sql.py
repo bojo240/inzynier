@@ -126,7 +126,7 @@ def json_tabele_tablename_arg(table_name, arg):
 def json_tabele_tablename_id_date(table_name, id, arg_date):
     query = "SELECT * \
             FROM " + table_name + \
-            "where ID = " + id + " \
+            " where ID = " + id + " \
             and '" + arg_date + "' between startdate and enddate"
     return api_respond_handler(query)
 

@@ -1,3 +1,5 @@
+USE [Inzynier]
+GO
 create or alter trigger TUgminaRelacja
 on Gmina
 after update

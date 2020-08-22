@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "dad72f64-80fb-410b-a6e8-5099206e2621",
-		"name": "Select",
+		"name": "Read",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -1017,7 +1017,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/relacje/gminapowiat/1/1999-01-01/1/1900-01-01/1999-01-01",
+									"raw": "http://127.0.0.1:5000/api/relacje/gminapowiat/1/1900-01-01/1/1999-01-01/1999-01-01",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1031,9 +1031,9 @@
 										"relacje",
 										"gminapowiat",
 										"1",
-										"1999-01-01",
-										"1",
 										"1900-01-01",
+										"1",
+										"1999-01-01",
 										"1999-01-01"
 									]
 								}
@@ -1245,216 +1245,780 @@
 			"item": [
 				{
 					"name": "Wszystko",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+					"item": [
+						{
+							"name": "Wszystko",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/wszystko",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"wszystko"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/widoki/wszystko",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"widoki",
-								"wszystko"
-							]
+							"response": []
 						},
-						"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
-					},
-					"response": []
-				},
-				{
-					"name": "Wszystko na zadana date",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+						{
+							"name": "Wszystko_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/wszystko/2020-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"wszystko",
+										"2020-01-01"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych na zadany dzień podany jako argument w formacie 'YYYY-MM-DD'"
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/widoki/wszystko/2020-01-01",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"widoki",
-								"wszystko",
-								"2020-01-01"
-							]
+							"response": []
 						},
-						"description": "Zapytanie zwraca pełen zestaw danych w bazie danych na zadany dzień podany jako argument w formacie 'YYYY-MM-DD'"
-					},
-					"response": []
+						{
+							"name": "Wszystko_IDType_ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/wszystko/gmina/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"wszystko",
+										"gmina",
+										"1"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych na zadany dzień podany jako argument w formacie 'YYYY-MM-DD'"
+							},
+							"response": []
+						},
+						{
+							"name": "Wszystko_IDType_ID_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/wszystko/powiat/1/1999-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"wszystko",
+										"powiat",
+										"1",
+										"1999-01-01"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych na zadany dzień podany jako argument w formacie 'YYYY-MM-DD'"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "V_GminaRelacje",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+					"name": "RelacjeGminaGmina",
+					"item": [
+						{
+							"name": "GminaGmina",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/gminagmina",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"gminagmina"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/widoki/gminarelacje",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"widoki",
-								"gminarelacje"
-							]
+							"response": []
+						},
+						{
+							"name": "GminaGmina_ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/gminagmina/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"gminagmina",
+										"1"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych na zadany dzień podany jako argument w formacie 'YYYY-MM-DD'"
+							},
+							"response": []
+						},
+						{
+							"name": "GminaGmina_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/gminagmina/1990-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"gminagmina",
+										"1990-01-01"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych na zadany dzień podany jako argument w formacie 'YYYY-MM-DD'"
+							},
+							"response": []
+						},
+						{
+							"name": "GminaGmina_ID_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/gminagmina/1/1990-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"gminagmina",
+										"1",
+										"1990-01-01"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "V_relacjeGmin",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+					"name": "RelacjeGmina",
+					"item": [
+						{
+							"name": "RelacjeGmina",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/gminaRelacje",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"gminaRelacje"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/widoki/relacjegmin",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"widoki",
-								"relacjegmin"
-							]
+							"response": []
+						},
+						{
+							"name": "RelacjeGmina_ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/gminaRelacje/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"gminaRelacje",
+										"1"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych na zadany dzień podany jako argument w formacie 'YYYY-MM-DD'"
+							},
+							"response": []
+						},
+						{
+							"name": "RelacjeGmina_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/gminaRelacje/2020-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"gminaRelacje",
+										"2020-01-01"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych na zadany dzień podany jako argument w formacie 'YYYY-MM-DD'"
+							},
+							"response": []
+						},
+						{
+							"name": "RelacjeGmina_ID_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/gminaRelacje/1/2020-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"gminaRelacje",
+										"1",
+										"2020-01-01"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "V_RelacjePowiatow",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+					"name": "RelacjePowiat",
+					"item": [
+						{
+							"name": "RelacjePowiat",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/powiatRelacje",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"powiatRelacje"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/widoki/relacjepowiatow",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"widoki",
-								"relacjepowiatow"
-							]
+							"response": []
+						},
+						{
+							"name": "RelacjePowiat_ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/powiatRelacje/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"powiatRelacje",
+										"1"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych na zadany dzień podany jako argument w formacie 'YYYY-MM-DD'"
+							},
+							"response": []
+						},
+						{
+							"name": "RelacjePowiat_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/powiatRelacje/2020-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"powiatRelacje",
+										"2020-01-01"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych na zadany dzień podany jako argument w formacie 'YYYY-MM-DD'"
+							},
+							"response": []
+						},
+						{
+							"name": "RelacjePowiat_ID_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/powiatRelacje/1/2020-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"powiatRelacje",
+										"1",
+										"2020-01-01"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "V_RelacjeWojewodztw",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+					"name": "RelacjeWojewodztwo",
+					"item": [
+						{
+							"name": "Wojewodztwo",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/wojewodztwoRelacje",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"wojewodztwoRelacje"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/widoki/relacjewojewodztw",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"widoki",
-								"relacjewojewodztw"
-							]
+							"response": []
+						},
+						{
+							"name": "Wojewodztwo_ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/wojewodztwoRelacje/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"wojewodztwoRelacje",
+										"1"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych na zadany dzień podany jako argument w formacie 'YYYY-MM-DD'"
+							},
+							"response": []
+						},
+						{
+							"name": "Wojewodztwo_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/wojewodztwoRelacje/2020-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"wojewodztwoRelacje",
+										"2020-01-01"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych na zadany dzień podany jako argument w formacie 'YYYY-MM-DD'"
+							},
+							"response": []
+						},
+						{
+							"name": "Wojewodztwo_ID_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/widoki/wojewodztwoRelacje/1/1990-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"widoki",
+										"wojewodztwoRelacje",
+										"1",
+										"1990-01-01"
+									]
+								},
+								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				}
 			],
 			"protocolProfileBehavior": {}

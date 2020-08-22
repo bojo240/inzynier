@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "875491da-1ea0-4f66-82ba-caceb4f40bfc",
+		"name": "Delete",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Tabele",
+			"item": [
+				{
+					"name": "Gmina",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "login",
+								"value": "APIJSON",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "APIJSON",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/gmina/1/1900-01-01",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"gmina",
+								"1",
+								"1900-01-01"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Powiat",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "login",
+								"type": "text",
+								"value": "APIJSON"
+							},
+							{
+								"key": "password",
+								"type": "text",
+								"value": "APIJSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/powiat/2/1999-01-01",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"powiat",
+								"2",
+								"1999-01-01"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Województwo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "login",
+								"type": "text",
+								"value": "APIJSON"
+							},
+							{
+								"key": "password",
+								"type": "text",
+								"value": "APIJSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/wojewodztwo/1/1975-06-01",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"wojewodztwo",
+								"1",
+								"1975-06-01"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tabele Relacyjne",
+			"item": [
+				{
+					"name": "GminaRelacja",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "login",
+								"type": "text",
+								"value": "APIJSON"
+							},
+							{
+								"key": "password",
+								"type": "text",
+								"value": "APIJSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IDGmina_Old\": 21,\r\n    \"Start_Date_Old\": \"1900-01-01\",\r\n    \"IDGmina_New\": 37,\r\n    \"Start_Date_New\": \"1900-01-01\",\r\n    \"StartDate\": \"1976-07-02\",\r\n    \"EndDate\": \"1998-12-31\",\r\n    \"Typ\": \"asdd\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/gminarelacja/21/1900-01-01/37/1976-07-02/1976-07-02",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"gminarelacja",
+								"21",
+								"1900-01-01",
+								"37",
+								"1976-07-02",
+								"1976-07-02"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GminaWojewodztwo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "login",
+								"value": "APIJSON",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "APIJSON",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/gminaWojewodztwo/1/1900-01-01/1/1975-06-01/1975-06-01",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"gminaWojewodztwo",
+								"1",
+								"1900-01-01",
+								"1",
+								"1975-06-01",
+								"1975-06-01"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GminaPowiat",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "login",
+								"type": "text",
+								"value": "APIJSON"
+							},
+							{
+								"key": "password",
+								"type": "text",
+								"value": "APIJSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/gminaPowiat/1/1900-01-01/1/1999-01-01/1999-01-01",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"gminaPowiat",
+								"1",
+								"1900-01-01",
+								"1",
+								"1999-01-01",
+								"1999-01-01"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PowiatWojewództwo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "login",
+								"type": "text",
+								"value": "APIJSON"
+							},
+							{
+								"key": "password",
+								"type": "text",
+								"value": "APIJSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/PowiatWojewodztwo/1/1999-01-01/2/1999-01-01/1999-01-01",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"PowiatWojewodztwo",
+								"1",
+								"1999-01-01",
+								"2",
+								"1999-01-01",
+								"1999-01-01"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

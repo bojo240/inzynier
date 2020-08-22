@@ -335,6 +335,7 @@ def json_insert_table(table_name):
 @app.route('/api/<table_name>/<id>/<start_date>', methods=['PUT'])
 def json_udate_main_table(table_name, id, start_date):
     data = request.get_json(force=True)
+    data = dict(data)
     col_names = list(data.keys())
     col_vals = list(data.values())
     login = request.headers.get('login')
@@ -344,18 +345,18 @@ def json_udate_main_table(table_name, id, start_date):
             "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
         for x in range(len(col_names)):
-            s = "SELECT data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"\
-                           + table_name + "') and upper(column_name) = upper('" + col_names[x] + "')"
-            cursor.execute(s)
-            if col_vals[x] == '' or col_vals[x].lower == 'null':
+            cursor.execute("SELECT data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
+                           + table_name + "') and upper(column_name) = upper('" + str(col_names[x]) + "')")
+            if str(col_vals[x]) == '' or str(col_vals[x]).lower() == 'null':
                 col_vals[x] = "null"
             elif cursor.fetchall()[0][0] in ("date", "nvarchar"):
-                col_vals[x] = "'" + col_vals[x] + "'"
-        s = "update " + table_name + " set " + col_names[0] + " = " + col_vals[0]
+                col_vals[x] = "'" + str(col_vals[x]) + "'"
+        s = "update " + table_name + " set " + str(col_names[0]) + " = " + str(col_vals[0])
         for x in range(len(col_names) - 1):
-            s = s + ", " + col_names[x + 1] + " = " + col_vals[x + 1]
+            s = s + ", " + str(col_names[x + 1]) + " = " + str(col_vals[x + 1])
         where = " where id = " + str(id) + " and StartDate = '" + str(start_date) + "'"
         s = s + where
+        print(s)
         cursor.execute("select count(*) from " + table_name + where)
         count = cursor.fetchall()[0][0]
         cursor.execute(s)
@@ -375,6 +376,7 @@ def json_udate_main_table(table_name, id, start_date):
 @app.route('/api/<table_name>/<id>/<start_date>/<id1>/<start_date1>/<start_date2>', methods=['PUT'])
 def json_update_relational_table(table_name, id, start_date, id1, start_date1, start_date2):
     data = request.get_json(force=True)
+    data = dict(data)
     col_names = list(data.keys())
     col_vals = list(data.values())
     login = request.headers.get('login')
@@ -383,20 +385,27 @@ def json_update_relational_table(table_name, id, start_date, id1, start_date1, s
         connection = pyodbc.connect(
             "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
+        col_names2 = list()
+        cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
+                       + table_name + "') order by ordinal_position asc")
+        for row in cursor:
+            col_names2.append(row[0])
         for x in range(len(col_names)):
             cursor.execute("SELECT data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
-                           + table_name + "') and upper(column_name) = upper('" + col_vals[x] + "')")
-            if col_vals[x] == '' or col_vals[x].lower == 'null':
+                           + table_name + "') and upper(column_name) = upper('" + str(col_names[x]) + "')")
+            if str(col_vals[x]) == '' or str(col_vals[x]).lower() == 'null':
                 col_vals[x] = "null"
             elif cursor.fetchall()[0][0] in ("date", "nvarchar"):
-                col_vals[x] = "'" + col_vals[x] + "'"
-        s = "update " + table_name + " set " + col_names[0] + " = " + col_vals[0]
+                col_vals[x] = "'" + str(col_vals[x]) + "'"
+        s = "update " + table_name + " set " + str(col_names[0]) + " = " + str(col_vals[0])
         for x in range(len(col_names) - 1):
-            s = s + ", " + col_names[x + 1] + " = " + col_vals[x + 1]
-        where = " where " + col_names[0] + " = " + str(id) + " and " + col_names[1] + " = '" + str(start_date) + "'" + \
-            " and " + col_names[2] + " = " + str(id1) + " and " + col_names[3] + " = '" + str(start_date1) + "'" \
-            + " and " + col_names[4] + " = '" + str(start_date2) + "'"
+            s = s + ", " + str(col_names[x + 1]) + " = " + str(col_vals[x + 1])
+        where = " where " + str(col_names2[0]) + " = " + id + " and " + str(col_names2[1]) + " = '" + \
+                start_date + "'" + " and " + str(col_names2[2]) + " = " + str(id1) + " and " + \
+                str(col_names2[3]) + " = '" + start_date1 + "'" + " and " + str(col_names2[4]) + " = '" + \
+                start_date2 + "'"
         s = s + where
+        print(s)
         cursor.execute("select count(*) from " + table_name + where)
         count = cursor.fetchall()[0][0]
         cursor.execute(s)
@@ -421,10 +430,16 @@ def json_delete_main_table(table_name, id, start_date):
         connection = pyodbc.connect(
             "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
         cursor = connection.cursor()
-        s = "delete from " + table_name + " where ID = " + str(id) + " and StartDate = '" + str(start_date) + "'"
+        s = "delete from " + table_name
+        where = " where ID = " + str(id) + " and StartDate = '" + str(start_date) + "'"
+        s = s + where
+        cursor.execute("select count(*) from " + table_name + where)
+        count = cursor.fetchall()[0][0]
         cursor.execute(s)
         connection.commit()
-        return Response(status=200)
+        resp = Response(status=201)
+        resp.headers['Record count'] = count
+        return resp
     except:
         resp = Response(status=400)
         resp.headers['Record count'] = 0
@@ -447,12 +462,19 @@ def json_delete_relational_table(table_name, id, start_date, id1, start_date1, s
                        + table_name + "') order by ordinal_position asc")
         for row in cursor:
             col_names.append(row[0])
-        s = "delete from " + table_name + " where " + col_names[0] + " = " + str(id) + " and " + col_names[1] + " = '" \
+        s = "delete from " + table_name
+        where = " where " + col_names[0] + " = " + str(id) + " and " + col_names[1] + " = '" \
             + str(start_date) + "'" + " and " + col_names[2] + " = " + str(id1) + " and " + col_names[3] + " = '" + \
             str(start_date1) + "'" + " and " + col_names[4] + " = '" + str(start_date2) + "'"
+        s = s + where
+        print(s)
+        cursor.execute("select count(*) from " + table_name + where)
+        count = cursor.fetchall()[0][0]
         cursor.execute(s)
         connection.commit()
-        return Response(status=200)
+        resp = Response(status=201)
+        resp.headers['Record count'] = count
+        return resp
     except:
         resp = Response(status=400)
         resp.headers['Record count'] = 0
@@ -664,12 +686,12 @@ def update_all(table_name, set_vals, where_vals, connection):
     s = "update " + table_name + " set " + list(set_vals.keys())[0] + " = " + set_vals[list(set_vals.keys())[0]]
     for x in range(len(set_vals) - 1):
         s = s + ", " + list(set_vals.keys())[x + 1] + " = " + set_vals[list(set_vals.keys())[x + 1]]
-
     s = s + " where " + list(where_vals.keys())[0]
     if where_vals[list(where_vals.keys())[0]].lower() == "null":
         s = s + " is "
     else:
         s = s + " = "
+    print(s)
     s = s + where_vals[list(where_vals.keys())[0]]
     for x in range(len(where_vals) - 1):
         s = s + " and " + list(where_vals.keys())[x + 1]
@@ -678,10 +700,12 @@ def update_all(table_name, set_vals, where_vals, connection):
         else:
             s = s + " = "
         s = s + where_vals[list(where_vals.keys())[x + 1]]
-
+    print(s)
     cursor.execute(s)
     connection.commit()
-    return
+    cnt = cursor.rowcount
+    connection.close()
+    return cnt
 
 
 @app.route('/delete<table_name>', methods=['GET', 'DELETE'])
@@ -730,10 +754,11 @@ def delete_all(table_name, where_vals, connection):
         else:
             s = s + " = "
         s = s + where_vals[list(where_vals.keys())[x + 1]]
-
     cursor.execute(s)
     connection.commit()
-    return
+    cnt = cursor.rowcount
+    connection.close()
+    return cnt
 
 
 #APP

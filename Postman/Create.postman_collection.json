@@ -1,0 +1,309 @@
+{
+	"info": {
+		"_postman_id": "5ad265b6-410b-4e37-82a7-4b4668ad7709",
+		"name": "Create",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Tabele",
+			"item": [
+				{
+					"name": "Gmina",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "login",
+								"value": "APIJSON",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "APIJSON",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 100, \r\n    \"Nazwa\": \"Warszawa\", \r\n    \"Rodzaj\": \"Gmina Miejska\", \r\n    \"StartDate\": \"1900-01-01\", \r\n    \"EndDate\": \"9999-12-31\", \r\n    \"StartDateVerified\": 0, \r\n    \"EndDateVerified\": 0, \r\n    \"CzyDataPowstania\": 0, \r\n    \"Opis\": \"\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/gmina",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"gmina"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Powiat",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "login",
+								"type": "text",
+								"value": "APIJSON"
+							},
+							{
+								"key": "password",
+								"type": "text",
+								"value": "APIJSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 100, \r\n    \"Nazwa\": \"Warszawa\", \r\n    \"Rodzaj\": \"Powiat\", \r\n    \"StartDate\": \"1900-01-01\", \r\n    \"EndDate\": \"9999-12-31\", \r\n    \"StartDateVerified\": 0, \r\n    \"EndDateVerified\": 0, \r\n    \"CzyDataPowstania\": 0, \r\n    \"Opis\": \"\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/powiat",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"powiat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Województwo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "login",
+								"type": "text",
+								"value": "APIJSON"
+							},
+							{
+								"key": "password",
+								"type": "text",
+								"value": "APIJSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ID\": 100, \r\n    \"Nazwa\": \"Warszawa\", \r\n    \"Rodzaj\": \"Województwo\", \r\n    \"StartDate\": \"1900-01-01\", \r\n    \"EndDate\": \"9999-12-31\", \r\n    \"StartDateVerified\": 0, \r\n    \"EndDateVerified\": 0, \r\n    \"CzyDataPowstania\": 0, \r\n    \"Opis\": \"\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/Wojewodztwo",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Wojewodztwo"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tabele Relacyjne",
+			"item": [
+				{
+					"name": "GminaRelacja",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "login",
+								"type": "text",
+								"value": "APIJSON"
+							},
+							{
+								"key": "password",
+								"type": "text",
+								"value": "APIJSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IDGmina_Old\": 21,\r\n    \"Start_Date_Old\": \"1900-01-01\",\r\n    \"IDGmina_New\": 1,\r\n    \"Start_Date_New\": \"1900-01-01\",\r\n    \"StartDate\": \"1976-07-02\",\r\n    \"EndDate\": \"1998-12-31\",\r\n    \"Typ\": \"asd\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/gminarelacja",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"gminarelacja"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GminaWojewodztwo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "login",
+								"value": "APIJSON",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "APIJSON",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IDGmina\": 1,\r\n    \"StartDateGmina\": \"1900-01-01\",\r\n    \"IDWojewodztwo\": 2,\r\n    \"StartDateWojewodztwo\": \"1999-01-01\",\r\n    \"StartDate\": \"1999-01-01\",\r\n    \"EndDate\": \"1999-01-02\",\r\n    \"StartDateVerified\": 0,\r\n    \"EndDateVerified\": 1,\r\n    \"Opis\": \"null\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/gminaWojewodztwo",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"gminaWojewodztwo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GminaPowiat",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "login",
+								"type": "text",
+								"value": "APIJSON"
+							},
+							{
+								"key": "password",
+								"type": "text",
+								"value": "APIJSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IDGmina\": 1,\r\n    \"StartDateGmina\": \"1900-01-01\",\r\n    \"IDPowiat\": 2,\r\n    \"StartDatePowiat\": \"1999-01-01\",\r\n    \"StartDate\": \"1999-01-01\",\r\n    \"EndDate\": \"1999-01-02\",\r\n    \"StartDateVerified\": 0,\r\n    \"EndDateVerified\": 1,\r\n    \"Opis\": \"null\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/GminaPowiat",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"GminaPowiat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PowiatWojewództwo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "login",
+								"type": "text",
+								"value": "APIJSON"
+							},
+							{
+								"key": "password",
+								"type": "text",
+								"value": "APIJSON"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"IDPowiat\": 1,\r\n    \"StartDatePowiat\": \"1999-01-01\",\r\n    \"IDWojewodztwo\": 3,\r\n    \"StartDateWojewodztwo\": \"1999-01-01\",\r\n    \"StartDate\": \"1999-01-01\",\r\n    \"EndDate\": \"1999-01-02\",\r\n    \"StartDateVerified\": 0,\r\n    \"EndDateVerified\": 1,\r\n    \"Opis\": \"null\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/PowiatWojewodztwo",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"PowiatWojewodztwo"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

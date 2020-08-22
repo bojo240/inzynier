@@ -219,11 +219,10 @@ def json_widoki_wszystko_tablename_id_argdate(table_name, id, arg_date):
             FROM wszystko \
             where " + table_name + "_ID = " + id + " \
             and '" + arg_date + "' between " + table_name + "_StartDate and " + table_name + "_EndDate"
-    print(query)
     return api_respond_handler(query)
 
 
-@app.route('/api/widoki/GminaGmina/<arg>', methods=['GET'])
+@app.route('/api/widoki/gminagmina/<arg>', methods=['GET'])
 def json_widoki_gminagmina_arg(arg):
     if str(arg).isnumeric():
         query = "SELECT * \
@@ -236,7 +235,7 @@ def json_widoki_gminagmina_arg(arg):
     return api_respond_handler(query)
 
 
-@app.route('/api/widoki/GminaGmina/<id>/<arg_date>', methods=['GET'])
+@app.route('/api/widoki/gminagmina/<id>/<arg_date>', methods=['GET'])
 def json_widoki_gminagmina_id_argdate(id, arg_date):
     query = "SELECT * \
             FROM GminaGmina \
@@ -254,11 +253,12 @@ def json_widoki_view(view):
 
 @app.route('/api/widoki/<view>/<arg>', methods=['GET'])
 def json_widoki_view_arg(view, arg):
-    if view[0].lower == 'g':
+    tab = ""
+    if view[0].lower() == 'g':
         tab = "gmina"
-    elif view[0].lower == 'p':
+    elif view[0].lower() == 'p':
         tab = "powiat"
-    elif view[0].lower == 'w':
+    elif view[0].lower() == 'w':
         tab = "wojewodztwo"
     if str(arg).isnumeric():
         query = "SELECT * \
@@ -270,17 +270,17 @@ def json_widoki_view_arg(view, arg):
                 FROM " + view + "\
                 where '" + arg + "' between startdate and enddate\
                 order by startDate"
-    print(query)
     return api_respond_handler(query)
 
 
 @app.route('/api/widoki/<view>/<id>/<arg_date>', methods=['GET'])
 def json_widoki_view_id_argdate(view, id, arg_date):
-    if view[0].lower == 'g':
+    tab = ""
+    if view[0].lower() == 'g':
         tab = "gmina"
-    elif view[0].lower == 'p':
+    elif view[0].lower() == 'p':
         tab = "powiat"
-    elif view[0].lower == 'w':
+    elif view[0].lower() == 'w':
         tab = "wojewodztwo"
     query = "SELECT * \
             FROM " + view + "\
@@ -294,7 +294,8 @@ def json_widoki_view_id_argdate(view, id, arg_date):
 #   HTTP POST
 @app.route('/api/<table_name>', methods=['POST'])
 def json_insert_table(table_name):
-    data = request.get_json()
+    data = request.get_json(force=True)
+    data = dict(data)
     col_names = list(data.keys())
     col_vals = list(data.values())
     login = request.headers.get('login')
@@ -311,11 +312,11 @@ def json_insert_table(table_name):
         return Response(status=401)
     for row in cursor:
         for x in range(len(col_names)):
-            if col_names[x] == row[0]:
-                if col_vals[x] == '':
+            if str(col_names[x]) == row[0]:
+                if str(col_vals[x]) == '' or str(col_vals[x]) == "null":
                     col_vals[x] = "null"
                 elif row[1] in ("date", "nvarchar"):
-                    col_vals[x] = "'" + col_vals[x] + "'"
+                    col_vals[x] = "'" + str(col_vals[x]) + "'"
                 break
     try:
         count = insert_all(table_name, col_names, col_vals, connection)
@@ -333,7 +334,7 @@ def json_insert_table(table_name):
 #       TABLES
 @app.route('/api/<table_name>/<id>/<start_date>', methods=['PUT'])
 def json_udate_main_table(table_name, id, start_date):
-    data = request.get_json()
+    data = request.get_json(force=True)
     col_names = list(data.keys())
     col_vals = list(data.values())
     login = request.headers.get('login')
@@ -373,7 +374,7 @@ def json_udate_main_table(table_name, id, start_date):
 #       RELATIONAL_TABLES
 @app.route('/api/<table_name>/<id>/<start_date>/<id1>/<start_date1>/<start_date2>', methods=['PUT'])
 def json_update_relational_table(table_name, id, start_date, id1, start_date1, start_date2):
-    data = request.get_json()
+    data = request.get_json(force=True)
     col_names = list(data.keys())
     col_vals = list(data.values())
     login = request.headers.get('login')
@@ -610,12 +611,12 @@ def insert_table(table_name):
 
 def insert_all(table_name, col_names, col_vals, connection):
     cursor = connection.cursor()
-    s = "insert into " + table_name + "(" + col_names[0]
+    s = "insert into " + table_name + "(" + str(col_names[0])
     for x in range(len(col_names) - 1):
-        s = s + ", " + col_names[x + 1]
-    s = s + ") values (" + col_vals[0]
+        s = s + ", " + str(col_names[x + 1])
+    s = s + ") values (" + str(col_vals[0])
     for x in range(len(col_vals) - 1):
-        s = s + ", " + col_vals[x + 1]
+        s = s + ", " + str(col_vals[x + 1])
     s = s + ")"
     cursor.execute(s)
     connection.commit()

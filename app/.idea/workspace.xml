@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf61d1e2-9a82-43f3-9681-4d0244cdd729" name="Default Changelist" comment="poprawa literówki">
-      <change beforePath="$PROJECT_DIR$/../Database/3generateStructures.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/3generateStructures.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/temp/widok_relacje_gmin.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/temp/widok_relacje_gmin.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/temp/widok_relacje_powiatow.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/temp/widok_relacje_powiatow.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/temp/widok_relacje_wojewodztw.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/temp/widok_relacje_wojewodztw.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pytania do Promotora.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Pytania do Promotora.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_sql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../asd.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../asd.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zmianyapi.docx" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,11 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flask_sql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="225" column="34" selection-start-line="225" selection-start-column="34" selection-end-line="225" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#113#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="245">
+              <caret line="157" column="8" lean-forward="true" selection-start-line="157" selection-start-column="8" selection-end-line="157" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -41,7 +38,6 @@
       <find>generateToIndexHTML</find>
       <find>HMMDTP9</find>
       <find>cursor[0]</find>
-      <find>print</find>
       <find>prin</find>
       <find>StartDateRelacji</find>
       <find>unicode(arg).isNumeric():</find>
@@ -51,6 +47,8 @@
       <find>override_url_for</find>
       <find>dated_url_for</find>
       <find>@app.route</find>
+      <find>get_json()</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>APIconnection</replace>
@@ -80,8 +78,8 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="521" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="286" />
     <option name="y" value="-8" />
     <option name="width" value="976" />
     <option name="height" value="1056" />
@@ -257,7 +255,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16684435" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1684435" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.32995737" />
@@ -354,11 +352,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flask_sql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="225" column="34" selection-start-line="225" selection-start-column="34" selection-end-line="225" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#113#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="245">
+          <caret line="157" column="8" lean-forward="true" selection-start-line="157" selection-start-column="8" selection-end-line="157" selection-end-column="8" />
         </state>
       </provider>
     </entry>

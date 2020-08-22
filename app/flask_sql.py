@@ -134,13 +134,6 @@ def json_tabele_tablename_id_date(table_name, id, arg_date):
 #       RELATIONAL_TABLES
 
 
-@app.route('/api/relacje/<table_name>', methods=['GET'])
-def json_relacje_tablename(table_name):
-    query = "SELECT * \
-            FROM " + table_name
-    return api_respond_handler(query)
-
-
 @app.route('/api/relacje/gminarelacja/<arg>', methods=['GET'])
 def json_relacje_gminarelacja_arg(arg):
     if str(arg).isnumeric():
@@ -163,16 +156,26 @@ def json_relacje_gminarelacja_id_argdate(id, arg_date):
     return api_respond_handler(query)
 
 
-@app.route('/api/relacje/<table_name>/<id_type>/<arg>', methods=['GET'])
-def json_relacje_table_name_idtype_arg(table_name, id_type, arg):
-    if str(arg).isnumeric():
-        query = "SELECT * \
-                FROM " + table_name + "\
-                where " + id_type + "_ID = " + arg
-    else:
-        query = "SELECT * \
-                FROM " + table_name + "\
-                where '" + arg + "' between startdate and enddate"
+@app.route('/api/relacje/<table_name>', methods=['GET'])
+def json_relacje_tablename(table_name):
+    query = "SELECT * \
+            FROM " + table_name
+    return api_respond_handler(query)
+
+
+@app.route('/api/relacje/<table_name>/<arg_date>', methods=['GET'])
+def json_relacje_table_name_arg_date(table_name, arg_date):
+    query = "SELECT * \
+            FROM " + table_name + "\
+            where '" + arg_date + "' between startdate and enddate"
+    return api_respond_handler(query)
+
+
+@app.route('/api/relacje/<table_name>/<id_type>/<id>', methods=['GET'])
+def json_relacje_table_name_idtype_id(table_name, id_type, id):
+    query = "SELECT * \
+            FROM " + table_name + "\
+            where ID" + id_type + " = " + id
     return api_respond_handler(query)
 
 
@@ -180,13 +183,13 @@ def json_relacje_table_name_idtype_arg(table_name, id_type, arg):
 def json_relacje_tablename_idtype_id_argdate(table_name, id_type, id, arg_date):
     query = "SELECT * \
             FROM " + table_name + "\
-            where " + id_type + "_ID = " + id + " \
-            and " + arg_date + "between startdate and enddate"
+            where ID" + id_type + " = " + id + " \
+            and '" + arg_date + "' between startdate and enddate"
     return api_respond_handler(query)
 
 
-@app.route('/api/relacje/<table_name>/<id>/<start_date>/<id1>/<start_date1>/<start_date2>', methods=['GET'])
-def json_relacje_id_date_id1_date1_argdate(table_name, id, start_date, id1, start_date1, argdate):
+@app.route('/api/relacje/<table_name>/<id1>/<arg_date1>/<id2>/<arg_date2>/<arg_date3>', methods=['GET'])
+def json_relacje_id_date_id1_date1_argdate(table_name, id1, arg_date1, id2, arg_date2, arg_date3):
     login = request.headers.get('login')
     password = request.headers.get('password')
     try:
@@ -197,11 +200,11 @@ def json_relacje_id_date_id1_date1_argdate(table_name, id, start_date, id1, star
                         FROM " + table_name)
         query = "SELECT * \
                 FROM " + table_name + \
-               " where " + cursor.description[0][0] + " = " + id +\
-               " and " + cursor.description[1][0] + " = '" + start_date + "'" + \
-               " and " + cursor.description[2][0] + " = " + id1 + \
-               " and " + cursor.description[3][0] + " = '" + start_date1 + "'" + \
-               " and '" + argdate + "' between startdate and enddate"
+               " where " + cursor.description[0][0] + " = " + id1 +\
+               " and " + cursor.description[1][0] + " = '" + arg_date1 + "'" + \
+               " and " + cursor.description[2][0] + " = " + id2 + \
+               " and " + cursor.description[3][0] + " = '" + arg_date2 + "'" + \
+               " and '" + arg_date3 + "' between startdate and enddate"
         connection.close()
         return api_respond_handler(query)
     except:
@@ -221,32 +224,14 @@ def json_widoki_wszystko():
     return api_respond_handler(query)
 
 
-@app.route('/api/widoki/<table_name>', methods=['GET'])
-def json_widoki_view(table_name):
+@app.route('/api/widoki/wszystko/<arg_date>', methods=['GET'])
+def json_widoki_wszystko_argdate(arg_date):
     query = "SELECT * \
-            FROM " + table_name
-    return api_respond_handler(query)
-
-
-@app.route('/api/widoki/gminarelacje/<arg>', methods=['GET'])
-def json_widoki_gminarelacje_arg(arg):
-    if str(arg).isnumeric():
-        query = "SELECT * \
-                FROM gminaRelacje \
-                where IDGmina1 = " + arg + " or idGmina1 = " + arg
-    else:
-        query = "SELECT * \
-                FROM gminaRelacje\
-                where '" + arg + "' between startdate and enddate"
-    return api_respond_handler(query)
-
-
-@app.route('/api/widoki/gminarelacje/<id>/<arg_date>', methods=['GET'])
-def json_widoki_gminarelacje_id_argdate(id, arg_date):
-    query = "SELECT * \
-            FROM gminaRelacje \
-            where (IDGmina1 = " + id + " or IDGmina2 = " + id + ") \
-            and '" + arg_date + "' between startdate and enddate"
+            FROM wszystko \
+            where ('" + arg_date + "' between GminaPowiat_StartDate and gminapowiat_endDate \
+            or '" + arg_date + "' between GminaWojewodztwo_StartDate and GminaWojewodztwo_EndDate) \
+            and '" + arg_date + "' between PowiatWojewodztwo_StartDate and PowiatWojewodztwo_EndDate \
+            order by gmina_nazwa"
     return api_respond_handler(query)
 
 
@@ -270,18 +255,37 @@ def json_widoki_wszystko_tablename_id_argdate(table_name, id, arg_date):
     query = "SELECT * \
             FROM wszystko \
             where " + table_name + "_ID = " + id + " \
-            and " + arg_date + " betweeen " + table_name + "_StartDate and " + table_name + "_EndDate"
+            and '" + arg_date + "' between " + table_name + "_StartDate and " + table_name + "_EndDate"
+    print(query)
     return api_respond_handler(query)
 
 
-@app.route('/api/widoki/wszystko/<arg_date>', methods=['GET'])
-def json_widoki_wszystko_date(arg_date):
+@app.route('/api/widoki/<table_name>', methods=['GET'])
+def json_widoki_view(table_name):
     query = "SELECT * \
-            FROM wszystko \
-            where ('" + arg_date + "' between GminaPowiat_StartDate and gminapowiat_endDate \
-            or '" + arg_date + "' between GminaWojewodztwo_StartDate and GminaWojewodztwo_EndDate) \
-            and '" + arg_date + "' between PowiatWojewodztwo_StartDate and PowiatWojewodztwo_EndDate \
-            order by gmina_nazwa"
+            FROM " + table_name
+    return api_respond_handler(query)
+
+
+@app.route('/api/widoki/gminarelacje/<arg>', methods=['GET'])
+def json_widoki_gminarelacje_arg(arg):
+    if str(arg).isnumeric():
+        query = "SELECT * \
+                FROM gminaRelacje \
+                where IDGmina1 = " + arg + " or idGmina2 = " + arg
+    else:
+        query = "SELECT * \
+                FROM gminaRelacje\
+                where '" + arg + "' between startdate and enddate"
+    return api_respond_handler(query)
+
+
+@app.route('/api/widoki/gminarelacje/<id>/<arg_date>', methods=['GET'])
+def json_widoki_gminarelacje_id_argdate(id, arg_date):
+    query = "SELECT * \
+            FROM gminaRelacje \
+            where (IDGmina1 = " + id + " or IDGmina2 = " + id + ") \
+            and '" + arg_date + "' between startdate and enddate"
     return api_respond_handler(query)
 
 
@@ -297,6 +301,7 @@ def json_widoki_gmina_arg(arg):
                 FROM relacjeGmin\
                 where '" + arg + "' between startdate and enddate\
                 order by startDate"
+    print(query)
     return api_respond_handler(query)
 
 

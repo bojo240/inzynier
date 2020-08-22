@@ -10,435 +10,456 @@
 			"item": [
 				{
 					"name": "Gmina",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+					"item": [
+						{
+							"name": "Gmina",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/tabele/gmina",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"tabele",
+										"gmina"
+									]
+								}
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/tabele/gmina",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"tabele",
-								"gmina"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Gmina_ID",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+							"response": []
+						},
+						{
+							"name": "Gmina_ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/tabele/gmina/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"tabele",
+										"gmina",
+										"1"
+									]
+								}
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/tabele/gmina/1",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"tabele",
-								"gmina",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Gmina_Arg_Date",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"type": "text",
-								"value": "dbreader"
+							"response": []
+						},
+						{
+							"name": "Gmina_Arg_Date",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/tabele/gmina/2020-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"tabele",
+										"gmina",
+										"2020-01-01"
+									]
+								}
 							},
-							{
-								"key": "password",
-								"type": "text",
-								"value": "dbreader"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/tabele/gmina/2020-01-01",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"tabele",
-								"gmina",
-								"2020-01-01"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Gmina_ID_Arg_Date",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"type": "text",
-								"value": "dbreader"
+							"response": []
+						},
+						{
+							"name": "Gmina_ID_Arg_Date",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/tabele/gmina/1/2020-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"tabele",
+										"gmina",
+										"1",
+										"2020-01-01"
+									]
+								}
 							},
-							{
-								"key": "password",
-								"type": "text",
-								"value": "dbreader"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/tabele/gmina/1/2020-01-01",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"tabele",
-								"gmina",
-								"1",
-								"2020-01-01"
-							]
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Powiat",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+					"item": [
+						{
+							"name": "Powiat",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/tabele/powiat",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"tabele",
+										"powiat"
+									]
+								}
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/tabele/powiat",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"tabele",
-								"powiat"
-							]
+							"response": []
+						},
+						{
+							"name": "Powiat_ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/tabele/powiat/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"tabele",
+										"powiat",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Powiat_Arg_Date",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/tabele/powiat/2020-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"tabele",
+										"powiat",
+										"2020-01-01"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Powiat_ID_Arg_Date",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/tabele/powiat/1/2020-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"tabele",
+										"powiat",
+										"1",
+										"2020-01-01"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Powiat_ID",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+					"name": "Województwo",
+					"item": [
+						{
+							"name": "Wojewodztwo",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/tabele/wojewodztwo",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"tabele",
+										"wojewodztwo"
+									]
+								}
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/tabele/powiat/1",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"tabele",
-								"powiat",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Powiat_Arg_Date",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+							"response": []
+						},
+						{
+							"name": "Wojewodztwo_ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/tabele/wojewodztwo/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"tabele",
+										"wojewodztwo",
+										"1"
+									]
+								}
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/tabele/powiat/2020-01-01",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"tabele",
-								"powiat",
-								"2020-01-01"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Powiat_ID_Arg_Date",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"type": "text",
-								"value": "dbreader"
+							"response": []
+						},
+						{
+							"name": "Wojewodztwo_Arg_Date",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/tabele/wojewodztwo/2020-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"tabele",
+										"wojewodztwo",
+										"2020-01-01"
+									]
+								}
 							},
-							{
-								"key": "password",
-								"type": "text",
-								"value": "dbreader"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/tabele/powiat/1/2020-01-01",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"tabele",
-								"powiat",
-								"1",
-								"2020-01-01"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Wojewodztwo",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+							"response": []
+						},
+						{
+							"name": "Wojewodztwo_ID_Arg_Date",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/tabele/wojewodztwo/2/2020-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"tabele",
+										"wojewodztwo",
+										"2",
+										"2020-01-01"
+									]
+								}
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/tabele/wojewodztwo",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"tabele",
-								"wojewodztwo"
-							]
+							"response": []
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "Wojewodztwo_ID",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
-							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/tabele/wojewodztwo/1",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"tabele",
-								"wojewodztwo",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Wojewodztwo_Arg_Date",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
-							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/tabele/wojewodztwo/2020-01-01",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"tabele",
-								"wojewodztwo",
-								"2020-01-01"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Wojewodztwo_ID_Arg_Date",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
-							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/tabele/wojewodztwo/2/2020-01-01",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"tabele",
-								"wojewodztwo",
-								"2",
-								"2020-01-01"
-							]
-						}
-					},
-					"response": []
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -447,144 +468,774 @@
 			"name": "relacje",
 			"item": [
 				{
-					"name": "GminaWojewodztwo",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+					"name": "GminaRelacja",
+					"item": [
+						{
+							"name": "GminaRelacja",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminarelacja",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminarelacja"
+									]
+								}
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/relacje/gminawojewodztwo",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"relacje",
-								"gminawojewodztwo"
-							]
+							"response": []
+						},
+						{
+							"name": "GminaRelacja_ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminarelacja/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminarelacja",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GminaRelacja_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminarelacja/1990-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminarelacja",
+										"1990-01-01"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GminaRelacja_ID_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminarelacja/1/1990-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminarelacja",
+										"1",
+										"1990-01-01"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GminaRelacja_ID1_ArgDate1_ID2_ArgDate2_ArgDate3",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"type": "text",
+										"value": "dbreader"
+									},
+									{
+										"key": "password",
+										"type": "text",
+										"value": "dbreader"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminarelacja/39/1900-01-01/1/1900-01-01/1977-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminarelacja",
+										"39",
+										"1900-01-01",
+										"1",
+										"1900-01-01",
+										"1977-01-01"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "PowiatWojewodztwo",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+					"name": "GminaWojewodztwo",
+					"item": [
+						{
+							"name": "GminaWojewodztwo",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminawojewodztwo",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminawojewodztwo"
+									]
+								}
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/relacje/powiatwojewodztwo",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"relacje",
-								"powiatwojewodztwo"
-							]
+							"response": []
+						},
+						{
+							"name": "GminaWojewodztwo_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminawojewodztwo/1990-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminawojewodztwo",
+										"1990-01-01"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GminaWojewodztwo_IDType_ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminawojewodztwo/gmina/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminawojewodztwo",
+										"gmina",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GminaWojewodztwo_IDType_ID_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminawojewodztwo/gmina/1/1990-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminawojewodztwo",
+										"gmina",
+										"1",
+										"1990-01-01"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GminaWojewodztwo_ID1_ArgDate1_ID2_ArgDate2_ArgDate3",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminawojewodztwo/1/1900-01-01/1/1975-06-01/1977-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminawojewodztwo",
+										"1",
+										"1900-01-01",
+										"1",
+										"1975-06-01",
+										"1977-01-01"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
 					"name": "GminaPowiat",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+					"item": [
+						{
+							"name": "GminaPowiat",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminapowiat",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminapowiat"
+									]
+								}
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/relacje/gminapowiat",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"relacje",
-								"gminapowiat"
-							]
+							"response": []
+						},
+						{
+							"name": "GminaPowiat_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminapowiat/1999-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminapowiat",
+										"1999-01-01"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GminaPowiat_IDType_ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminapowiat/gmina/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminapowiat",
+										"gmina",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GminaPowiat_IDType_ID_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminapowiat/gmina/1/1999-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminapowiat",
+										"gmina",
+										"1",
+										"1999-01-01"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GminaPowiat_ID1_ArgDate1_ID2_ArgDate2_ArgDate3",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/gminapowiat/1/1999-01-01/1/1900-01-01/1999-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"gminapowiat",
+										"1",
+										"1999-01-01",
+										"1",
+										"1900-01-01",
+										"1999-01-01"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "GminaRelacja",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "login",
-								"value": "dbreader",
-								"type": "text"
+					"name": "PowiatWojewodztwo",
+					"item": [
+						{
+							"name": "PowiatWojewodztwo",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/powiatwojewodztwo",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"powiatwojewodztwo"
+									]
+								}
 							},
-							{
-								"key": "password",
-								"value": "dbreader",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:5000/api/relacje/gminarelacja",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"relacje",
-								"gminarelacja"
-							]
+							"response": []
+						},
+						{
+							"name": "PowiatWojewodztwo_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/powiatwojewodztwo/1999-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"powiatwojewodztwo",
+										"1999-01-01"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PowiatWojewodztwo_IDType_ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/powiatwojewodztwo/powiat/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"powiatwojewodztwo",
+										"powiat",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PowiatWojewodztwo_IDType_ID_ArgDate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/powiatwojewodztwo/powiat/1/1999-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"powiatwojewodztwo",
+										"powiat",
+										"1",
+										"1999-01-01"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PowiatWojewodztwo_ID1_ArgDate1_ID2_ArgDate2_ArgDate3",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "login",
+										"value": "dbreader",
+										"type": "text"
+									},
+									{
+										"key": "password",
+										"value": "dbreader",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:5000/api/relacje/powiatwojewodztwo/1/1999-01-01/2/1999-01-01/1999-01-01",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"relacje",
+										"powiatwojewodztwo",
+										"1",
+										"1999-01-01",
+										"2",
+										"1999-01-01",
+										"1999-01-01"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				}
 			],
 			"protocolProfileBehavior": {}

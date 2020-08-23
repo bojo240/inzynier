@@ -1244,10 +1244,10 @@
 			"name": "widoki",
 			"item": [
 				{
-					"name": "Wszystko",
+					"name": "GminaPowiatWojewodztwoRelacje",
 					"item": [
 						{
-							"name": "Wszystko",
+							"name": "GminaPowiatWojewodztwoRelacje",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1283,7 +1283,7 @@
 							"response": []
 						},
 						{
-							"name": "Wszystko_ArgDate",
+							"name": "GminaPowiatWojewodztwoRelacje_ArgDate",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1320,7 +1320,7 @@
 							"response": []
 						},
 						{
-							"name": "Wszystko_IDType_ID",
+							"name": "GminaPowiatWojewodztwoRelacje_IDType_ID",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1358,7 +1358,7 @@
 							"response": []
 						},
 						{
-							"name": "Wszystko_IDType_ID_ArgDate",
+							"name": "GminaPowiatWojewodztwoRelacje_IDType_ID_ArgDate",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1401,10 +1401,10 @@
 					"_postman_isSubFolder": true
 				},
 				{
-					"name": "RelacjeGminaGmina",
+					"name": "GminaGminaRelacje",
 					"item": [
 						{
-							"name": "GminaGmina",
+							"name": "GminaGminaRelacje",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1440,7 +1440,7 @@
 							"response": []
 						},
 						{
-							"name": "GminaGmina_ID",
+							"name": "GminaGminaRelacje_ID",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1477,7 +1477,7 @@
 							"response": []
 						},
 						{
-							"name": "GminaGmina_ArgDate",
+							"name": "GminaGminaRelacje_ArgDate",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1514,7 +1514,7 @@
 							"response": []
 						},
 						{
-							"name": "GminaGmina_ID_ArgDate",
+							"name": "GminaGminaRelacje_ID_ArgDate",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1556,10 +1556,10 @@
 					"_postman_isSubFolder": true
 				},
 				{
-					"name": "RelacjeGmina",
+					"name": "GminaRelacje",
 					"item": [
 						{
-							"name": "RelacjeGmina",
+							"name": "GminaRelacje",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1595,7 +1595,7 @@
 							"response": []
 						},
 						{
-							"name": "RelacjeGmina_ID",
+							"name": "GminaRelacje_ID",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1632,7 +1632,7 @@
 							"response": []
 						},
 						{
-							"name": "RelacjeGmina_ArgDate",
+							"name": "GminaRelacje_ArgDate",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1669,7 +1669,7 @@
 							"response": []
 						},
 						{
-							"name": "RelacjeGmina_ID_ArgDate",
+							"name": "GminaRelacje_ID_ArgDate",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1711,10 +1711,10 @@
 					"_postman_isSubFolder": true
 				},
 				{
-					"name": "RelacjePowiat",
+					"name": "PowiatRelacje",
 					"item": [
 						{
-							"name": "RelacjePowiat",
+							"name": "PowiatRelacje",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1750,7 +1750,7 @@
 							"response": []
 						},
 						{
-							"name": "RelacjePowiat_ID",
+							"name": "PowiatRelacje_ID",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1787,7 +1787,7 @@
 							"response": []
 						},
 						{
-							"name": "RelacjePowiat_ArgDate",
+							"name": "PowiatRelacje_ArgDate",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1824,7 +1824,7 @@
 							"response": []
 						},
 						{
-							"name": "RelacjePowiat_ID_ArgDate",
+							"name": "PowiatRelacje_ID_ArgDate",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1866,10 +1866,10 @@
 					"_postman_isSubFolder": true
 				},
 				{
-					"name": "RelacjeWojewodztwo",
+					"name": "WojewodztwoRelacje",
 					"item": [
 						{
-							"name": "Wojewodztwo",
+							"name": "WojewodztwoRelacje",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1905,7 +1905,7 @@
 							"response": []
 						},
 						{
-							"name": "Wojewodztwo_ID",
+							"name": "WojewodztwoRelacje_ID",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1942,7 +1942,7 @@
 							"response": []
 						},
 						{
-							"name": "Wojewodztwo_ArgDate",
+							"name": "WojewodztwoRelacje_ArgDate",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1979,19 +1979,19 @@
 							"response": []
 						},
 						{
-							"name": "Wojewodztwo_ID_ArgDate",
+							"name": "WojewodztwoRelacje_ID_ArgDate",
 							"request": {
 								"method": "GET",
 								"header": [
 									{
 										"key": "login",
-										"value": "dbreader",
-										"type": "text"
+										"type": "text",
+										"value": "dbreader"
 									},
 									{
 										"key": "password",
-										"value": "dbreader",
-										"type": "text"
+										"type": "text",
+										"value": "dbreader"
 									}
 								],
 								"url": {

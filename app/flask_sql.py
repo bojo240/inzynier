@@ -230,7 +230,7 @@ def json_widoki_gminagmina_arg(arg):
                 where IDGmina1 = " + arg + " or idGmina2 = " + arg
     else:
         query = "SELECT * \
-                FROM gminaRelacje\
+                FROM GminaGmina\
                 where '" + arg + "' between startdate and enddate"
     return api_respond_handler(query)
 

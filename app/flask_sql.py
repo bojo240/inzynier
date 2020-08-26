@@ -67,8 +67,7 @@ def api_respond_handler(query):
 #       TABLES
 @app.route('/api/tabele/<table_name>', methods=['GET'])
 def json_tabele_tablename(table_name):
-    query = "SELECT * \
-            FROM " + table_name
+    query = "SELECT * FROM " + table_name
     return api_respond_handler(query)
 
 
@@ -102,7 +101,7 @@ def json_relacje_gminarelacja_arg(arg):
     if str(arg).isnumeric():
         query = "SELECT * \
                 FROM gminaRelacja \
-                where IDGmina_OLD = " + arg + " or idGmina_New = " + arg
+                where IDGmina_1 = " + arg + " or idGmina_2 = " + arg
     else:
         query = "SELECT * \
                 FROM gminaRelacja\
@@ -114,7 +113,7 @@ def json_relacje_gminarelacja_arg(arg):
 def json_relacje_gminarelacja_id_argdate(id, arg_date):
     query = "SELECT * \
             FROM gminaRelacja \
-            where (IDGmina_OLD = " + id + " or idGmina_New = " + id + ") \
+            where (IDGmina_1 = " + id + " or idGmina_2 = " + id + ") \
             and '" + arg_date + "' between startdate and enddate"
     return api_respond_handler(query)
 
@@ -179,46 +178,48 @@ def json_relacje_id_date_id1_date1_argdate(table_name, id1, arg_date1, id2, arg_
 #API
 #   HTTP GET
 #       VIEWS
-@app.route('/api/widoki/wszystko', methods=['GET'])
-def json_widoki_wszystko():
+@app.route('/api/widoki/GminaPowiatWojewodztwo', methods=['GET'])
+def json_widoki_GminaPowiatWojewodztwoRelacje():
     query = "SELECT * \
-            FROM wszystko \
-            order by gmina_nazwa"
+            FROM GminaPowiatWojewodztwo \
+            order by gmina_name"
+    print(query)
     return api_respond_handler(query)
 
 
-@app.route('/api/widoki/wszystko/<arg_date>', methods=['GET'])
-def json_widoki_wszystko_argdate(arg_date):
+@app.route('/api/widoki/GminaPowiatWojewodztwo/<arg_date>', methods=['GET'])
+def json_widoki_GminaPowiatWojewodztwo_argdate(arg_date):
     query = "SELECT * \
-            FROM wszystko \
+            FROM GminaPowiatWojewodztwo \
             where ('" + arg_date + "' between GminaPowiat_StartDate and gminapowiat_endDate \
             or '" + arg_date + "' between GminaWojewodztwo_StartDate and GminaWojewodztwo_EndDate) \
             and '" + arg_date + "' between PowiatWojewodztwo_StartDate and PowiatWojewodztwo_EndDate \
-            order by gmina_nazwa"
+            order by gmina_name"
     return api_respond_handler(query)
 
 
-@app.route('/api/widoki/wszystko/<table_name>/<arg>', methods=['GET'])
-def json_widoki_wszystko_tablename_arg(table_name, arg):
+@app.route('/api/widoki/GminaPowiatWojewodztwo/<table_name>/<arg>', methods=['GET'])
+def json_widoki_GminaPowiatWojewodztwo_tablename_arg(table_name, arg):
     if str(arg).isnumeric():
         query = "SELECT * \
-                FROM wszystko \
+                FROM GminaPowiatWojewodztwo \
                 where " + table_name + "_ID = " + arg + " \
-                order by " + table_name + "_nazwa"
+                order by " + table_name + "_name"
     else:
         query = "SELECT * \
-                FROM wszystko \
+                FROM GminaPowiatWojewodztwoRelacje \
                 where " + arg + " betweeen " + table_name + "_StartDate and " + table_name + "_EndDate  \
-                order by " + table_name + "_nazwa"
+                order by " + table_name + "_name"
     return api_respond_handler(query)
 
 
-@app.route('/api/widoki/wszystko/<table_name>/<id>/<arg_date>', methods=['GET'])
-def json_widoki_wszystko_tablename_id_argdate(table_name, id, arg_date):
+@app.route('/api/widoki/GminaPowiatWojewodztwo/<table_name>/<id>/<arg_date>', methods=['GET'])
+def json_widoki_GminaPowiatWojewodztwo_tablename_id_argdate(table_name, id, arg_date):
     query = "SELECT * \
-            FROM wszystko \
+            FROM GminaPowiatWojewodztwo \
             where " + table_name + "_ID = " + id + " \
             and '" + arg_date + "' between " + table_name + "_StartDate and " + table_name + "_EndDate"
+    print(query)
     return api_respond_handler(query)
 
 
@@ -320,7 +321,7 @@ def json_insert_table(table_name):
                 break
     try:
         count = insert_all(table_name, col_names, col_vals, connection)
-        resp = Response(status=201)
+        resp = Response(status=200)
         resp.headers['Record count'] = count
         return resp
     except:
@@ -361,7 +362,7 @@ def json_udate_main_table(table_name, id, start_date):
         count = cursor.fetchall()[0][0]
         cursor.execute(s)
         connection.commit()
-        resp = Response(status=201)
+        resp = Response(status=200)
         resp.headers['Record count'] = count
         return resp
     except:
@@ -410,7 +411,7 @@ def json_update_relational_table(table_name, id, start_date, id1, start_date1, s
         count = cursor.fetchall()[0][0]
         cursor.execute(s)
         connection.commit()
-        resp = Response(status=201)
+        resp = Response(status=200)
         resp.headers['Record count'] = count
         return resp
     except:
@@ -437,7 +438,7 @@ def json_delete_main_table(table_name, id, start_date):
         count = cursor.fetchall()[0][0]
         cursor.execute(s)
         connection.commit()
-        resp = Response(status=201)
+        resp = Response(status=200)
         resp.headers['Record count'] = count
         return resp
     except:

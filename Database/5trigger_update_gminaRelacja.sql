@@ -16,11 +16,11 @@ begin
 	ELSE IF @rowc = 0
 		RETURN
 	UPDATE gminaRelacja 
-	SET IDGmina_New = (select id from inserted), Start_Date_New = (select startDate from inserted)
-	where IDGmina_New = (select id from deleted) and Start_Date_New = (select startDate from deleted)
+	SET IDGmina_2 = (select id from inserted), Start_Date_2 = (select startDate from inserted)
+	where IDGmina_2 = (select id from deleted) and Start_Date_2 = (select startDate from deleted)
 	UPDATE gminaRelacja 
-	SET IDGmina_Old = (select id from inserted), Start_Date_Old = (select startDate from inserted)
-	where IDGmina_Old = (select id from deleted) and Start_Date_Old = (select startDate from deleted)
+	SET IDGmina_1 = (select id from inserted), Start_Date_1 = (select startDate from inserted)
+	where IDGmina_1 = (select id from deleted) and Start_Date_1 = (select startDate from deleted)
 end
 
 

@@ -1244,10 +1244,10 @@
 			"name": "widoki",
 			"item": [
 				{
-					"name": "GminaPowiatWojewodztwoRelacje",
+					"name": "GminaPowiatWojewodztwo",
 					"item": [
 						{
-							"name": "GminaPowiatWojewodztwoRelacje",
+							"name": "GminaPowiatWojewodztwo",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1263,7 +1263,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/wszystko",
+									"raw": "http://127.0.0.1:5000/api/widoki/GminaPowiatWojewodztwo",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1275,7 +1275,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"wszystko"
+										"GminaPowiatWojewodztwo"
 									]
 								},
 								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
@@ -1283,7 +1283,7 @@
 							"response": []
 						},
 						{
-							"name": "GminaPowiatWojewodztwoRelacje_ArgDate",
+							"name": "GminaPowiatWojewodztwo_ArgDate",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1299,7 +1299,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/wszystko/2020-01-01",
+									"raw": "http://127.0.0.1:5000/api/widoki/GminaPowiatWojewodztwo/2020-01-01",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1311,7 +1311,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"wszystko",
+										"GminaPowiatWojewodztwo",
 										"2020-01-01"
 									]
 								},
@@ -1320,7 +1320,7 @@
 							"response": []
 						},
 						{
-							"name": "GminaPowiatWojewodztwoRelacje_IDType_ID",
+							"name": "GminaPowiatWojewodztwo_IDType_ID",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1336,7 +1336,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/wszystko/gmina/1",
+									"raw": "http://127.0.0.1:5000/api/widoki/GminaPowiatWojewodztwo/gmina/1",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1348,7 +1348,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"wszystko",
+										"GminaPowiatWojewodztwo",
 										"gmina",
 										"1"
 									]
@@ -1358,7 +1358,7 @@
 							"response": []
 						},
 						{
-							"name": "GminaPowiatWojewodztwoRelacje_IDType_ID_ArgDate",
+							"name": "GminaPowiatWojewodztwo_IDType_ID_ArgDate",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1374,7 +1374,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/wszystko/powiat/1/1999-01-01",
+									"raw": "http://127.0.0.1:5000/api/widoki/GminaPowiatWojewodztwo/powiat/1/1999-01-01",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1386,7 +1386,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"wszystko",
+										"GminaPowiatWojewodztwo",
 										"powiat",
 										"1",
 										"1999-01-01"

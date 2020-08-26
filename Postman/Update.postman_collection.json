@@ -26,7 +26,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Nazwa\": \"Warszawa\", \r\n    \"Rodzaj\": \"Gmina Miejska\", \r\n    \"StartDate\": \"1900-01-01\", \r\n    \"EndDate\": \"9999-12-31\", \r\n    \"StartDateVerified\": 0, \r\n    \"EndDateVerified\": 0, \r\n    \"CzyDataPowstania\": 0, \r\n    \"Opis\": \"\"\r\n}",
+							"raw": "{\r\n    \"Name\": \"Warszawa\", \r\n    \"Type\": \"Gmina Miejska\", \r\n    \"StartDate\": \"1900-01-01\", \r\n    \"EndDate\": \"9999-12-31\", \r\n    \"StartDateVerified\": 0, \r\n    \"EndDateVerified\": 0, \r\n    \"IsCreationDate\": 0, \r\n    \"Description\": \"\"\r\n}",
 							"options": {
 								"raw": {}
 							}
@@ -69,7 +69,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Nazwa\": \"Warszawa\", \r\n    \"Rodzaj\": \"Powiat\", \r\n    \"StartDate\": \"1900-01-01\", \r\n    \"EndDate\": \"9999-12-31\", \r\n    \"StartDateVerified\": 0, \r\n    \"EndDateVerified\": 0, \r\n    \"CzyDataPowstania\": 0, \r\n    \"Opis\": \"\"\r\n}",
+							"raw": "{\r\n    \"Name\": \"Warszawa\", \r\n    \"Type\": \"Powiat\", \r\n    \"StartDate\": \"1900-01-01\", \r\n    \"EndDate\": \"9999-12-31\", \r\n    \"StartDateVerified\": 0, \r\n    \"EndDateVerified\": 0, \r\n    \"IsCreationDate\": 0, \r\n    \"Description\": \"\"\r\n}",
 							"options": {
 								"raw": {}
 							}
@@ -112,7 +112,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Nazwa\": \"Warszawa\"\r\n}",
+							"raw": "{\r\n    \"Name\": \"Warszawa\"\r\n}",
 							"options": {
 								"raw": {}
 							}
@@ -161,7 +161,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"IDGmina_Old\": 21,\r\n    \"Start_Date_Old\": \"1900-01-01\",\r\n    \"IDGmina_New\": 37,\r\n    \"Start_Date_New\": \"1900-01-01\",\r\n    \"StartDate\": \"1976-07-02\",\r\n    \"EndDate\": \"1998-12-31\",\r\n    \"Typ\": \"asdd\"\r\n}",
+							"raw": "{\r\n    \"IDGmina_1\": 21,\r\n    \"Start_Date_1\": \"1900-01-01\",\r\n    \"IDGmina_2\": 37,\r\n    \"Start_Date_2\": \"1900-01-01\",\r\n    \"StartDate\": \"1976-07-02\",\r\n    \"EndDate\": \"1998-12-31\",\r\n    \"Description\": \"asdd\"\r\n}",
 							"options": {
 								"raw": {}
 							}
@@ -207,7 +207,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Opis\": \"asdd\"\r\n}",
+							"raw": "{\r\n    \"Description\": \"asdd\"\r\n}",
 							"options": {
 								"raw": {}
 							}
@@ -253,7 +253,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Opis\": \"asdd\"\r\n}",
+							"raw": "{\r\n    \"Description\": \"asdd\"\r\n}",
 							"options": {
 								"raw": {}
 							}
@@ -299,7 +299,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Opis\": \"asdd\"\r\n}",
+							"raw": "{\r\n    \"Description\": \"asdd\"\r\n}",
 							"options": {
 								"raw": {}
 							}

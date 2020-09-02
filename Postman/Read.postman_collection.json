@@ -487,7 +487,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/relacje/gminarelacja",
+									"raw": "http://127.0.0.1:5000/api/relacje/GminaRelacja",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -499,7 +499,7 @@
 									"path": [
 										"api",
 										"relacje",
-										"gminarelacja"
+										"GminaRelacja"
 									]
 								}
 							},
@@ -522,7 +522,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/relacje/gminarelacja/1",
+									"raw": "http://127.0.0.1:5000/api/relacje/GminaRelacja/1",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -534,7 +534,7 @@
 									"path": [
 										"api",
 										"relacje",
-										"gminarelacja",
+										"GminaRelacja",
 										"1"
 									]
 								}
@@ -558,7 +558,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/relacje/gminarelacja/1990-01-01",
+									"raw": "http://127.0.0.1:5000/api/relacje/GminaRelacja/1990-01-01",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -570,7 +570,7 @@
 									"path": [
 										"api",
 										"relacje",
-										"gminarelacja",
+										"GminaRelacja",
 										"1990-01-01"
 									]
 								}
@@ -594,7 +594,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/relacje/gminarelacja/1/1990-01-01",
+									"raw": "http://127.0.0.1:5000/api/relacje/GminaRelacja/1/1990-01-01",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -606,7 +606,7 @@
 									"path": [
 										"api",
 										"relacje",
-										"gminarelacja",
+										"GminaRelacja",
 										"1",
 										"1990-01-01"
 									]
@@ -631,7 +631,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/relacje/gminarelacja/39/1900-01-01/1/1900-01-01/1977-01-01",
+									"raw": "http://127.0.0.1:5000/api/relacje/GminaRelacja/39/1900-01-01/1/1900-01-01/1977-01-01",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -643,7 +643,7 @@
 									"path": [
 										"api",
 										"relacje",
-										"gminarelacja",
+										"GminaRelacja",
 										"39",
 										"1900-01-01",
 										"1",
@@ -1420,7 +1420,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/gminagmina",
+									"raw": "http://127.0.0.1:5000/api/widoki/GminaGmina",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1432,7 +1432,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"gminagmina"
+										"GminaGmina"
 									]
 								},
 								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
@@ -1456,7 +1456,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/gminagmina/1",
+									"raw": "http://127.0.0.1:5000/api/widoki/GminaGmina/1",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1468,7 +1468,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"gminagmina",
+										"GminaGmina",
 										"1"
 									]
 								},
@@ -1493,7 +1493,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/gminagmina/1990-01-01",
+									"raw": "http://127.0.0.1:5000/api/widoki/GminaGmina/1990-01-01",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1505,7 +1505,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"gminagmina",
+										"GminaGmina",
 										"1990-01-01"
 									]
 								},
@@ -1530,7 +1530,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/gminagmina/1/1990-01-01",
+									"raw": "http://127.0.0.1:5000/api/widoki/GminaGmina/1/1990-01-01",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1542,7 +1542,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"gminagmina",
+										"GminaGmina",
 										"1",
 										"1990-01-01"
 									]
@@ -1575,7 +1575,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/gminaRelacje",
+									"raw": "http://127.0.0.1:5000/api/widoki/GminaRelacje",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1587,7 +1587,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"gminaRelacje"
+										"GminaRelacje"
 									]
 								},
 								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
@@ -1611,7 +1611,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/gminaRelacje/1",
+									"raw": "http://127.0.0.1:5000/api/widoki/GminaRelacje/1",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1623,7 +1623,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"gminaRelacje",
+										"GminaRelacje",
 										"1"
 									]
 								},
@@ -1648,7 +1648,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/gminaRelacje/2020-01-01",
+									"raw": "http://127.0.0.1:5000/api/widoki/GminaRelacje/2020-01-01",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1660,7 +1660,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"gminaRelacje",
+										"GminaRelacje",
 										"2020-01-01"
 									]
 								},
@@ -1685,7 +1685,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/gminaRelacje/1/2020-01-01",
+									"raw": "http://127.0.0.1:5000/api/widoki/GminaRelacje/1/2020-01-01",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1697,7 +1697,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"gminaRelacje",
+										"GminaRelacje",
 										"1",
 										"2020-01-01"
 									]
@@ -1730,7 +1730,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/powiatRelacje",
+									"raw": "http://127.0.0.1:5000/api/widoki/PowiatRelacje",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1742,7 +1742,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"powiatRelacje"
+										"PowiatRelacje"
 									]
 								},
 								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
@@ -1766,7 +1766,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/powiatRelacje/1",
+									"raw": "http://127.0.0.1:5000/api/widoki/PowiatRelacje/1",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1778,7 +1778,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"powiatRelacje",
+										"PowiatRelacje",
 										"1"
 									]
 								},
@@ -1803,7 +1803,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/powiatRelacje/2020-01-01",
+									"raw": "http://127.0.0.1:5000/api/widoki/PowiatRelacje/2020-01-01",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1815,7 +1815,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"powiatRelacje",
+										"PowiatRelacje",
 										"2020-01-01"
 									]
 								},
@@ -1840,7 +1840,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/powiatRelacje/1/2020-01-01",
+									"raw": "http://127.0.0.1:5000/api/widoki/PowiatRelacje/1/2020-01-01",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1852,7 +1852,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"powiatRelacje",
+										"PowiatRelacje",
 										"1",
 										"2020-01-01"
 									]
@@ -1885,7 +1885,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/wojewodztwoRelacje",
+									"raw": "http://127.0.0.1:5000/api/widoki/WojewodztwoRelacje",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1897,7 +1897,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"wojewodztwoRelacje"
+										"WojewodztwoRelacje"
 									]
 								},
 								"description": "Zapytanie zwraca pełen zestaw danych w bazie danych."
@@ -1921,7 +1921,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/wojewodztwoRelacje/1",
+									"raw": "http://127.0.0.1:5000/api/widoki/WojewodztwoRelacje/1",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1933,7 +1933,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"wojewodztwoRelacje",
+										"WojewodztwoRelacje",
 										"1"
 									]
 								},
@@ -1958,7 +1958,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/wojewodztwoRelacje/2020-01-01",
+									"raw": "http://127.0.0.1:5000/api/widoki/WojewodztwoRelacje/2020-01-01",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -1970,7 +1970,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"wojewodztwoRelacje",
+										"WojewodztwoRelacje",
 										"2020-01-01"
 									]
 								},
@@ -1995,7 +1995,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://127.0.0.1:5000/api/widoki/wojewodztwoRelacje/1/1990-01-01",
+									"raw": "http://127.0.0.1:5000/api/widoki/WojewodztwoRelacje/1/1990-01-01",
 									"protocol": "http",
 									"host": [
 										"127",
@@ -2007,7 +2007,7 @@
 									"path": [
 										"api",
 										"widoki",
-										"wojewodztwoRelacje",
+										"WojewodztwoRelacje",
 										"1",
 										"1990-01-01"
 									]

@@ -96,7 +96,7 @@ def json_tabele_tablename_id_date(table_name, id, arg_date):
 #API
 #   HTTP GET
 #       RELATIONAL_TABLES
-@app.route('/api/relacje/gminarelacja/<arg>', methods=['GET'])
+@app.route('/api/relacje/GminaRelacja/<arg>', methods=['GET'])
 def json_relacje_gminarelacja_arg(arg):
     if str(arg).isnumeric():
         query = "SELECT * \
@@ -109,7 +109,7 @@ def json_relacje_gminarelacja_arg(arg):
     return api_respond_handler(query)
 
 
-@app.route('/api/relacje/gminarelacja/<id>/<arg_date>', methods=['GET'])
+@app.route('/api/relacje/GminaRelacja/<id>/<arg_date>', methods=['GET'])
 def json_relacje_gminarelacja_id_argdate(id, arg_date):
     query = "SELECT * \
             FROM gminaRelacja \
@@ -223,7 +223,7 @@ def json_widoki_GminaPowiatWojewodztwo_tablename_id_argdate(table_name, id, arg_
     return api_respond_handler(query)
 
 
-@app.route('/api/widoki/gminagmina/<arg>', methods=['GET'])
+@app.route('/api/widoki/GminaGmina/<arg>', methods=['GET'])
 def json_widoki_gminagmina_arg(arg):
     if str(arg).isnumeric():
         query = "SELECT * \
@@ -236,7 +236,7 @@ def json_widoki_gminagmina_arg(arg):
     return api_respond_handler(query)
 
 
-@app.route('/api/widoki/gminagmina/<id>/<arg_date>', methods=['GET'])
+@app.route('/api/widoki/GminaGmina/<id>/<arg_date>', methods=['GET'])
 def json_widoki_gminagmina_id_argdate(id, arg_date):
     query = "SELECT * \
             FROM GminaGmina \
@@ -533,8 +533,9 @@ def appl():
 @app.route('/list<table_name>', methods=['GET'])
 def list_table(table_name):
     if session.get("asd") is not None:
-        s = generate_table(table_name)
-        return render_template('list.html', table=s)
+        s, col_names = generate_table(table_name)
+        return render_template('list.html', table=s, navigation=[str(x + 1) for x in range(len(col_names))],
+                               col_names=col_names)
     return redirect(url_for('index'))
 
 
@@ -597,7 +598,7 @@ def generate_table(table_name):
 
     df = pd.DataFrame(data=lista, columns=column_names)
     df_html = df.to_html(index=False)  # use pandas method to auto generate html
-    return df_html
+    return df_html, column_names
 
 
 @app.route('/insert<table_name>', methods=['GET', 'POST'])
@@ -625,10 +626,11 @@ def insert_table(table_name):
                     value = "'" + value + "'"
                 col_vals.append(value)
             insert_all(table_name, col_names, col_vals, GUIconnection)
+        s, x = generate_table(table_name)
         return render_template("insert.html", table_name=table_name,
                                navigation=[str(x + 1) for x in range(len(col_names))],
                                col_names=col_names,
-                               table=generate_table(table_name))
+                               table=s)
     return redirect(url_for('index'))
 
 
@@ -675,10 +677,11 @@ def update_table(table_name):
                 if wherevalue != '' and wherevalue != "''":
                     where_vals[col_names[x]] = wherevalue
             update_all(table_name, set_vals, where_vals, GUIconnection)
+        s, x = generate_table(table_name)
         return render_template("update.html", table_name=table_name,
                                navigation=[str(x + 1) for x in range(len(col_names))],
                                col_names=col_names,
-                               table=generate_table(table_name))
+                               table=s)
     return redirect(url_for('index'))
 
 
@@ -733,10 +736,11 @@ def delete_table(table_name):
                 if wherevalue != '' and wherevalue != "''":
                     where_vals[col_names[x]] = wherevalue
             delete_all(table_name, where_vals, GUIconnection)
+        s, x = generate_table(table_name)
         return render_template("delete.html", table_name=table_name,
                                navigation=[str(x + 1) for x in range(len(col_names))],
                                col_names=col_names,
-                               table=generate_table(table_name))
+                               table=s)
     return redirect(url_for('index'))
 
 

@@ -6,6 +6,7 @@
 <div id = 'listform'>
 <form action="/list{{table_name}}" method=get>
     <table><br>
+        <b>Read {{table_name}}</b>
         <tr>
             <th>Columns:</th>
             {% for col in col_names %}
@@ -18,7 +19,7 @@
             {% endfor %}
         </tr>
         <tr>
-            <td><input type=submit value=Potwierdz></td>
+            <td><input type=submit value=Submit></td>
             </tr>
     </table>
             <br>

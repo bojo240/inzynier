@@ -5,15 +5,16 @@
 <div id = 'insertform'>
 <form action="/insert{{table_name}}" method=post>
     <table><br>
-         <b>Insert {{table_name}}</b>
-        <tr>
+         <b>Create {{table_name}}</b>
+                <tr>
+            <th>Columns:</th>
             {% for col in col_names %}
                 <th>{{col}}</th>
             {% endfor %}
         </tr>
-         <tr>
+        <tr><th>Where:</th>
             {% for item in navigation %}
-                <td><input type=text name={{item}} required/></td>
+                <td><input type=text name="where{{item}}"/></td>
             {% endfor %}
         </tr>
         <tr>

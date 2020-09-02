@@ -2,30 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf61d1e2-9a82-43f3-9681-4d0244cdd729" name="Default Changelist" comment="poprawa literówki">
-      <change beforePath="$PROJECT_DIR$/../Database/table1.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/temp/6Gmina.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/temp/6Powiat.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/temp/6Wojewodztwo.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/temp/trigger_delete_gminaRelacja.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/temp/trigger_update_gminaRelacja.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/temp/widok_Gmina_Gmina.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/temp/widok_relacje_gmin.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/temp/widok_relacje_powiatow.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/temp/widok_relacje_wojewodztw.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/temp/widok_wszystko.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Postman/Read.postman_collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Postman/Read.postman_collection.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pytania do Promotora.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/delete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/insert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_sql.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui_app.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../asd.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../podzial_administracyjny_1998.ods" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../podzial_administracyjny_2019.ods" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flask_sql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-83">
-              <caret line="201" column="70" selection-start-line="201" selection-start-column="70" selection-end-line="201" selection-end-column="70" />
+            <state relative-caret-position="422">
+              <caret line="363" column="27" selection-start-line="363" selection-start-column="27" selection-end-line="363" selection-end-column="27" />
               <folding>
                 <element signature="e#252#263#0" />
                 <element signature="e#345#379#0" />
@@ -66,6 +43,7 @@
                 <element signature="e#8862#8945#0" />
                 <element signature="e#9045#9618#0" />
                 <element signature="e#9744#10167#0" />
+                <element signature="e#10278#11643#0" />
               </folding>
             </state>
           </provider>
@@ -180,9 +158,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2547" />
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="453" />
+    <option name="y" value="-8" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -344,7 +322,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1748401" />
@@ -353,7 +331,7 @@
       <window_info id="DB Browser" order="3" weight="0.32995737" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.3261105" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.3261105" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934355" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -400,8 +378,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flask_sql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-83">
-          <caret line="201" column="70" selection-start-line="201" selection-start-column="70" selection-end-line="201" selection-end-column="70" />
+        <state relative-caret-position="422">
+          <caret line="363" column="27" selection-start-line="363" selection-start-column="27" selection-end-line="363" selection-end-column="27" />
           <folding>
             <element signature="e#252#263#0" />
             <element signature="e#345#379#0" />
@@ -428,6 +406,7 @@
             <element signature="e#8862#8945#0" />
             <element signature="e#9045#9618#0" />
             <element signature="e#9744#10167#0" />
+            <element signature="e#10278#11643#0" />
           </folding>
         </state>
       </provider>

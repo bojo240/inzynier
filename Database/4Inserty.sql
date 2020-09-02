@@ -25,9 +25,9 @@ values (1, 'Bielsko-Bia³a', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 1, 0
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (2, 'Andrychów', 'Gmina Miejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (3, 'Che³mek', 'Gmina Miejska', '1900-01-01', '1991-12-31', 1, 1, 0);
+values (3, 'Che³mek', 'Gmina Miejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (4, 'Cieszyn', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (4, 'Cieszyn', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (5, 'Kalwaria Zebrzydowska', 'Gmina Miejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
@@ -35,70 +35,70 @@ values (6, 'Kêty', 'Gmina Miejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (7, 'Maków Podhalañski', 'Gmina Miejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (8, 'Oœwiêcim', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (8, 'Oœwiêcim', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (9, 'Skoczów', 'Gmina Miejska', '1900-01-01', '1991-12-31', 1, 1, 0);
+values (9, 'Skoczów', 'Gmina Miejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (10, 'Strumieñ', 'Gmina Miejska', '1900-01-01', '1991-12-31', 1, 1, 0);
+values (10, 'Strumieñ', 'Gmina Miejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (11, 'Sucha Beskidzka', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (11, 'Sucha Beskidzka', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (12, 'Szczyrk', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (12, 'Szczyrk', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (13, 'Ustroñ', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (13, 'Ustroñ', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (14, 'Wadowice', 'Gmina Miejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (15, 'Wilamowice', 'Gmina Miejska', '1900-01-01', '1991-12-31', 1, 1, 0);
+values (15, 'Wilamowice', 'Gmina Miejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (16, 'Wis³a', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (16, 'Wis³a', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (17, 'Zator', 'Gmina Miejska', '1900-01-01', '1991-12-31', 1, 1, 0);
+values (17, 'Zator', 'Gmina Miejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (18, '¯ywiec', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (18, '¯ywiec', 'Gmina Miejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 
 -- Gminy Wiejskie 1975-1998
 
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (19, 'Andrychów', 'Gmina Wiejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (20, 'Brenna', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (20, 'Brenna', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (21, 'Brody', 'Gmina Wiejska', '1900-01-01', '1976-07-01', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (22, 'BrzeŸnica', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (22, 'BrzeŸnica', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (23, 'Buczkowice', 'Gmina Wiejska', '1900-01-01', '1976-07-01', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (23, 'Buczkowice', 'Gmina Wiejska', '1990-04-01', '1998-12-31', 1, 0, 0);
+values (23, 'Buczkowice', 'Gmina Wiejska', '1990-04-01', '1998-12-31', 1, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (24, 'Budzów', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (24, 'Budzów', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (25, 'Che³mek', 'Gmina Wiejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (26, 'Chybie', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (26, 'Chybie', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (27, 'Czernichów', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (27, 'Czernichów', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (28, 'Dêbowiec', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (28, 'Dêbowiec', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (29, 'Gilowice', 'Gmina Wiejska', '1900-01-01', '1976-07-01', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (29, 'Gilowice', 'Gmina Wiejska', '1991-04-01', '1998-12-31', 1, 0, 0);
+values (29, 'Gilowice', 'Gmina Wiejska', '1991-04-01', '1998-12-31', 1, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (30, 'Gilowice-Œlemieñ', 'Gmina Wiejska', '1976-07-02', '1991-04-01', 1, 1, 1);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (31, 'Goleszów', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (31, 'Goleszów', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (32, 'Ha¿lach', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (32, 'Ha¿lach', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (33, 'Istebna', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (33, 'Istebna', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (34, 'Jasienica', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (34, 'Jasienica', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (35, 'Jaworze', 'Gmina Wiejska', '1991-04-02', '1998-12-31', 1, 0, 1);
+values (35, 'Jaworze', 'Gmina Wiejska', '1991-04-02', '1998-12-31', 1, 1, 1);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (36, 'Jeleœnia', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (36, 'Jeleœnia', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (37, 'Kalwaria Zebrzydowska', 'Gmina Wiejska', '1976-07-02', '1991-12-31', 1, 1, 1);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
@@ -106,104 +106,104 @@ values (38, 'Kêty', 'Gmina Wiejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (39, 'Komorowice', 'Gmina Wiejska', '1900-01-01', '1976-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (40, 'Koszarawa', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (40, 'Koszarawa', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (41, 'Kozy', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (41, 'Kozy', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (42, 'Lanckorona', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (42, 'Lanckorona', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (43, 'Lipowa', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (43, 'Lipowa', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (44, '£êkawica', 'Gmina Wiejska', '1900-01-01', '1976-07-01', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (44, '£êkawica', 'Gmina Wiejska', '1991-04-02', '1998-12-31', 1, 0, 0);
+values (44, '£êkawica', 'Gmina Wiejska', '1991-04-02', '1998-12-31', 1, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (45, '£odygowice', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (45, '£odygowice', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (46, 'Maków Podhalañski', 'Gmina Wiejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (47, 'Milówka', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (47, 'Milówka', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (48, 'Mucharz', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (48, 'Mucharz', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (49, 'Osiek', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (49, 'Osiek', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (50, 'Oœwiêcim', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (50, 'Oœwiêcim', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (51, 'Polanka Wielka', 'Gmina Wiejska', '1976-07-02', '1998-12-31', 1, 0, 1);
+values (51, 'Polanka Wielka', 'Gmina Wiejska', '1976-07-02', '1998-12-31', 1, 1, 1);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (52, 'Por¹bka', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (52, 'Por¹bka', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (53, 'Przeciszów', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (53, 'Przeciszów', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (54, 'Radziechowy-Wieprz', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (54, 'Radziechowy-Wieprz', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (55, 'Rajcza', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (55, 'Rajcza', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (56, 'Skoczów', 'Gmina Wiejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (57, 'Spytkowice', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (57, 'Spytkowice', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (58, 'Stare Bielsko', 'Gmina Wiejska', '1900-01-01', '1976-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (59, 'Strumieñ', 'Gmina Wiejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (60, 'Stryszawa', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (60, 'Stryszawa', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (61, 'Stryszów', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (61, 'Stryszów', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (62, 'Szczyrk', 'Gmina Wiejska', '1976-07-02', '1990-03-31', 1, 1, 1);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (63, 'Œlemieñ', 'Gmina Wiejska', '1900-01-01', '1976-04-01', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (63, 'Œlemieñ', 'Gmina Wiejska', '1991-04-02', '1998-12-31', 0, 0, 0);
+values (63, 'Œlemieñ', 'Gmina Wiejska', '1991-04-02', '1998-12-31', 1, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (64, 'Œwinna', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (64, 'Œwinna', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (65, 'Tomice', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (65, 'Tomice', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (66, 'Ujso³y', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (66, 'Ujso³y', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (67, 'Wadowice', 'Gmina Wiejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (68, 'Wapienica', 'Gmina Wiejska', '1900-01-01', '1976-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (69, 'Wêgierska Górka', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (69, 'Wêgierska Górka', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (70, 'Wieprz', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (70, 'Wieprz', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (71, 'Wilamowice', 'Gmina Wiejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (72, 'Wilkowice', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (72, 'Wilkowice', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
 values (73, 'Zator', 'Gmina Wiejska', '1900-01-01', '1991-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (74, 'Zawoja', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (74, 'Zawoja', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (75, 'Zembrzyce', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 0, 0);
+values (75, 'Zembrzyce', 'Gmina Wiejska', '1900-01-01', '1998-12-31', 0, 1, 0);
 
 -- Gminy Miejsko - Wiejskie 1975-1998
 
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (76, 'Andrychów', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 1);
+values (2, 'Andrychów', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (77, 'Che³mek', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 1);
+values (3, 'Che³mek', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (78, 'Kalwaria Zebrzydowska', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 1);
+values (5, 'Kalwaria Zebrzydowska', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (79, 'Kêty', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 1);
+values (6, 'Kêty', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (80, 'Maków Podhalañski', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 1);
+values (7, 'Maków Podhalañski', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (81, 'Skoczów', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 1);
+values (9, 'Skoczów', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (82, 'Strumieñ', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 1);
+values (10, 'Strumieñ', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (83, 'Wadowice', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 1);
+values (14, 'Wadowice', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (84, 'Wilamowice', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 1);
+values (15, 'Wilamowice', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 0);
 insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
-values (85, 'Zator', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 1);
+values (17, 'Zator', 'Gmina Miejsko-Wiejska', '1992-01-01', '1998-12-31', 1, 1, 0);
 
 -- Relacje Gmina -> Wojewodztwo 1975-1998
 
@@ -238,33 +238,34 @@ values (3,'Ma³opolskie', 'Województwo', '1999-01-01', '9999-12-31', 1, 0, 1, nul
 
 -- Powiaty 1999+
 
-insert into Powiat(ID, Name, Type, StartDate, EndDate, IsCreationDate, StartDateVerified, EndDateVerified, Description) values (1,'Bielski', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
-insert into Powiat(ID, Name, Type, StartDate, EndDate, IsCreationDate, StartDateVerified, EndDateVerified, Description) values (2,'Cieszyñski', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
-insert into Powiat(ID, Name, Type, StartDate, EndDate, IsCreationDate, StartDateVerified, EndDateVerified, Description) values (3,'¯ywiecki', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
-insert into Powiat(ID, Name, Type, StartDate, EndDate, IsCreationDate, StartDateVerified, EndDateVerified, Description) values (4,'Oœwiêcimski', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
-insert into Powiat(ID, Name, Type, StartDate, EndDate, IsCreationDate, StartDateVerified, EndDateVerified, Description) values (5,'Suski', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
-insert into Powiat(ID, Name, Type, StartDate, EndDate, IsCreationDate, StartDateVerified, EndDateVerified, Description) values (6,'Wadowicki', 'Powiat', '1999-01-01', '9999-12-31', 1, 0, 1, null);
+insert into Powiat(ID, Name, Type, StartDate, EndDate, IsCreationDate, StartDateVerified, EndDateVerified, Description) values (1,'Bielski', 'Powiat', '1999-01-01', '9999-12-31', 1, 1, 0, null);
+insert into Powiat(ID, Name, Type, StartDate, EndDate, IsCreationDate, StartDateVerified, EndDateVerified, Description) values (2,'Cieszyñski', 'Powiat', '1999-01-01', '9999-12-31', 1, 1, 0, null);
+insert into Powiat(ID, Name, Type, StartDate, EndDate, IsCreationDate, StartDateVerified, EndDateVerified, Description) values (3,'¯ywiecki', 'Powiat', '1999-01-01', '9999-12-31', 1, 1, 0, null);
+insert into Powiat(ID, Name, Type, StartDate, EndDate, IsCreationDate, StartDateVerified, EndDateVerified, Description) values (4,'Oœwiêcimski', 'Powiat', '1999-01-01', '9999-12-31', 1, 1, 0, null);
+insert into Powiat(ID, Name, Type, StartDate, EndDate, IsCreationDate, StartDateVerified, EndDateVerified, Description) values (5,'Suski', 'Powiat', '1999-01-01', '9999-12-31', 1, 1, 0, null);
+insert into Powiat(ID, Name, Type, StartDate, EndDate, IsCreationDate, StartDateVerified, EndDateVerified, Description) values (6,'Wadowicki', 'Powiat', '1999-01-01', '9999-12-31', 1, 1, 0, null);
 
 -- Relacje Powiat -> Wojewodztwo 1999+
 
-insert into PowiatWojewodztwo values (1, '1999-01-01', 2, '1999-01-01','1999-01-01', '9999-12-31', 1, 1, null);
-insert into PowiatWojewodztwo values (2, '1999-01-01', 2, '1999-01-01','1999-01-01', '9999-12-31', 1, 1, null);
-insert into PowiatWojewodztwo values (3, '1999-01-01', 2, '1999-01-01','1999-01-01', '9999-12-31', 1, 1, null);
-insert into PowiatWojewodztwo values (4, '1999-01-01', 3, '1999-01-01','1999-01-01', '9999-12-31', 1, 1, null);
-insert into PowiatWojewodztwo values (5, '1999-01-01', 3, '1999-01-01','1999-01-01', '9999-12-31', 1, 1, null);
-insert into PowiatWojewodztwo values (6, '1999-01-01', 3, '1999-01-01','1999-01-01', '9999-12-31', 1, 1, null);
+insert into PowiatWojewodztwo values (1, '1999-01-01', 2, '1999-01-01','1999-01-01', '9999-12-31', 1, 0, null);
+insert into PowiatWojewodztwo values (2, '1999-01-01', 2, '1999-01-01','1999-01-01', '9999-12-31', 1, 0, null);
+insert into PowiatWojewodztwo values (3, '1999-01-01', 2, '1999-01-01','1999-01-01', '9999-12-31', 1, 0, null);
+insert into PowiatWojewodztwo values (4, '1999-01-01', 3, '1999-01-01','1999-01-01', '9999-12-31', 1, 0, null);
+insert into PowiatWojewodztwo values (5, '1999-01-01', 3, '1999-01-01','1999-01-01', '9999-12-31', 1, 0, null);
+insert into PowiatWojewodztwo values (6, '1999-01-01', 3, '1999-01-01','1999-01-01', '9999-12-31', 1, 0, null);
 
 -- Gminy 1999+
+
+insert into gmina(id, Name, Type, startDate, enddate, StartDateVerified, EndDateVerified, IsCreationDate)
+values (1, 'Bielsko-Bia³a', 'Gmina Miejska', '1999-01-01', '9999-12-31', 1, 0, 0);
 
 update Gmina
 set EndDate = '9999-12-31', 
 	EndDateVerified = 0
 where 
-	EndDate = '1998-12-31';
+	EndDate = '1998-12-31' and id != 1;
 
 -- Relacje Gmina -> Powiat 1999
-
-insert into GminaPowiat(IDGmina, StartDateGmina, IDPowiat, StartDatePowiat, StartDate, EndDate, StartDateVerified, EndDateVerified, Description) values (1, '1900-01-01', 1, '1999-01-01' ,'1999-01-01', '9999-12-31', 1, 0, null);
 
 merge into GminaPowiat gp
 using (	Select g.ID as IDGminy, g.StartDate, p.ID
@@ -276,6 +277,9 @@ using (	Select g.ID as IDGminy, g.StartDate, p.ID
 when not matched then 
 insert (IDGmina, StartDateGmina, IDPowiat, StartDatePowiat, StartDate, EndDate, StartDateVerified, EndDateVerified, Description)
 values (p.IDGminy, p.StartDate, p.ID, '1999-01-01', '1999-01-01', '9999-12-31', 1, 0, null);
+
+insert into GminaPowiat(IDGmina, StartDateGmina, IDPowiat, StartDatePowiat, StartDate, EndDate, StartDateVerified, EndDateVerified, Description) values (1, '1900-01-01', 1, '1999-01-01' ,'1999-01-01', '9999-12-31', 1, 0, null);
+
 
 merge into GminaPowiat gp
 using (	Select g.ID as IDGminy, g.StartDate, p.ID
@@ -340,3 +344,5 @@ select * from GminaRelacja;
 select * from Powiat;
 select * from PowiatWojewodztwo;
 select * from gminaPowiat;
+
+GO

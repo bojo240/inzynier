@@ -321,7 +321,7 @@ def json_insert_table(table_name):
                 break
     try:
         count = insert_all(table_name, col_names, col_vals, connection)
-        resp = Response(status=200)
+        resp = Response(status=201)
         resp.headers['Record count'] = count
         return resp
     except:
@@ -473,7 +473,7 @@ def json_delete_relational_table(table_name, id, start_date, id1, start_date1, s
         count = cursor.fetchall()[0][0]
         cursor.execute(s)
         connection.commit()
-        resp = Response(status=201)
+        resp = Response(status=200)
         resp.headers['Record count'] = count
         return resp
     except:

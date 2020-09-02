@@ -26,7 +26,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Name\": \"Warszawa\", \r\n    \"Type\": \"Gmina Miejska\", \r\n    \"StartDate\": \"1900-01-01\", \r\n    \"EndDate\": \"9999-12-31\", \r\n    \"StartDateVerified\": 0, \r\n    \"EndDateVerified\": 0, \r\n    \"IsCreationDate\": 0, \r\n    \"Description\": \"\"\r\n}",
+							"raw": "{\r\n    \"Name\": \"Warszawa\", \r\n    \"Type\": \"Gmina Miejska\", \r\n    \"StartDate\": \"1901-01-01\", \r\n    \"EndDate\": \"9999-12-31\", \r\n    \"StartDateVerified\": 0, \r\n    \"EndDateVerified\": 0, \r\n    \"IsCreationDate\": 0, \r\n    \"Description\": \"\"\r\n}",
 							"options": {
 								"raw": {}
 							}

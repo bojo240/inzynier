@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf61d1e2-9a82-43f3-9681-4d0244cdd729" name="Default Changelist" comment="poprawa literówki">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/delete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/update.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_sql.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,39 +18,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/flask_sql.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Templates/list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="363" column="27" selection-start-line="363" selection-start-column="27" selection-end-line="363" selection-end-column="27" />
-              <folding>
-                <element signature="e#252#263#0" />
-                <element signature="e#345#379#0" />
-                <element signature="e#456#490#0" />
-                <element signature="e#493#504#0" />
-                <element signature="e#600#634#0" />
-                <element signature="e#680#943#0" />
-                <element signature="e#1030#1820#0" />
-                <element signature="e#1955#2030#0" />
-                <element signature="e#2147#2461#0" />
-                <element signature="e#2601#2798#0" />
-                <element signature="e#2952#3287#0" />
-                <element signature="e#3423#3649#0" />
-                <element signature="e#3753#3842#0" />
-                <element signature="e#4282#4421#0" />
-                <element signature="e#4592#4803#0" />
-                <element signature="e#5014#5997#0" />
-                <element signature="e#6151#6300#0" />
-                <element signature="e#6442#6872#0" />
-                <element signature="e#7035#7528#0" />
-                <element signature="e#7717#7992#0" />
-                <element signature="e#8096#8425#0" />
-                <element signature="e#8555#8777#0" />
-                <element signature="e#8862#8945#0" />
-                <element signature="e#9045#9618#0" />
-                <element signature="e#9744#10167#0" />
-                <element signature="e#10278#11643#0" />
-              </folding>
+            <state relative-caret-position="323">
+              <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Templates/delete.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -52,23 +48,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
+            <state relative-caret-position="336">
+              <caret line="48" column="37" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Templates/list.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/flask_sql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+            <state relative-caret-position="128">
+              <caret line="706" column="119" lean-forward="true" selection-start-line="706" selection-start-column="119" selection-end-line="706" selection-end-column="119" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Templates/delete.html">
+        <entry file="file://$PROJECT_DIR$/Templates/insert.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
@@ -79,17 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Templates/update.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Templates/insert.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+            <state relative-caret-position="30">
+              <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -124,6 +111,7 @@
       <find>_OLD</find>
       <find />
       <find>list</find>
+      <find>gui</find>
       <find>generate_table</find>
     </findStrings>
     <replaceStrings>
@@ -146,19 +134,20 @@
         <option value="$PROJECT_DIR$/static/swagger.json" />
         <option value="$PROJECT_DIR$/swagger.json" />
         <option value="$PROJECT_DIR$/swagger.py" />
-        <option value="$PROJECT_DIR$/Templates/update.html" />
         <option value="$PROJECT_DIR$/html_codes/__init__.py" />
         <option value="$PROJECT_DIR$/../../3generateStructures .sql" />
-        <option value="$PROJECT_DIR$/Templates/delete.html" />
-        <option value="$PROJECT_DIR$/Templates/list.html" />
         <option value="$PROJECT_DIR$/Templates/insert.html" />
         <option value="$PROJECT_DIR$/../../insert.py" />
         <option value="$PROJECT_DIR$/Templates/base.html" />
+        <option value="$PROJECT_DIR$/Templates/index.html" />
+        <option value="$PROJECT_DIR$/Templates/list.html" />
+        <option value="$PROJECT_DIR$/Templates/update.html" />
+        <option value="$PROJECT_DIR$/Templates/delete.html" />
         <option value="$PROJECT_DIR$/flask_sql.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="453" />
     <option name="y" value="-8" />
     <option name="width" value="974" />
@@ -170,7 +159,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -181,12 +169,29 @@
             <path>
               <item name="app" type="b2602c69:ProjectViewProjectNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="html_codes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="stylesheets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -322,16 +327,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1748401" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17803837" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.32995737" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.3261105" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.27952328" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934355" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -356,13 +361,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/asd/asd.py" />
     <entry file="file://$PROJECT_DIR$/static/swagger.json" />
-    <entry file="file://$PROJECT_DIR$/Templates/app.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/swagger.json" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa11436.46023/app.py" />
     <entry file="file://$PROJECT_DIR$/html_codes/__init__.py">
@@ -376,76 +374,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_sql.py">
+    <entry file="file://$PROJECT_DIR$/../../insert.py" />
+    <entry file="file://$PROJECT_DIR$/../../flask_sql.py" />
+    <entry file="file://$PROJECT_DIR$/../../3generateStructures .sql" />
+    <entry file="file://$PROJECT_DIR$/Templates/app.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="363" column="27" selection-start-line="363" selection-start-column="27" selection-end-line="363" selection-end-column="27" />
-          <folding>
-            <element signature="e#252#263#0" />
-            <element signature="e#345#379#0" />
-            <element signature="e#456#490#0" />
-            <element signature="e#493#504#0" />
-            <element signature="e#600#634#0" />
-            <element signature="e#680#943#0" />
-            <element signature="e#1030#1820#0" />
-            <element signature="e#1955#2030#0" />
-            <element signature="e#2147#2461#0" />
-            <element signature="e#2601#2798#0" />
-            <element signature="e#2952#3287#0" />
-            <element signature="e#3423#3649#0" />
-            <element signature="e#3753#3842#0" />
-            <element signature="e#4282#4421#0" />
-            <element signature="e#4592#4803#0" />
-            <element signature="e#5014#5997#0" />
-            <element signature="e#6151#6300#0" />
-            <element signature="e#6442#6872#0" />
-            <element signature="e#7035#7528#0" />
-            <element signature="e#7717#7992#0" />
-            <element signature="e#8096#8425#0" />
-            <element signature="e#8555#8777#0" />
-            <element signature="e#8862#8945#0" />
-            <element signature="e#9045#9618#0" />
-            <element signature="e#9744#10167#0" />
-            <element signature="e#10278#11643#0" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../insert.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../flask_sql.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="48" column="37" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Templates/list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+        <state relative-caret-position="323">
+          <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Templates/delete.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Templates/update.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+        <state relative-caret-position="85">
+          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -456,10 +419,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../3generateStructures .sql">
+    <entry file="file://$PROJECT_DIR$/Templates/update.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2686">
-          <caret line="158" column="39" selection-start-line="135" selection-end-line="158" selection-end-column="39" />
+        <state relative-caret-position="30">
+          <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask_sql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="706" column="119" lean-forward="true" selection-start-line="706" selection-start-column="119" selection-end-line="706" selection-end-column="119" />
         </state>
       </provider>
     </entry>

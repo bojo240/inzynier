@@ -3,7 +3,7 @@
 {% block content %}
     <h2>{{context}}</h2>
 <div id = 'deleteform'>
-<form action="/delete{{table_name}}" method=DELETE>
+<form action="/delete{{table_name}}" method=post>
     <table><br>
          <b>Delete {{table_name}}</b>
         <tr>

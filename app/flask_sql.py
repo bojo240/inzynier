@@ -9,6 +9,9 @@ import pandas as pd
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
+@app.before_first_request
+def clean_session():
+    session.clear()
 
 #APP CONFIG
 #   ERROR HANDLING
@@ -496,20 +499,12 @@ def index():
     if session.get("asd") is not None:
         return redirect(url_for('appl'))
     if request.method == "POST":
-        if 'mslogin' in request.form:
-            try:
-                pyodbc.connect("Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;"
-                               "Trusted_connection=yes")
-                session['asd'] = 'asd'
-                return redirect(url_for('appl'))  # app -> appl
-            except:
-                return render_template('index.html')
         details = request.form
         login = details['login']
         password = details['haslo']
 
         if not login:  # if login is None or "" or everything that means null ([], (), {}, ...)
-            return render_template('index.html')
+            return redirect(url_for('index'))
 
         try:
             pyodbc.connect("Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID="
@@ -530,64 +525,52 @@ def appl():
     return redirect(url_for('index'))
 
 
-@app.route('/list<table_name>', methods=['GET'])
+@app.route('/list<table_name>', methods=['GET', 'POST'])
 def list_table(table_name):
     if session.get("asd") is not None:
-        s, col_names = generate_table(table_name)
-        return render_template('list.html', table=s, navigation=[str(x + 1) for x in range(len(col_names))],
+        login = session.get("login")
+        password = session.get("password")
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
+        cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
+                       + table_name + "') order by ordinal_position asc")
+        col_names = list()
+        col_types = list()
+        for row in cursor:
+            col_names.append(row[0])
+            col_types.append(row[1])
+        where = ""
+        print('asd')
+        if request.method == 'POST':
+            print('tak')
+            for x in range(len(col_names)):
+                if request.form["where" + str(x + 1)] is not None:
+                    wherevalue = request.form["where" + str(x + 1)]
+                    if col_types[x].lower() in ("date", "nvarchar") and wherevalue.lower() != "null":
+                        wherevalue = "'" + wherevalue + "'"
+                    if wherevalue != '' and wherevalue != "''":
+                        where = where + " and " + col_names[x]
+                        if wherevalue.lower() == "null":
+                            where = where + " is "
+                        else:
+                            where = where + " = "
+                        where = where + wherevalue
+        query = "select * from " + table_name + " where 1=1 " + where
+        print(query)
+        s, col_names = generate_table(query)
+        return render_template('list.html', table_name=table_name, table=s, navigation=[str(x + 1) for x in range(len(col_names))],
                                col_names=col_names)
     return redirect(url_for('index'))
 
 
-@app.route('/zawartosc_wojewodztw', methods=['GET', 'POST'])
-def zawartosc_wojewodztw():
+def generate_table(query):
     login = session.get("login")
     password = session.get("password")
     connection = pyodbc.connect(
         "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
     cursor = connection.cursor()
-    cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('\
-                   zawartosc_wojewodztw') order by ordinal_position asc")
-    col_names = list()
-    col_types = list()
-    for row in cursor:
-        col_names.append(row[0])
-        col_types.append(row[1])
-    col_vals = list()
-    if request.method == "POST":
-        for x in range(len(col_names)):
-            value = request.form[str(x + 1)]
-            if value == '':
-                value = "null"
-            elif col_types[x].lower() in ("date", "nvarchar"):
-                value = "'" + value + "'"
-            col_vals.append(value)
-
-    s = "select * from zawartosc_wojewodztw"
-    cursor.execute(s)
-    column_names = [d[0] for d in cursor.description]
-    lista = []
-    for row in cursor:
-        tmp = []
-        for x in row:
-            tmp.append(str(x))
-        lista.append(tmp)
-
-    df = pd.DataFrame(data=lista, columns=column_names)
-    df_html = df.to_html(index=False)  # use pandas method to auto generate html
-    return render_template("list.html", table_name="zawartosc_wojewodztw",
-                           navigation=[str(x + 1) for x in range(len(column_names))],
-                           col_names=column_names,
-                           table=df_html)
-
-
-def generate_table(table_name):
-    login = session.get("login")
-    password = session.get("password")
-    connection = pyodbc.connect(
-        "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
-    cursor = connection.cursor()
-    cursor.execute("SELECT * FROM " + table_name)
+    cursor.execute(query)
     column_names = [d[0] for d in cursor.description]
     lista = []
     for row in cursor:
@@ -619,14 +602,14 @@ def insert_table(table_name):
         col_vals = list()
         if request.method == 'POST':
             for x in range(len(col_names)):
-                value = request.form[str(x + 1)]
+                value = request.form["where"+str(x + 1)]
                 if value == '':
                     value = "null"
                 elif col_types[x].lower() in ("date", "nvarchar"):
                     value = "'" + value + "'"
                 col_vals.append(value)
-            insert_all(table_name, col_names, col_vals, GUIconnection)
-        s, x = generate_table(table_name)
+            insert_all(table_name, col_names, col_vals, connection)
+        s, x = generate_table("select * from " + table_name)
         return render_template("insert.html", table_name=table_name,
                                navigation=[str(x + 1) for x in range(len(col_names))],
                                col_names=col_names,
@@ -650,11 +633,14 @@ def insert_all(table_name, col_names, col_vals, connection):
     return cnt
 
 
-@app.route('/update<table_name>', methods=['GET', 'PUT'])
+@app.route('/update<table_name>', methods=['GET', 'POST'])
 def update_table(table_name):
     if session.get("asd") is not None:
-        global GUIconnection
-        cursor = GUIconnection.cursor()
+        login = session.get("login")
+        password = session.get("password")
+        connection = pyodbc.connect(
+            "Driver={SQL Server};Server=DESKTOP-BQPOPVS;PORT=1433;Database=Inzynier;UID=" + login + ";PWD=" + password)
+        cursor = connection.cursor()
         cursor.execute("SELECT column_name, data_type FROM INFORMATION_SCHEMA.COLUMNS where upper(table_name) = upper('"
                        + table_name + "') order by ordinal_position asc")
         col_names = list()
@@ -662,7 +648,7 @@ def update_table(table_name):
         for row in cursor:
             col_names.append(row[0])
             col_types.append(row[1])
-        if request.method == 'PUT':
+        if request.method == 'POST':
             set_vals = dict()
             where_vals = dict()
             for x in range(len(col_names)):
@@ -676,8 +662,8 @@ def update_table(table_name):
                     wherevalue = "'" + wherevalue + "'"
                 if wherevalue != '' and wherevalue != "''":
                     where_vals[col_names[x]] = wherevalue
-            update_all(table_name, set_vals, where_vals, GUIconnection)
-        s, x = generate_table(table_name)
+            update_all(table_name, set_vals, where_vals, connection)
+        s, x = generate_table("select * from " + table_name)
         return render_template("update.html", table_name=table_name,
                                navigation=[str(x + 1) for x in range(len(col_names))],
                                col_names=col_names,
@@ -712,7 +698,7 @@ def update_all(table_name, set_vals, where_vals, connection):
     return cnt
 
 
-@app.route('/delete<table_name>', methods=['GET', 'DELETE'])
+@app.route('/delete<table_name>', methods=['GET', 'POST'])
 def delete_table(table_name):
     if session.get("asd") is not None:
         login = session.get("login")
@@ -727,7 +713,8 @@ def delete_table(table_name):
         for row in cursor:
             col_names.append(row[0])
             col_types.append(row[1])
-        if request.method == 'DELETE':
+        print(request.method)
+        if request.method == 'POST':
             where_vals = dict()
             for x in range(len(col_names)):
                 wherevalue = request.form["where" + str(x + 1)]
@@ -735,8 +722,11 @@ def delete_table(table_name):
                     wherevalue = "'" + wherevalue + "'"
                 if wherevalue != '' and wherevalue != "''":
                     where_vals[col_names[x]] = wherevalue
-            delete_all(table_name, where_vals, GUIconnection)
-        s, x = generate_table(table_name)
+            print(table_name)
+            print(where_vals)
+            if len(where_vals) > 0:
+                delete_all(table_name, where_vals, connection)
+        s, x = generate_table("select * from " + table_name)
         return render_template("delete.html", table_name=table_name,
                                navigation=[str(x + 1) for x in range(len(col_names))],
                                col_names=col_names,
@@ -759,6 +749,7 @@ def delete_all(table_name, where_vals, connection):
         else:
             s = s + " = "
         s = s + where_vals[list(where_vals.keys())[x + 1]]
+    print(s)
     cursor.execute(s)
     connection.commit()
     cnt = cursor.rowcount

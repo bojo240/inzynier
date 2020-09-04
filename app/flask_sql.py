@@ -662,7 +662,8 @@ def update_table(table_name):
                     wherevalue = "'" + wherevalue + "'"
                 if wherevalue != '' and wherevalue != "''":
                     where_vals[col_names[x]] = wherevalue
-            update_all(table_name, set_vals, where_vals, connection)
+            if len(where_vals) > 0:
+                update_all(table_name, set_vals, where_vals, connection)
         s, x = generate_table("select * from " + table_name)
         return render_template("update.html", table_name=table_name,
                                navigation=[str(x + 1) for x in range(len(col_names))],

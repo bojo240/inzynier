@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bf61d1e2-9a82-43f3-9681-4d0244cdd729" name="Default Changelist" comment="poprawa literówki">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/delete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/update.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flask_sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_sql.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flask_sql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="706" column="119" lean-forward="true" selection-start-line="706" selection-start-column="119" selection-end-line="706" selection-end-column="119" />
+            <state relative-caret-position="264">
+              <caret line="660" column="97" lean-forward="true" selection-start-line="660" selection-start-column="97" selection-end-line="660" selection-end-column="97" />
             </state>
           </provider>
         </entry>
@@ -147,7 +142,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="453" />
     <option name="y" value="-8" />
     <option name="width" value="974" />
@@ -428,8 +423,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flask_sql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="706" column="119" lean-forward="true" selection-start-line="706" selection-start-column="119" selection-end-line="706" selection-end-column="119" />
+        <state relative-caret-position="264">
+          <caret line="660" column="97" lean-forward="true" selection-start-line="660" selection-start-column="97" selection-end-line="660" selection-end-column="97" />
         </state>
       </provider>
     </entry>

@@ -1,6 +1,8 @@
 USE [Inzynier]
 GO
 
+DISABLE Trigger ALL ON ALL SERVER;  
+
 --SET IDENTITY_INSERT Gmina ON;
 --SET IDENTITY_INSERT Powiat ON;
 --SET IDENTITY_INSERT Wojewodztwo ON;
@@ -344,5 +346,8 @@ select * from GminaRelacja;
 select * from Powiat;
 select * from PowiatWojewodztwo;
 select * from gminaPowiat;
+
+ENABLE Trigger ALL ON ALL SERVER;  
+
 
 GO
